@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1499 499">
+  <style>
+    <!-- Five in a row: pedestrian virus cyclist virus driver -->
+    g#all {transform: translate(0px,80px) scale(0.54,0.54);}
+    
+    path	{fill:none;stroke-width:12;stroke:white;}
+
+    g#walker {fill:white;transform: translate(110px,30px);}
+
+    circle.cell	{stroke:white;stroke-dasharray:25 70;stroke-width:100;fill:white;}
+
+    g.checkpoints {fill:none}
+    path.rider	{fill:white;stroke-width:1;stroke:white;}
+    g#rider {fill:white;transform: translate(1050px,88px)scale(0.9,0.9);}
+
+    path.roof	{stroke-width:24;}
+    g#motorcar {fill:white;transform: translate(2200px,77px);}
+
+    path.widen  {stroke:white;stroke-dasharray:250 50;stroke-width:60}
+    path.narrow  {stroke:white;stroke-dasharray:100 25;stroke-width:60}
+  </style>
+
+  <!-- background purple -->
+  <rect fill="#4d0026" x="0" y="0" width="1500" height="500"/>
+
+  <g id="all">
+  
+  <!-- Widen my path -->
+  <path class="widen" d="M-50,630h2000"/>
+  <path class="narrow" d="M2000,630h1000"/>
+
+  <!-- Walker -->
+  <g id="walker">
+    <circle class="walker head" cx="140" cy="50" r="45"/>
+    <rect class="walker body" x="70" y="100" width="140" height="200" rx="10"/>
+    <rect id="leg" class="walker leg" x="80" y="270" width="50" height="180" rx="10"/>
+    <use href="#leg" x="70"/>
+  </g>
+
+
+  <!-- Virii -->
+  <circle id="corona" class="cell" cx="700" cy="250" r="150"/>
+  <use href="#corona" x="1150"/>
+
+  <!-- Rider -->
+  <g id="rider">
+    <circle id="tyre" class="wheel" cx="75" cy="320" r="120"/>
+    <use href="#tyre" x="335"/>
+    <g class="checkpoints">
+      <circle cx="160" cy="185" r="3"/>
+      <circle cx="140" cy="120" r="3"/>
+      <circle cx="210" cy="-10" r="3"/>
+      <circle cx="214" cy="-27" r="3"/>
+      <circle cx="234" cy="-87" r="5"/>
+      <circle cx="260" cy="-20" r="5"/>
+      <circle cx="239" cy="-22" r="5"/>
+      <circle cx="237" cy="-10" r="5"/>
+      <circle cx="337" cy="90" r="5"/>
+      <circle cx="327" cy="110" r="5"/>
+      <circle cx="237" cy="50" r="5"/>
+      <circle cx="207" cy="140" r="5"/>
+      <circle cx="292" cy="220" r="5"/>
+      
+      <circle cx="230" cy="345" r="5"/>
+      <circle cx="252" cy="366" r="5"/>
+      <circle cx="197" cy="351" r="5"/>
+      <circle cx="262" cy="221" r="5"/>
+    </g>
+    <path 
+class="rider" d="M160,185
+c  -30, -20   -35, -40   -20, -65
+c   30, -60    30,-110    70,-130
+c    8,  -5     8,  -7     4, -17
+c  -20, -10   -20, -60    20, -60
+c   55,   5    30,  60    26,  67
+c   -5,   9   -10,  -2   -21,  -2
+c   -6,   6    -6,   6    -2,  12
+
+c   20,  20    15,  60   100, 100
+c   25,  15    25,  30   -10,  20
+c  -50, -20   -70, -50   -90, -60
+c   -4,  55   -10,  50   -30,  90
+
+c   16,   7    85,  45    85,  80
+c  -10,  50   -50,  80   -62, 125
+c   15,  10    15,  10    22,  20
+c   10,  12   -40,  -5   -55, -15
+c   30, -40    25, -90    65,-130
+
+c  -45,  -5   -60, -10  -102, -35
+
+z"/>
+  </g>
+
+  <!-- Driver -->
+  <!-- Motor vehicle -->
+  <g id="motorcar">
+    <rect class="chasis"  x="50" y="140" width="400" height="150" />
+    <rect    id="cartyre" class="tyre" x="50"   y="320" width="50" height="80" />
+    <use   href="#cartyre" x="350"/>
+    <path class="roof"     d="M65,150l40,-150 290,0 40,150" />
+    <circle class="driver head" cx="320" cy="80" r="45"/>
+  </g>
+
+
+</g>
+</svg>
