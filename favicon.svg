@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 499 499">
+  <style>
+    <!-- Widen my path favicon -->
+    path	{fill:none;stroke-width:12;stroke:black;}
+    path.rider	{fill:black;fill-rule:evenodd;stroke-width:12;stroke:black;}
+
+    
+    g#rider {transform: translate(80px,40px) scale(0.9,0.9);}
+    circle.cell	{stroke:red;stroke-dasharray:30 86;stroke-width:100;fill:red;}
+
+  </style>
+  <!-- Rider -->
+  <circle id="corona" class="cell" cx="250" cy="250" r="200"/>
+  <g id="rider">
+    <circle id="tyre" class="wheel" cx="40" cy="290" r="90"/>
+    <circle id="tyre" class="wheel" cx="340" cy="290" r="90"/>
+    <path class="rider" d="M130,190c-30,-10,-30,-30,-30,-40c0,-20,20,-80,50,-90c-20,-10,-10,-50,20,-50c50,10,30,60,20,70c-4,-1,-13,-4,-18,-4c16,29,21,54,21,54c0,18,47,30,47,30c-10,26,-10,20,-10,20c0,0,-50,-20,-50,-20c-4,5,-3,9,-9,13c6,7,27,23,39,46c5,10,3,7,3,19c-20,81,-6,75,-7,81c-6,8,-29,3,-49,-7c17,-28,19,-67,9,-79z"/>
+  </g>  
+</svg>

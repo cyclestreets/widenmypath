@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Widen my path - suggest more space for physical distancing</title>
+	<!-- Powered by CycleStreets -->
+	
+	<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
+	
+	<meta property="og:title" content="Widen my path - suggest more space for physical distancing" />
+	<meta property="og:image" content="/images/share.png" />
+
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<link rel="stylesheet" type="text/css" href="/css/generic.css" />
+	<link rel="stylesheet" type="text/css" href="/css/widenmypath.css" />
+</head>
+
+
+<body>
+	
+	
+	<header>
+		<p>CycleStreets network:</p>
+		<ul>
+			<li class="cyclestreets"><a href="https://www.cyclestreets.net/" title="Cycle journey planner">Cycle journey planner</a></li>
+			<li class="widenmypath selected"><a href="https://www.widenmypath.com/" title="Space for walking and cycling under COVID-19">Widen my path</a></li>
+			<li class="cyclescape"><a href="https://www.cyclescape.org/" title="Campaign toolkit">Cyclescape</a></li>
+			<li class="bikedata"><a href="https://bikedata.cyclestreets.net/" title="Data for cycle campaigning">Bikedata</a></li>
+			<li class="urbancycleparking"><a href="https://www.urbancycleparking.org.uk/" title="Tell us where cycle parking is needed">Urban Cycle Parking</a></li>
+			<li class="blog"><a href="https://www.cyclestreets.org/" title="About CycleStreets">About us</a></li>
+		</ul>
+	</header>
+	
+	
+	<main>
+		
+		<!-- {$map} -->
+		<div id="map">
+			<iframe height="100%" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.0932765007019043%2C51.49897879637835%2C-0.05744218826293945%2C51.51233485317819&amp;layer=cyclemap&amp;marker=51.50565731413629%2C-0.07535934448242188" style="border: 1px solid '#ccc"></iframe>
+		</div>
+		<!-- /{$map} -->
+	
+	</main>
+	
+	
+	<nav>
+	
+		<img id="logo" src="/images/widenmypath.svg" /> 
+		<h1>Widen my path</h1>
+	
+		<!-- {$form} -->
+		<form name="form" action="/suggest/" method="post">
+			
+			<p id="introduction">Where should the Council make more space for walking &amp; cycling, for physical distancing? Add your idea, or upvote an existing idea.</p>
+			
+			<div id="inputs">
+			
+				<p>1. Where is this?</p>
+				<div class="mapsetting">
+					<span class="tick"></span>
+					<div class="geolocate-button"><a href="#" class="fa fa-location-arrow"></a></div>
+					<p>Click on the map to set where</p>
+				</div>
+				
+				<p>2. Which type of change is needed?</p>
+				<div class="category">
+				<!-- {$category} -->
+					<input type="radio" name="form[category]" id="form_category_cycleways" value="cycleways" /><label for="form_category_cycleways">cycleways</label><br />
+					<input type="radio" name="form[category]" id="form_category_track" value="track" /><label for="form_category_track">track</label><br />
+					<input type="radio" name="form[category]" id="form_category_closure" value="closure" /><label for="form_category_closure">closure</label><br />
+				<!-- /{$category} -->
+				</div>
+				
+				<p>3. What is the problem here, and how can it be improved?</p>
+				<!-- {$caption} --><textarea cols="35" rows="6" name="caption"></textarea><!-- /{$caption} -->
+				
+				<p style="display: none;">
+					<label>Do you have a photo? (Optional)</label>
+					<!-- {$filename} -->
+					<input type="file" name="file" />
+					<!-- /{$filename} -->
+				</p>
+				
+				<p>
+					<!-- {$submit} --><input type="submit" value="Submit" /><!-- /{$submit} -->
+				</p>
+			
+			</div>
+			
+			<p id="legal">Submissions you make will be public domain, open data.</p>
+			<p id="export">Download data for this area: <a href="#geojson" class="geojson">GeoJSON</a> | <a href="#csv" class="csv">CSV</a>.</p>
+			
+		</form>
+		<!-- /{$form} -->
+	
+	</nav>
+	
+	
+	<footer>
+		<p>A not-for-profit, open data project created by <a href="https://www.cyclestreets.org/">CycleStreets</a> &nbsp;||&nbsp; <a href="https://www.cyclestreets.org/donate/">Donate &#9825;</a> &nbsp;||&nbsp; <a class="feedback" href="https://www.cyclestreets.org/contacts/">Feedback</a> &nbsp;||&nbsp; Map data © <a href="https://www.openstreetmap.org/"> OpenStreetMap</a> contributors (ODbL) || Uses <a href="https://www.cyclestreets.net/api/">CycleStreets API</a></p>
+	</footer>
+
+</body>
+
+</html>
