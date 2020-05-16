@@ -82,6 +82,11 @@ body.home nav h2 {margin-top: 50px; border-top: 1px solid gray; padding-top: 10p
 body.home #photos {float: right; width: 200px; padding-top: 20px; margin-left: 20px;}
 body.home #photos img {width: 210px; height: 150px; border: 0;}
 
+/* Home page main geocoder and geolocation */
+body.home #geocoder {margin-top: 40px;}
+body.home #geocoder input {-webkit-appearance: none; -webkit-border-radius: 0;}
+body.home #geocoder input[type="search"] {border-style: solid; border-color: #c1c1c1; border-width: 2px 0; height: 50px; width: 400px; padding: 8px 15px; font-size: 17px;}
+
 /* Suggest page title */
 body.suggest h1 {margin-top: 0; height: 100px; font-size: 2.05em; text-align: right; width: auto; margin-left: 12px;}
 body.suggest #logo {height: 100px; float: right; margin-left: 12px;}
