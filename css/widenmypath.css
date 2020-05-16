@@ -83,9 +83,10 @@ body.home #photos {float: right; width: 200px; padding-top: 20px; margin-left: 2
 body.home #photos img {width: 210px; height: 150px; border: 0;}
 
 /* Home page main geocoder and geolocation */
-body.home #geocoder {margin-top: 40px;}
+body.home #where {margin-top: 40px;}
 body.home #geocoder input {-webkit-appearance: none; -webkit-border-radius: 0;}
-body.home #geocoder input[type="search"] {border-style: solid; border-color: #c1c1c1; border-width: 2px 0; height: 50px; width: 400px; padding: 8px 15px; font-size: 17px;}
+body.home #geocoder input[type="search"] {width: calc(100% - 220px); max-width: 320px; height: 50px; border-style: solid; border-color: #c1c1c1; border-width: 2px 0; padding: 8px 15px; font-size: 17px;}
+body.home #browsemap a {color: white; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.5);}
 
 /* Suggest page title */
 body.suggest h1 {margin-top: 0; height: 100px; font-size: 2.05em; text-align: right; width: auto; margin-left: 12px;}
@@ -153,8 +154,10 @@ nav a {color: white;}
 	body.home nav {width: auto; margin-top: 0; opacity: 1;}
 	body.home #content {width: calc(100% - 30px); padding: 15px;}
 	body.home main {background-size: auto 80px;}
-	body.home h1 {font-size: 2.6em;}
+	body.home h1 {margin-top: 10px; font-size: 2.4em;}
 	body.home #photos {display: none;}
+	body.home #where {margin-top: 20px; font-weight: bold;}
+	body.home #geocoder input[type="search"] {width: 320px;}
 	body.suggest h1 {height: 100px; font-size: 1.7em;}
 	.notification.error {margin-right: 0;}
 	.leaflet-popup .hasphoto {min-height: 200px;}
