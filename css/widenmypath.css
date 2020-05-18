@@ -185,4 +185,9 @@ nav a {color: white;}
 	#inputs .geolocate-button {display: block; float: right;}
 }
 
+/* IE10+ workarounds; see: https://paper-leaf.com/blog/2014/09/targeting-ie-10-11-browsers-css/ */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+	#backgroundmap::before {opacity: 1; background-image: none; background-color: #4d0026;}
+	body.home #geocoder input[type="search"] {padding: 0 5px;}
+}
 
