@@ -141,7 +141,9 @@ body .leaflet-container a[target=_blank]:link, body .leaflet-container a[target=
 #inputs #form_caption {width: 90%; height: 60px; padding: 10px; border-radius: 7px;}
 #inputs div.mapsetting {width: auto; height: 30px; padding: 5px; background-color: rgba(255, 255, 255, 0.125); border-radius: 7px;}
 #inputs div.mapsetting:hover {cursor: -webkit-zoom-in}
-#inputs div.mapsetting span, #inputs .geolocate-button a {color: white; font-size: 30px;}
+#inputs div.mapsetting span, #inputs .geolocate-button a {color: white;}
+#inputs div.mapsetting span {font-size: 32px;}
+#inputs div.mapsetting .geolocate-button a {font-size: 20px; background-color: rgba(255, 255, 255, 0.1); width: 20px; height: 20px; padding: 6px; border-radius: 50%;}
 #inputs div.mapsetting span.tick {display: block; width: 20px; height: 20px; border: 1px dashed #666; margin: 5px 0 0 10px; float: left; vertical-align: top; line-height: 20px;}
 #inputs div.mapsetting.set {background-color: rgba(255, 255, 255, 0.5);}
 #inputs div.mapsetting p {margin: 10px 0 0 45px; padding: 0; line-height: 1em; vertical-align: middle;}
@@ -188,7 +190,7 @@ nav a {color: white;}
 	body.suggest h1 {height: 100px; font-size: 1.7em;}
 	.notification.error {margin-right: 0;}
 	.leaflet-popup .hasphoto {min-height: 200px;}
-	#inputs .geolocate-button {display: block; float: right;}
+	#inputs div.mapsetting .geolocate-button {display: block;}
 }
 
 /* IE10+ workarounds; see: https://paper-leaf.com/blog/2014/09/targeting-ie-10-11-browsers-css/ */
