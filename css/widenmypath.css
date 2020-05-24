@@ -72,9 +72,6 @@ footer p a {color: #ccc; text-decoration: none;}
 #backgroundmap {position: relative; width: 100%; height: 100%; z-index: 1;}
 #backgroundmap::before {position: absolute; left: 0; width: 100%; height: 100%; opacity: 0.1; z-index: -1; background: url('/images/map.jpg'); background-position: center; content: '';}
 
-/* Logo */
-#logo {background-color: rgba(255, 255, 255, 0.7); height: 100px; padding: 5px 20px; border-radius: 10px;}
-
 /* Home page */
 body.home main {background-image: url('/images/landscape.svg'); background-size: auto 200px; background-position: bottom; background-repeat: repeat-x; margin-bottom: 0;}
 body.home nav {width: 200px;}
@@ -82,7 +79,6 @@ body.home #backgroundmap {margin-right: 400px;}
 body.home #content {position: absolute; width: calc(100% - 340px); padding: 20px 300px 40px 40px;}
 body.home h1 {padding-top: 0; font-size: 3em; margin-top: 20px; margin-bottom: 20px;}
 body.home nav #homepages {opacity: 0.7;}
-body.home nav #logo {width: 160px; margin-top: 32px;}
 body.home nav h2 {margin-top: 50px; border-top: 1px solid gray; padding-top: 10px;}
 body.home nav p a {color: white; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3);}
 body.home #photos {float: right; width: 200px; padding-top: 20px; margin-left: 20px;}
@@ -100,9 +96,8 @@ body.home #browsemap a {color: white; text-decoration: none; border-bottom: 1px 
 
 /* Areas page */
 body.areas #content {padding: 40px; height: calc(100% - 80px); overflow: scroll;}
-body.areas h1 {margin-top: 0; height: 100px; font-size: 2.05em; text-align: right; width: auto; margin-left: 12px;}
+body.areas h1 {margin-top: 0; font-size: 2.05em; text-align: right; width: auto; margin-left: 12px;}
 body.areas h1 a {color: white; text-decoration: none;}
-body.areas #logo {height: 100px; float: right; margin-left: 12px;}
 body.areas #content li a {color: white; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); font-size: 0.87em;}
 body.areas ul.inline {margin: 25px 0;}
 body.areas ul.inline li:first-child {padding-left: 0;}
@@ -111,9 +106,8 @@ body.areas #areas h3 {margin-top: 40px; border-top: 1px solid gray; padding-top:
 body.areas table {border-spacing: 0;}
 
 /* Suggest page title */
-body.suggest h1 {margin-top: 0; height: 100px; font-size: 2.05em; text-align: right; width: auto; margin-left: 12px;}
+body.suggest h1 {margin-top: 0; font-size: 2.05em; text-align: right; width: auto; margin-left: 12px;}
 body.suggest h1 a {text-decoration: none;}
-body.suggest #logo {height: 100px; float: right; margin-left: 12px;}
 
 /* Map */
 #loading {position: absolute; z-index: 1000; top: 130px; left: 10px; width: 30px; height: 30px; background-color: white; opacity: 1; border: 2px solid #bbb; border-radius: 4px;}
@@ -191,7 +185,6 @@ nav a {color: white;}
 	main {height: calc(100% - 62px); padding-top: 25px;}
 	nav {position: relative; top: auto; right: auto; bottom: auto; width: auto; height: 800px; margin-top: -110px; overflow-y: auto; padding: 15px;}
 	.activearea {position: static; top: auto; right: auto; bottom: auto; left: auto;}
-	#logo {height: 70px;}
 	body.home nav {height: 350px; width: auto; margin-top: 0; opacity: 1;}
 	body.home #content {width: calc(100% - 30px); padding: 15px;}
 	body.home main {background-size: auto 80px;}
@@ -200,7 +193,7 @@ nav a {color: white;}
 	body.home #where {margin-top: 20px; font-weight: bold;}
 	body.home #geocoder input[type="search"] {width: 280px;}
 	body.areas #content {padding-left: 20px; padding-right: 20px;}
-	body.suggest h1 {height: 100px; font-size: 1.7em;}
+	body.suggest h1 {height: 40px; font-size: 1.7em;}
 	.notification.error {margin-right: 0;}
 	.leaflet-popup .hasphoto {min-height: 200px;}
 	#inputs div.mapsetting .geolocate-button {display: block;}
