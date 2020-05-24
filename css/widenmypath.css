@@ -123,8 +123,11 @@ body.suggest #logo {height: 100px; float: right; margin-left: 12px;}
 body .leaflet-container {font: inherit;}
 body .leaflet-popup-content-wrapper {width: 300px; padding-top: 10px;}
 body .leaflet-popup-content-wrapper, body .leaflet-popup-tip {background-color: #683047; color: white; font-size: 0.82em;}
+/*
 .leaflet-popup .hasphoto {min-height: 270px;}
 .leaflet-popup .hasphoto img {margin-top: 7px;}
+*/
+.leaflet-popup .hasphoto img {display: none;}
 .leaflet-popup #likes {margin: 0 0 5px 10px; padding: 2px;}
 .leaflet-popup .id {display: none;}
 .leaflet-popup.suggest .leaflet-popup-content-wrapper {width: 210px;}
