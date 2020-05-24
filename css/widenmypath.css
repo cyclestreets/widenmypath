@@ -139,14 +139,14 @@ body .leaflet-container a[target=_blank]:link, body .leaflet-container a[target=
 #inputs p {margin: 25px 0 7px;}
 #inputs input, #inputs textarea {-webkit-appearance: none; -moz-appearance: none;}
 #inputs #form_caption {width: 90%; height: 60px; padding: 10px; border-radius: 7px;}
-#inputs div.mapsetting {width: auto; height: 30px; padding: 5px; background-color: rgba(255, 255, 255, 0.125); border-radius: 7px;}
+#inputs div.mapsetting {width: auto; height: 40px; padding: 5px; background-color: rgba(255, 255, 255, 0.125); border-radius: 7px;}
 #inputs div.mapsetting:hover {cursor: -webkit-zoom-in}
 #inputs div.mapsetting span, #inputs .geolocate-button a {color: white;}
 #inputs div.mapsetting span {font-size: 32px;}
 #inputs div.mapsetting .geolocate-button a {font-size: 20px; background-color: rgba(255, 255, 255, 0.1); width: 20px; height: 20px; padding: 6px; border-radius: 50%;}
 #inputs div.mapsetting span.tick {display: block; width: 20px; height: 20px; border: 1px dashed #666; margin: 5px 0 0 10px; float: left; vertical-align: top; line-height: 20px;}
 #inputs div.mapsetting.set {background-color: rgba(255, 255, 255, 0.5);}
-#inputs div.mapsetting p {margin: 10px 0 0 45px; padding: 0; line-height: 1em; vertical-align: middle;}
+#inputs div.mapsetting p {margin: 5px 0 0 45px; padding: 0; line-height: 1em; vertical-align: middle;}
 #inputs .geolocate-button {display: none; float: right; margin-right: 20px;}
 #inputs .geolocate-button a {text-decoration: none;}
 #inputs div.category {position: relative; width: 100%; margin: 0 0 20px; padding: 0;}
