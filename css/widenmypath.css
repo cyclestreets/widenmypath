@@ -140,7 +140,7 @@ body .leaflet-container a[target=_blank]:link, body .leaflet-container a[target=
 #inputs input, #inputs textarea {-webkit-appearance: none; -moz-appearance: none;}
 #inputs #form_caption {width: 90%; height: 60px; padding: 10px; border-radius: 7px;}
 #inputs div.mapsetting {width: auto; height: 40px; padding: 5px; background-color: rgba(255, 255, 255, 0.125); border-radius: 7px;}
-#inputs div.mapsetting:hover {cursor: -webkit-zoom-in}
+#inputs div.mapsetting:hover {cursor: -webkit-zoom-in;}
 #inputs div.mapsetting span, #inputs .geolocate-button a {color: white;}
 #inputs div.mapsetting span {font-size: 32px;}
 #inputs div.mapsetting .geolocate-button a {font-size: 20px; background-color: rgba(255, 255, 255, 0.1); width: 20px; height: 20px; padding: 6px; border-radius: 50%;}
@@ -162,7 +162,7 @@ body .leaflet-container a[target=_blank]:link, body .leaflet-container a[target=
 #inputs div.category label[for*="track"] {left: calc(30% + 10px);}
 #inputs div.category label[for*="closure"] {left: calc(60% + 20px);}
 #inputs input[type="submit"] {margin-top: 0; margin-bottom: 3em; padding: 6px 8px; width: 100%; border: 0; border-radius: 10px; color: #4d0026; font-weight: bold;}
-.notification.error {margin-right: 340px; /* i.e. avoid nav panel */}
+.notification.error {width: 100%; margin-right: 340px; /* i.e. avoid nav panel */}
 p#thankyou {margin-top: 4em;}
 nav a {color: white;}
 
