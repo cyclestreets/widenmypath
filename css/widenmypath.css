@@ -144,6 +144,8 @@ body .leaflet-container a[target=_blank]:link, body .leaflet-container a[target=
 #inputs div.mapsetting span, #inputs .geolocate-button a {color: white;}
 #inputs div.mapsetting span {font-size: 32px;}
 #inputs div.mapsetting .geolocate-button a {font-size: 20px; background-color: rgba(255, 255, 255, 0.1); width: 20px; height: 20px; padding: 6px; border-radius: 50%;}
+#inputs div.mapsetting span.close {float: right; font-size: 24px; padding: 2px 2px 0 0; line-height: 10px; display: none;}
+#inputs div.mapsetting span.close a {text-decoration: none; cursor: pointer;}
 #inputs div.mapsetting span.tick {display: block; width: 20px; height: 20px; border: 1px dashed #666; margin: 5px 0 0 10px; float: left; vertical-align: top; line-height: 20px;}
 #inputs div.mapsetting.set {background-color: rgba(255, 255, 255, 0.5);}
 #inputs div.mapsetting p {margin: 5px 0 0 45px; padding: 0; line-height: 1em; vertical-align: middle;}
