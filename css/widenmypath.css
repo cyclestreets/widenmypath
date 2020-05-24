@@ -96,8 +96,10 @@ body.home #browsemap a {color: white; text-decoration: none; border-bottom: 1px 
 
 /* Areas page */
 body.areas #content {padding: 40px; height: calc(100% - 80px); overflow: scroll;}
-body.areas h1 {margin-top: 0; font-size: 2.05em; text-align: right; width: auto; margin-left: 12px;}
+body.areas h1 {font-size: 2.05em; height: 80px; display: inline-block; float: right; margin: 0; padding-bottom: 30px;}
+body.areas h1 {background-image: url('/images/landscape-transparent.svg'); background-size: auto 40px; background-position: left 40px; background-repeat: repeat-x; margin-bottom: 0;}
 body.areas h1 a {color: white; text-decoration: none;}
+body.areas h2 {clear: both; margin-top: 50px;}
 body.areas #content li a {color: white; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); font-size: 0.87em;}
 body.areas ul.inline {margin: 25px 0;}
 body.areas ul.inline li:first-child {padding-left: 0;}
