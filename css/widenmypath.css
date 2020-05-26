@@ -97,6 +97,7 @@ body .leaflet-popup-content-wrapper, body .leaflet-popup-tip {background-color: 
 .leaflet-popup .hasphoto img {margin-top: 7px;}
 */
 .leaflet-popup .hasphoto img {display: none;}
+.leaflet-popup .hasphoto #likes img {display: inline;}
 .leaflet-popup #likes {margin: 0 0 5px 10px; padding: 2px;}
 .leaflet-popup .id {display: none;}
 .leaflet-popup.suggest .leaflet-popup-content-wrapper {width: 210px;}
