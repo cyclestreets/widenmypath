@@ -53,7 +53,7 @@ body.home #backgroundmap {margin-right: 400px;}
 body.home #content {position: absolute; width: calc(100% - 340px); padding: 20px 300px 40px 40px;}
 body.home h1 {padding-top: 0; font-size: 3em; margin-top: 20px; margin-bottom: 20px;}
 body.home nav #homepages {opacity: 0.7;}
-body.home nav h2 {margin-top: 50px; border-top: 1px solid gray; padding-top: 10px;}
+body.home nav h2 {padding-top: 10px;}
 body.home nav p a {color: white; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3);}
 body.home #photos {float: right; width: 200px; padding-top: 20px; margin-left: 20px;}
 body.home #photos img {width: 210px; height: 150px; border: 0;}
