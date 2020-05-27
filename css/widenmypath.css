@@ -177,6 +177,7 @@ nav a {color: white;}
 	body.home #geocoder input[type="search"] {width: 280px;}
 	body.home nav h2 {padding-top: 0;}
 	body main.general #content {padding-left: 20px; padding-right: 20px;}
+	body main.general h1 {float: none; padding-bottom: 0;}
 	body.suggest h1 {height: 40px; font-size: 1.7em;}
 	body .leaflet-popup-content-wrapper {width: 275px;}
 	.notification.error {margin-right: 0;}
