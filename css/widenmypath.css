@@ -75,6 +75,10 @@ body main.general h1 {font-size: 2.05em; height: 80px; display: inline-block; fl
 body main.general h1 {background-image: url('/images/landscape-transparent.svg'); background-size: auto 40px; background-position: left 40px; background-repeat: repeat-x; margin-bottom: 0;}
 body main.general h1 a {color: white; text-decoration: none;}
 body main.general h2 {clear: both; margin-top: 50px;}
+body main.general h3 {margin-top: 2.2em;}
+body main.general a {color: white;}
+body main.general ul li {margin-bottom: 6px;}
+body main.general table td {padding-bottom: 10px;}
 
 /* Areas page */
 body.areas #content li a {color: white; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); font-size: 0.87em;}
