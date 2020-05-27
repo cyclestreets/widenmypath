@@ -60,6 +60,11 @@ body.home nav h2 {padding-top: 10px;}
 body.home nav p a {color: white; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3);}
 body.home #photos {float: right; width: 200px; padding-top: 20px; margin-left: 20px;}
 body.home #photos img {width: 210px; height: 150px; border: 0;}
+body.home #socialmedia {margin-top: 30px;}
+body.home #socialmedia img {width: 30px; height: 30px; vertical-align: middle;}
+body.home #socialmedia a {margin-left: 3px; border-bottom: 0;}
+body.home #socialmedia a:first-child {margin-left: 5px;}
+body.home #socialmedia img.instagram {width: 24px; height: 24px; padding-left: 2px;}
 
 /* Home page main geocoder and geolocation */
 body.home #where {margin-top: 40px;}
