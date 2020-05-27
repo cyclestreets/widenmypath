@@ -14,6 +14,7 @@ p.right {float: right;}
 
 /* Links */
 :target {webkit-animation: none; animation: none;}	/* Reset from generic.css */
+h2 a {text-decoration: none;}
 
 /* Global properties navigation */
 header {background-color: gray;}
@@ -174,6 +175,7 @@ nav a {color: white;}
 	body.home #photos {display: none;}
 	body.home #where {margin-top: 20px; font-weight: bold;}
 	body.home #geocoder input[type="search"] {width: 280px;}
+	body.home nav h2 {padding-top: 0;}
 	body main.general #content {padding-left: 20px; padding-right: 20px;}
 	body.suggest h1 {height: 40px; font-size: 1.7em;}
 	body .leaflet-popup-content-wrapper {width: 275px;}
