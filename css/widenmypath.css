@@ -168,6 +168,7 @@ nav a {color: white;}
 	body.home #geocoder input[type="search"] {width: 280px;}
 	body.areas #content {padding-left: 20px; padding-right: 20px;}
 	body.suggest h1 {height: 40px; font-size: 1.7em;}
+	body .leaflet-popup-content-wrapper {width: 275px;}
 	.notification.error {margin-right: 0;}
 	#inputs div.mapsetting .geolocate-button {display: block;}
 }
