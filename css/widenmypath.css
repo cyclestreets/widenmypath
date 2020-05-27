@@ -30,6 +30,8 @@ header ul li.widenmypath a:hover {background-color: #4d0026;}
 header ul li.widenmypath.selected a {background: #4d0026;}
 header ul li.cyclescape a {border-color: green;}
 header ul li.cyclescape a:hover {background-color: green;}
+header ul li.streetfocus a {border-color: lightblue;}
+header ul li.streetfocus a:hover {background-color: lightblue;}
 header ul li.bikedata a {border-color: purple;}
 header ul li.bikedata a:hover {background-color: purple;}
 header ul li.urbancycleparking a {border-color: #cc2900;}
