@@ -169,7 +169,6 @@ nav a {color: white;}
 	body.areas #content {padding-left: 20px; padding-right: 20px;}
 	body.suggest h1 {height: 40px; font-size: 1.7em;}
 	.notification.error {margin-right: 0;}
-	.leaflet-popup .hasphoto {min-height: 200px;}
 	#inputs div.mapsetting .geolocate-button {display: block;}
 }
 
