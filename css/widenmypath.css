@@ -107,6 +107,7 @@ body.suggest p#city {margin-top: 2px; padding: 0; text-align: right; font-size: 
 /* Map */
 #loading {position: absolute; z-index: 1000; top: 130px; left: 10px; width: 30px; height: 30px; background-color: white; opacity: 1; border: 2px solid #bbb; border-radius: 4px;}
 .leaflet-control-attribution {display: none; /* attribution is present in the main site footer instead */}
+#mapcontainer #attribution {position: absolute; display: block; height: 20px; width: 65px; left: 10px; bottom: 10px; text-indent: -9999px; z-index: 99999; overflow: hidden; background-image: url('/images/mapbox.svg'); background-repeat: no-repeat; background-position: 0 0; background-size: 65px 20px;}
 
 /* Popups */
 body .leaflet-container {font: inherit;}
@@ -193,5 +194,5 @@ nav a {color: white;}
 	body .leaflet-popup-content-wrapper {width: 275px;}
 	.notification.error {margin-right: 0;}
 	#inputs div.mapsetting .geolocate-button {display: block;}
+	#mapcontainer #attribution {bottom: 120px;}
 }
-
