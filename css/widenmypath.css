@@ -8,7 +8,7 @@ nav {position: fixed; z-index: 500; top: 32px; right: 0; bottom: 25px; width: 30
 footer {position: absolute; width: 100%; height: 25px; bottom: 0; padding: 0; overflow: hidden;}
 
 /* Typography */
-body, input, textarea {font-family: 'Varela Round', Arial, Helvetica, sans-serif; font-size: 1em;}
+body, input, select, textarea {font-family: 'Varela Round', Arial, Helvetica, sans-serif; font-size: 1em;}
 p.smaller {font-size: 0.73em;}
 p.right {float: right;}
 
@@ -126,6 +126,10 @@ body .leaflet-popup-content-wrapper, body .leaflet-popup-tip {background-color: 
 body .leaflet-container .leaflet-popup a {color: white;}
 body .leaflet-container a[target=_blank]:link, body .leaflet-container a[target=_blank]:visited {background-image: none; padding-right: 0;}
 
+/* Filters */
+body #mapcontainer #filters {left: 90px;}
+#mapcontainer #filters select {font-size: 0.9em;}
+
 /* Form styling */
 #introduction {color: #4d0026; font-weight: bold; padding: 12px; background-color: rgba(255, 255, 255, 0.8); border-radius: 15px; margin-top: 1.4em; margin-bottom: 2em;}
 #inputs p {margin: 25px 0 7px;}
@@ -196,4 +200,5 @@ nav a {color: white;}
 	.notification.error {margin-right: 0;}
 	#inputs div.mapsetting .geolocate-button {display: block;}
 	#mapcontainer #attribution {bottom: 120px;}
+	body #mapcontainer #filters {bottom: 120px;}
 }
