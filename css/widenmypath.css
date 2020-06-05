@@ -109,6 +109,7 @@ body.suggest #lobby {margin-top: 20px; padding: 12px; background-color: rgba(255
 #loading {position: absolute; z-index: 1000; top: 130px; left: 10px; width: 30px; height: 30px; background-color: white; opacity: 1; border: 2px solid #bbb; border-radius: 4px;}
 .leaflet-control-attribution {display: none; /* attribution is present in the main site footer instead */}
 #mapcontainer #attribution {position: absolute; display: block; height: 20px; width: 65px; left: 10px; bottom: 10px; text-indent: -9999px; z-index: 99999; overflow: hidden; background-image: url('/images/mapbox.svg'); background-repeat: no-repeat; background-position: 0 0; background-size: 65px 20px;}
+body #mapcontainer #helptext {bottom: 40px;}
 
 /* Popups */
 body .leaflet-container {font: inherit;}
