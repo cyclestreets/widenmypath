@@ -170,6 +170,9 @@ body #mapcontainer #filters {left: 90px;}
 p#thankyou {margin-top: 4em;}
 nav a {color: white;}
 
+/* About page */
+body.about ul.parameters tt {text-decoration: underline;}
+
 /* Export */
 #legal, #export {font-size: 0.67em;}
 #export a[target=_blank] {background-image: none; padding: 0;}

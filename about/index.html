@@ -35,9 +35,19 @@
 			<h3 id="embed">Can I add Widen My Path to our own site?</h3>
 			<p>Yes, you can embed the site using a standard iframe.</p>
 			<p>We recommend you <a href="/areas/">select your local area homepage</a> and use this as the web address. For instance, the following embed code sets the location as Cambridge:</p>
-			<p><pre>&lt;iframe src="https://www.widenmypath.com/cambridge/#14/52.2078/0.1250" width="900" height="600" frameBorder="0"&gt;&lt;/iframe&gt;</pre></p>
+			<p><pre>&lt;iframe src="https://www.widenmypath.com/cambridge/" width="900" height="600" frameBorder="0"&gt;&lt;/iframe&gt;</pre></p>
+			<p>The following additional URL parameters are available:</p>
+			<ul class="parameters">
+				<li><tt>category=cycleways</tt> / <tt>category=track</tt> / <tt>category=closure</tt> will filter the map to the specific type.</li>
+				<li><tt>properties=false</tt> will disable the header bar containing links to our other sites.</li>
+				<li><tt>onward=https://mywebsite.example.com/contactmycouncillor</tt> will provide an additional 'Contact my local councillor' box after suggestion submission, with the given link on your website as the onward address.</li>
+				<li><tt>twitter=https://mywebsite.example.com/path/to/embedpage</tt> will set the URL on your website to be set in the tweet from the tweet button that ppears after submission submission.</li>
+				<li>A map hash like <tt>#14/52.2009/0.1305</tt> , added at the end, will adjust the map position; the numbers are: zoom level / latitude / longitude.</li>
+			</ul>
+			<p>E.g. this iframe URL would fix the map to the pavements category, disable the header bar, and add a twitter link, and centre the map to Birmingham, zoomed to a particular ward:</p>
+            <p><pre>&lt;iframe src="https://www.widenmypath.com/birmingham/?category=track&properties=false&twitter=http://mysite.example.com/page.html#15/52.4744/-1.8706" width="900" height="600" frameBorder="0"&gt;&lt;/iframe&gt;</pre></p>
 			<p>Or you could link to <a href="/images/sharing.png">this graphic</a>; again this link sets the local area:</p>
-			<p><pre>&lt;a href="https://www.widenmypath.com/cambridge/#14/52.2078/0.1250"&gt;&lt;img src="https://www.widenmypath.com/images/sharing.png" width="100%" style="max-width: 866px;" border="0" /&gt;&lt;/a&gt;</pre></p>
+			<p><pre>&lt;a href="https://www.widenmypath.com/cambridge/"&gt;&lt;img src="https://www.widenmypath.com/images/sharing.png" width="100%" style="max-width: 866px;" border="0" /&gt;&lt;/a&gt;</pre></p>
 			
 			<h3 id="opendata">My council already has a map?</h3>
 			<p>A small number of councils around the UK have commissioned their own individual maps. Naturally, do feel free to add ideas there!</p>
