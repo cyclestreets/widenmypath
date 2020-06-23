@@ -187,6 +187,7 @@ body.about ul.parameters tt {text-decoration: underline;}
 	#inputs div.category input {position: static; display: inline; width: auto; height: auto; background: none;}
 	#inputs div.category label {position: static; top: 0; width: auto; text-align: left;}
 	#inputs div.category br {display: block;}
+	main {position: fixed; top: 32px; height: calc(100% - 57px); padding-top: 0;}
 }
 
 
