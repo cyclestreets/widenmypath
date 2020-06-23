@@ -183,6 +183,10 @@ body.about ul.parameters tt {text-decoration: underline;}
 @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
 	#backgroundmap::before {opacity: 1; background-image: none; background-color: #4d0026;}
 	body.home #geocoder input[type="search"] {padding: 0 5px;}
+	/* Disable image-based radio buttons, by resetting all properties */
+	#inputs div.category input {position: static; display: inline; width: auto; height: auto; background: none;}
+	#inputs div.category label {position: static; top: 0; width: auto; text-align: left;}
+	#inputs div.category br {display: block;}
 }
 
 
