@@ -163,9 +163,9 @@ body #mapcontainer #overlay {left: 325px;}
 #inputs div.category input[value="track"]     {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/track_bad.svg');    }
 #inputs div.category input[value="closure"]   {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/closure_bad.svg');  }
 #inputs div.category label {position: absolute; top: 50px; width: 30%; margin: 0; text-align: center;}
-#inputs div.category label[for*="cycleways"] {left: 0;}
-#inputs div.category label[for*="track"] {left: calc(30% + 10px);}
-#inputs div.category label[for*="closure"] {left: calc(60% + 20px);}
+#inputs div.category label:nth-of-type(1) {left: 0;}
+#inputs div.category label:nth-of-type(2) {left: calc(30% + 10px);}
+#inputs div.category label:nth-of-type(3) {left: calc(60% + 20px);}
 #inputs input[type="submit"] {margin-top: 0; margin-bottom: 3em; padding: 6px 8px; width: 100%; border: 0; border-radius: 10px; color: #4d0026; font-weight: bold;}
 .notification.error {width: 100%; margin-right: 340px; /* i.e. avoid nav panel */}
 p#thankyou {margin-top: 4em;}
