@@ -185,6 +185,9 @@ body.about ul.parameters tt {text-decoration: underline;}
 #legal, #export {font-size: 0.67em;}
 #export a[target=_blank] {background-image: none; padding: 0;}
 
+/* Batch upload */
+div.graybox p {color: black;}
+body main.general div.confirmationmap a {color: black; /* i.e. reset to Leaflet.js style .leaflet-bar a */}
 
 /* IE10+ workarounds; see: https://paper-leaf.com/blog/2014/09/targeting-ie-10-11-browsers-css/ */
 @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
