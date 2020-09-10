@@ -159,10 +159,11 @@ body #mapcontainer #overlay {left: 325px;}
 #inputs div.category input {position: relative; display: inline-block; width: 30% /* though this results in slightly less visible width */; height: 75px; margin: 0 6px 0 0; padding: 0; background-repeat: no-repeat; background-size: 35px auto; background-position: center 7px; background-color: rgba(255, 255, 255, 0.125); border-radius: 7px;}
 #inputs div.category input:hover, #inputs div.category label {cursor: cell;}
 #inputs div.category input:active, #inputs div.category input:checked {background-color: rgba(255, 255, 255, 0.5);}
-#inputs div.category input[value="cycleways"] {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/cycleways_bad.svg');}
-#inputs div.category input[value="track"]     {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/track_bad.svg');    }
-#inputs div.category input[value="closure"]   {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/closure_bad.svg');  }
-#inputs div.category input[value="bikeshare"]   {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/bikeshare_bad.svg');  }
+#inputs div.category input[value="cycleways"]    {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/cycleways_bad.svg');}
+#inputs div.category input[value="track"]        {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/track_bad.svg');    }
+#inputs div.category input[value="closure"]      {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/closure_bad.svg');  }
+#inputs div.category input[value="bikeshare"]    {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/bikeshare_bad.svg');  }
+#inputs div.category input[value="cycleparking"] {background-image: url('https://www.cyclestreets.net/images/categories/iconsets/cyclestreets/svg/cycleparking_bad.svg');}
 #inputs div.category label {position: absolute; top: 50px; width: 30%; margin: 0; text-align: center;}
 #inputs div.category label:nth-of-type(1) {left: 0;}
 #inputs div.category label:nth-of-type(2) {left: calc(30% + 10px);}
