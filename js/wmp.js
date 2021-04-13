@@ -109,6 +109,17 @@ var wmp = (function ($) {
 				}
 				
 			};
+
+			// Display a toolbox card when the element is selected
+			// !TODO having "read" the card once could be saved as a cookie, so the user doesn't have to constantly do this extra step to add map elements
+			$('.toolbox .group-contents ul li').on ('click', function () {
+				$('.toolbox-card').slideDown ();
+			});
+
+			// Enable the toolbox card to be closed
+			$('.close-card').on ('click', function (){
+				$('.toolbox-card').slideUp ();
+			});
 		}
 	};
 	
