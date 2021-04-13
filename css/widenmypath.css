@@ -339,3 +339,33 @@ section.vision section.discussion .discussion-header .answer input {display: blo
 section.vision section.discussion .new-topic {margin: 20px 0; border: 1px solid transparent; transition: 0.3s; display: inline-block; padding: 7.5px; border-radius: 0.3em;}
 section.vision section.discussion .new-topic:hover {border: 1px solid black;}
 section.vision section.discussion .new-topic p {display: inline-block; margin: 0;}
+
+/* Builder interface */
+section.builder {display: flex; min-height: 100%; padding-top: 30px}
+section.builder section.map {flex: 1.8; background-color: #4d0026; box-shadow: 0 8px 17px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.7);}
+section.builder section.toolbox {flex: 1; color: black;}
+section.builder section.map .untitled {opacity: 0.5;}
+
+section.builder section.map i.back-arrow {position: absolute; top: 60px; left: 20px; font-size: 25px; transform: 0.5s; color: white;}
+section.builder section.map h1 {margin: 22.5px 0 0 60px; font-size: 35px; display: inline-block; color: white;}
+section.builder section.map p {color: white; display: inline-block;}
+section.builder section.map hr {margin: 20px 0;}
+section.builder section.map h2 {color: #f2bd54; padding-left: 50px; margin: 0 0 2.5px 0; font-size: 30px;}
+section.builder section.map h3 {color: white; padding-left: 50px; margin: 0 0 12.5px 0;}
+section.builder section.map h4 {color: white; padding-left: 50px; max-width: 50%; font-size: 15px; margin: 0;}
+section.builder section.map div.map {width: calc(100% - 100px); margin: 20px 50px 15px;}
+section.builder section.map .map img {border-radius: 1em; width: 100%;}
+section.builder section.map p.description {margin: 10px 0 10px 50px;}
+
+section.builder section.toolbox a.publish {float: right; margin: 27.5px 20px 0 0; font-size: 20px; text-decoration: none; border-radius: .3em; background-color: #4d0026; color: white; padding: 5px 10px;}
+section.builder section.toolbox hr {margin-top: 85px;}
+section.builder section.toolbox .toolbox-content {padding: 25px 25px 25px 35px;}
+section.builder section.toolbox .toolbox-content h5 {margin: 0;}
+section.builder section.toolbox h4 {display: inline-block; margin: 25px 0 15px; color: #f2bd54; font-size: 25px;}
+section.builder section.toolbox .toolbox-header h5 {display: inline-block; margin: 10px 7.5px;}
+section.builder section.toolbox .toolbox-header .group-contents {margin: 0 30px; font-size: 17px;}
+section.builder section.toolbox .toolbox-header .group-contents ul {list-style: none;}
+section.builder section.toolbox .toolbox-header .group-contents ul li {border-radius: .3em; border: 1px solid black; display: inline-block; padding: 10px; margin: 10px; transition: 0.3s; cursor: pointer; width: 100px;}
+section.builder section.toolbox .toolbox-header .group-contents ul li:hover {box-shadow: 0 5px 4px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.3); color: #4d0026;}
+section.builder section.toolbox .toolbox-header .group-contents ul li i {font-size: 50px; display: block; margin: 0 auto; text-align: center;}
+section.builder section.toolbox .toolbox-header .group-contents ul li p {display: block; font-size: 12px; text-align: center;}
