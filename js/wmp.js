@@ -120,6 +120,9 @@ var wmp = (function ($) {
 			$('.close-card').on ('click', function (){
 				$('.toolbox-card').slideUp ();
 			});
+
+			// Initially, hide the toolbox popup
+			$('.toolbox-card').hide ();
 		}
 	};
 	
