@@ -331,6 +331,8 @@ section.vision section.discussion .comment-count {display: inline-block; margin-
 section.vision section.discussion .comment-count i {margin-right: 5px;}
 section.vision section.discussion .comment-count p {display: inline-block; margin: 0;}
 section.vision section.discussion .discussion-header h5 {display: inline-block; margin: 10px 7.5px;}
+section.vision section.discussion .discussion-header>i {transition: .5s;}
+section.vision section.discussion .discussion-header>i.rotated {transform: rotate(-90deg);}
 section.vision section.discussion .discussion-header .answer {margin: 0 30px; font-size: 17px;}
 section.vision section.discussion .discussion-header .answer p {margin: 0;}
 section.vision section.discussion .discussion-header .answer p.author {display: inline-block; margin: 10px 0 0 0; font-size: 14px;}

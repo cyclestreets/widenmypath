@@ -26,6 +26,9 @@ var wmp = (function ($) {
 
 			// Builder options
 			wmp.initBuilder ();
+
+			// Discussion
+			wmp.initDiscussion ();
 		},
 
 		
@@ -148,14 +151,67 @@ var wmp = (function ($) {
 			var makeContentEditable = function (target) {
 				$(target).attr('contenteditable','true');
 				document.execCommand('selectAll',false,null);
-			}
+			};
 
 			// Remove untitled status
 			var removeUntitledClass = function (target) {
 				// Change the opacity to indicate action
 				$(target).removeClass ('untitled');
-			}
-		}
+			};
+		},
+
+
+		// Enable the discussion functionality
+		initDiscussion: function () 
+		{
+			// Ensure correct default position
+			$.each($('.discussion-header'), function (indexInArray, discussion) { 
+				
+				// If any of these are NOT set to be open
+				if (!$(discussion).hasClass('discussion-open')) {
+					
+					// Hide the contents
+					$(discussion).find ('.answer').hide ();
+
+					// Add chevron to the right >
+					$(discussion).find ('i').addClass ('rotated');
+				} else {
+					// For those that are open
+					// Show the contents
+					$(discussion).find ('.answer').show ();
+
+					// Add down chevron, indicating open
+					$(discussion).find ('i').removeClass ('rotated');
+				}
+			});
+
+			// Enable toolbox headers to be clickable
+			$('.discussion-header>h5').on ('click', function (event) {
+				toggleDiscussion (event);
+			});
+
+			// Enable toolbox chevrons to be clickable
+			$('.discussion-header>i').on ('click', function (event) {
+				toggleDiscussion (event);
+			});
+
+			// Function to toggle a toolbox open or closed
+			var toggleDiscussion = function (event) {
+				// Get current discussion drawer status
+				var discussionHeader = $($(event.target)).closest ('.discussion-header').first();
+				var isOpen = $(discussionHeader).hasClass ('discussion-open');
+
+				if (isOpen) {
+					$(discussionHeader).removeClass ('discussion-open');
+					$(discussionHeader).find ('i').first ().addClass ('rotated');
+					$(discussionHeader).find ('.answer').first ().slideToggle ();
+				} else {
+					$(discussionHeader).addClass ('discussion-open');
+					$(discussionHeader).find ('i').first ().removeClass ('rotated');
+					$(discussionHeader).find ('.answer').first ().slideToggle ();
+				}
+			};
+		},
 	};
 	
 } (jQuery));
