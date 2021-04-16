@@ -185,17 +185,17 @@ var wmp = (function ($) {
 				}
 			});
 
-			// Enable toolbox headers to be clickable
+			// Enable discussion headers to be clickable
 			$('.discussion-header>h5').on ('click', function (event) {
 				toggleDiscussion (event);
 			});
 
-			// Enable toolbox chevrons to be clickable
+			// Enable discussion chevrons to be clickable
 			$('.discussion-header>i').on ('click', function (event) {
 				toggleDiscussion (event);
 			});
 
-			// Function to toggle a toolbox open or closed
+			// Function to toggle a discussion open or closed
 			var toggleDiscussion = function (event) {
 				// Get current discussion drawer status
 				var discussionHeader = $($(event.target)).closest ('.discussion-header').first();
@@ -211,6 +211,16 @@ var wmp = (function ($) {
 					$(discussionHeader).find ('.answer').first ().slideToggle ();
 				}
 			};
+
+			// Enable a new discussion to be created (display new discussion modal)
+			$('.new-topic').on ('click', function () {
+				$('.newDiscussion').show ();
+			});
+
+			// Close modal
+			$('.closeModal').on ('click', function () {
+				$('.newDiscussion').slideToggle ();
+			});
 		},
 	};
 	

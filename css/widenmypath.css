@@ -341,6 +341,12 @@ section.vision section.discussion .discussion-header .answer input {display: blo
 section.vision section.discussion .new-topic {margin: 20px 0; border: 1px solid transparent; transition: 0.3s; display: inline-block; padding: 7.5px; border-radius: 0.3em;}
 section.vision section.discussion .new-topic:hover {border: 1px solid black;}
 section.vision section.discussion .new-topic p {display: inline-block; margin: 0;}
+section.vision .newDiscussion {display: none; position: absolute; top: 30%; left: 45%; width: 300px; box-shadow: 0 8px 17px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.7); padding: 25px; background: white; border-radius: .3em;}
+section.vision .newDiscussion .closeModal {float: right;}
+section.vision .newDiscussion i {margin-right: 10px;}
+section.vision .newDiscussion input {width: 250px; height: 30px; padding: 5px 10px; border-radius: .3em;}
+section.vision .newDiscussion .createNewDiscussion {display: inline-block; padding: 5px 10px; margin-top: 25px; border: 1px solid #4d0026; border-radius: .3em; text-decoration: none}
+section.vision .newDiscussion .createNewDiscussion:hover {background-color: #4d0026; color: white;}
 
 /* Builder interface */
 section.builder {display: flex; min-height: 100%; padding-top: 30px}
