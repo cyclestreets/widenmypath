@@ -23,6 +23,9 @@ var wmp = (function ($) {
 
 			// Toolbox drawers
 			wmp.toolbox ();
+
+			// Builder options
+			wmp.initBuilder ();
 		},
 
 		
@@ -123,6 +126,35 @@ var wmp = (function ($) {
 
 			// Initially, hide the toolbox popup
 			$('.toolbox-card').hide ();
+		},
+
+	
+		// Builder options
+		initBuilder: function ()
+		{
+			// When clicking on the title bar, make it editable
+			$('.builder .map h2').on ('click', function (event){
+				makeContentEditable (event.target);
+				removeUntitledClass (event.target);
+			});
+
+			// When clicking on the description bar, make it editable
+			$('.builder .map h4').on ('click', function (event){
+				makeContentEditable (event.target);
+				removeUntitledClass (event.target);
+			});
+			
+			// Select and edit content
+			var makeContentEditable = function (target) {
+				$(target).attr('contenteditable','true');
+				document.execCommand('selectAll',false,null);
+			}
+
+			// Remove untitled status
+			var removeUntitledClass = function (target) {
+				// Change the opacity to indicate action
+				$(target).removeClass ('untitled');
+			}
 		}
 	};
 	
