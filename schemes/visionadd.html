@@ -24,18 +24,11 @@
 	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
 
 	<link rel="stylesheet" type="text/css" href="/css/widenmypath.css?202104" />
-	<link rel="stylesheet" type="text/css" href="/schemes/schemes.css" />
 
 	<!-- Fontawesome icons -->
 	<script src="/js/lib/fontawesome/fontawesome-kit-7bd5544b77.js"></script>
 	
 	<script src="/js/lib/jquery/jquery.min.js"></script>
-	<script src="/schemes/schemes.js"></script>
-	<script>
-		$(function () {
-			schemes.initialise();
-		});
-	</script>
 
 <body>
 	<header>
@@ -55,7 +48,19 @@
 			<li class="blog"><a href="https://www.cyclestreets.org/" title="About CycleStreets">About us</a></li>
 		</ul>
 	</header>
-
+	
+	
+	<!-- Start schemes module -->
+	
+	<link rel="stylesheet" type="text/css" href="/schemes/schemes.css" />
+	<script src="/schemes/schemes.js"></script>
+	<script>
+		$(function () {
+			schemes.initialise();
+		});
+	</script>
+	
+	
 	<section class="builder">
 		<section class="map">
 			<i class="back-arrow fa fa-chevron-left"></i>
@@ -129,8 +134,12 @@
 				</div>
 			</div>
 		</section>
-
-		<section>
+		
+	</section>
+	
+	<!-- End schemes module -->
+	
+	
 </body>
 
 </html>
