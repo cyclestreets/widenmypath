@@ -1,6 +1,4 @@
-// Widen My Path 2 javascript library
-
-var wmp = (function ($) {
+var schemes = (function ($) {
 	
 	'use strict';	
 	
@@ -11,7 +9,7 @@ var wmp = (function ($) {
 		// Main function
 		initialise: function ()
 		{
-			wmp.initUi ();
+			schemes.initUi ();
 		},
 		
 		
@@ -19,16 +17,16 @@ var wmp = (function ($) {
 		initUi: function ()
 		{
 			// Segmented controls
-			wmp.segmentedControl ();
+			schemes.segmentedControl ();
 
 			// Toolbox drawers
-			wmp.toolbox ();
+			schemes.toolbox ();
 
 			// Builder options
-			wmp.initBuilder ();
+			schemes.initBuilder ();
 
 			// Discussion
-			wmp.initDiscussion ();
+			schemes.initDiscussion ();
 		},
 
 		
