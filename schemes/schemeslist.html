@@ -1,1 +1,138 @@
-{$function}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Widen My Path - suggest more space for physical distancing</title>
+    <!-- Powered by CycleStreets -->
+
+    <link rel="icon" href="/favicon.ico" />
+
+    <meta property="og:title" content="Widen My Path - suggest more space for physical distancing" />
+    <meta property="og:image" content="/images/sharing.png" />
+
+    <meta name="twitter:card" content="photo" />
+    <meta name="twitter:site" content="@widenmypath" />
+    <meta name="twitter:title" content="Widen My Path" />
+    <meta name="twitter:description"
+        content="Where should the Council make more space for walking & cycling, for physical distancing? Add your idea, or upvote an existing idea." />
+    <meta name="twitter:image" content="https://www.widenmypath.com/images/sharing.png" />
+    <meta name="twitter:url" content="https://www.widenmypath.com/" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="/css/widenmypath.css?202104" />
+    <link rel="stylesheet" type="text/css" href="/schemes/schemes.css" />
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    <!-- Fontawesome icons -->
+    <script src="/js/lib/fontawesome/fontawesome-kit-7bd5544b77.js"></script>
+    
+    <script src="/js/lib/jquery/jquery.min.js"></script>
+    <script src="/schemes/schemes.js"></script>
+    <script>
+        $(function () {
+            schemes.initialise();
+        });
+    </script>
+
+<body>
+    <header>
+        <p>CycleStreets network:</p>
+        <ul>
+            <li class="cyclestreets"><a href="https://www.cyclestreets.net/" title="Cycle journey planner">Cycle journey
+                    planner</a></li>
+            <li class="widenmypath selected"><a href="https://www.widenmypath.com/"
+                    title="Space for walking and cycling under COVID-19">Widen My Path</a></li>
+            <li class="streetfocus"><a href="https://www.streetfocus.uk/"
+                    title="Planning applications UK-wide">StreetFocus</a></li>
+            <li class="bikedata"><a href="https://bikedata.cyclestreets.net/"
+                    title="Data for cycle campaigning">Bikedata</a></li>
+            <li class="cyclescape"><a href="https://www.cyclescape.org/" title="Campaign toolkit">Cyclescape</a></li>
+            <li class="urbancycleparking"><a href="https://www.urbancycleparking.org.uk/"
+                    title="Tell us where cycle parking is needed">Urban Cycle Parking</a></li>
+            <li class="blog"><a href="https://www.cyclestreets.org/" title="About CycleStreets">About us</a></li>
+        </ul>
+    </header>
+
+    <section class="schemes-list">
+        <section class="header">
+            <div class="flex">
+                <div class="title-block">
+                    <h1>Widen My Path</h1>
+                    <h2>Schemes</h2>
+                </div>
+                <div class="description-block">
+                    <p>Widen My Path is a bandits sed Dolores voluptatem enim qui voluptatem alias. Sint veniam rerum alias error. Et eum temporibus eum animi illo. Dolores veritatis recusandae libero rerum ut porro. Est consectetur soluta dolor praesentium sit illum nihil.</p>
+                </div>
+            </div>
+            <hr />
+            <div class="header-controls">
+                <div class="new-scheme">
+                    <a class="new-scheme-button" href="#"><i class="fa fa-plus-circle"></i> New scheme</a>
+                </div>
+                <div class="segmented-control">
+                    <div class="ios-segmented-control">
+                        <span class="selection"></span>
+                        <div class="option">
+                            <input type="radio" id="popular" name="current-view" value="popular">
+                            <label for="popular"><span>Popular</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="all" name="current-view" value="all">
+                            <label for="all"><span>All</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="latest" name="current-view" value="latest">
+                            <label for="latest"><span>Latest</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <!--<i class="fa fa-search"></i>-->
+                    <input placeholder="Search for a place or postcode..."/>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="schemes">
+            <ul>
+                <li>
+                    <div class="scheme-card">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/images/placeholders/vision_map_placeholder.png" />
+                            </div>
+                            <div class="content">
+                                <div class="likes">
+                                    <i class="fa fa-heart"></i><p>88</p>
+                                </div>
+                                <h4>Title of vision</h4>
+                                <h5>Martin Lucas-Smith</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                            <div class="read-more">
+                                <div class="comment-count">
+                                    <i class="fa fa-comments"></i><p>21</p>
+                                </div>
+                                <div class="share">
+                                    <i class="fa fa-share-square"></i><p>4</p>
+                                </div>
+                                <div class="details">
+                                    <a href="#">View details <i class="fa fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+</body>
+
+</html>
