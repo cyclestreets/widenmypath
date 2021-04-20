@@ -175,26 +175,22 @@ section.schemes-list .header .header-controls .search-bar i {position: absolute;
 
 section.schemes-list .card {display: inline-block; width: 350px; margin: 0 30px 30px 0; line-height: 1.42857143; background-color: #fff; border-radius: .7em; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); transition: box-shadow .25s; color: black;}
 section.schemes-list .card:hover {box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);}
-section.schemes-list .card .post-code {position: absolute; border-radius: 100%; background-color: #4d0026; margin: -48px 115px; color: white; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
+section.schemes-list .card .post-code {position: absolute; border-radius: 100%; background-color: #f2bd54; margin: -48px 115px; color: #4d0026; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
 section.schemes-list .card .card-image {width: 350px; height: 200px; border-top-left-radius: .7em; border-top-right-radius: .7em; display: block; overflow: hidden;}
 section.schemes-list .card .card-image img {width: 350px; height: 200px; object-fit: cover; transition: all .25s ease; object-position: 50% 5%;} 
 section.schemes-list .card .content {padding: 5px 15px 15px 15px; text-align: left;}
 section.schemes-list .card .content .likes {float: right;}
-section.schemes-list .card .content .likes i {color: #fe2645; padding-right: 5px;}
+section.schemes-list .card .content .likes i {color: #f2bd54; padding-right: 5px;}
 section.schemes-list .card .content .likes p {color: black; display: inline-block; margin: 5px 0 0 0;}
 section.schemes-list .card .content h4 {font-size: 25px; margin: 60px 0 5px 0;}
 section.schemes-list .card .content h5 {font-size: 17px; margin: 0 0 4px 0;}
 section.schemes-list .card .content p {font-size: 15px;}
 section.schemes-list .card .title {margin-top: 0px; font-weight: 700; font-size: 1.65em;}
 section.schemes-list .card .title a {color: #000; text-decoration: none;}
-section.schemes-list .card .read-more {display: flex; padding: 10px 10px 10px 20px; border-top: 1px solid #d4d4d4;}
-section.schemes-list .card .read-more .comment-count {flex: 0.7;}
-section.schemes-list .card .read-more .comment-count i, .library_card .read-more .share i {padding-right: 7.5px;}
-section.schemes-list .card .read-more .share {flex: 0.7;}
-section.schemes-list .card .read-more .details {flex: 2; text-align: right;}
-section.schemes-list .card .read-more p {display: inline-block; margin: 0;}
-section.schemes-list .card .read-more .details a {text-decoration: none; color: black; padding: 5px 7.5px; border: 1px solid grey; border-radius: .4em; transition: 0.5s;}
-section.schemes-list .card .read-more .details a:hover {background-color: #4d0026; color: white;}
+section.schemes-list .card .read-more {border-top: 1px solid #d4d4d4; background-color: #4d0026; color: white; border-bottom-left-radius: .7em; border-bottom-right-radius: .7em; transition: .5s;}
+section.schemes-list .card .read-more:hover {color: #4d0026; background-color: white;}
+section.schemes-list .card .read-more a {text-decoration: none; display: block; margin: 0 auto; text-align: center; font-size: 18px; color: white; padding: 15px;}
+section.schemes-list .card .read-more a:hover {color: #4d0026;}
 
 section.schemes-list section.schemes {padding: 20px 30px;}
 section.schemes-list section.schemes ul li {text-decoration: none; list-style-type: none; display: inline-block;}
