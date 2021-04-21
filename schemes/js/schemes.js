@@ -16,7 +16,7 @@ var schemes = (function ($) {
 	// Public functions
 		
 		// Main function
-		initialise: function (config)
+		initialise: function (config, page = null)
 		{
 			// Merge the configuration into the settings
 			$.each (_settings, function (setting, value) {
@@ -24,8 +24,17 @@ var schemes = (function ($) {
 					_settings[setting] = config[setting];
 				}
 			});
+
+			// Set the page 
+			var _page = page;
 			
+			// Initialise ActDev UI for the respective page
+			//var initFunction = 'initUi' + _page.charAt (0).toUpperCase () + _page.slice (1); 
+			// !TODO add individual page loading
+			//schemes[initFunction] ();
+
 			schemes.initUi ();
+
 		},
 		
 		
