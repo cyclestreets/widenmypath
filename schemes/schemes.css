@@ -1,12 +1,12 @@
 /* General styles */
 .button {padding: 7.5px 10px; border-radius: 7.5px; text-decoration: none; transition: .3s; text-align: center;}
-.button.button-general {background-color: #f2bd54; color: white;}
-.button.button-general:hover {color: #4d0026}
+.button.button-general {background-color: #f2bd54; color: #4d0026; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 5px 0 rgba(0,0,0,0.12);}
+.button.button-general:hover {color: #75083f; box-shadow: 0 3px 10px 0 rgba(0,0,0,0.2),0 3px 8px 0 rgba(0,0,0,0.19);}
 
 /* Scheme show section */
 section.scheme-show {display: flex; min-height: calc(100% - 30px); padding-top: 30px}
-section.scheme-show section.sidebar {flex: 1;}
-section.scheme-show section.content {flex: 1.8; padding: 25px; background-color: #f2f0ec}
+section.scheme-show section.sidebar {flex: 1; box-shadow: 0 8px 17px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.7);}
+section.scheme-show section.content {flex: 1.8; padding: 25px 25px 25px 40px;}
 
 section.scheme-show section.sidebar {width: 500px; min-height: 100%; background-color: #4d0026;}
 section.scheme-show section.sidebar .back-arrow {position: absolute; margin-left: 20px; margin-top: 15px; font-size: 30px; transition: 0.5s; color: white;}
@@ -56,7 +56,7 @@ section.scheme-show section.content .library_card .read-more .details a:hover {b
 /* Vision view + discussion */
 section.vision {display: flex; min-height: 100%; padding-top: 30px}
 section.vision section.map {flex: 1.8; background-color: #4d0026; box-shadow: 0 8px 17px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.7);}
-section.vision section.discussion {flex: 1; color: black; background-color: #f2f0ec}
+section.vision section.discussion {flex: 1; color: black;}
 
 section.vision section.map i.back-arrow {position: absolute; top: 60px; left: 20px; font-size: 25px; transform: 0.5s; color: white;}
 section.vision section.map h1 {margin: 22.5px 0 0 60px; font-size: 35px; display: inline-block; color: white;}
@@ -71,9 +71,9 @@ section.vision section.map div.map {width: calc(100% - 100px); margin: 20px 50px
 section.vision section.map .map img {border-radius: 1em; width: 100%;}
 section.vision section.map p.description {margin: 10px 0 10px 50px;}
 
-section.vision section.discussion h1 {margin: 27.5px 0 22.5px 25px; font-size: 30px;}
+section.vision section.discussion h1 {margin: 27.5px 0 20.5px 25px; font-size: 30px;}
 section.vision section.discussion i.share {float: right; margin: 27.5px 15px 0 0; font-size: 30px;}
-section.vision section.discussion .discussion-content {padding: 25px;}
+section.vision section.discussion .discussion-content {padding: 25px 25px 25px 35px;}
 section.vision section.discussion .discussion-content h5 {margin: 0;}
 section.vision section.discussion h4 {display: inline-block; margin: 25px 0 15px; color: #f2bd54; font-size: 25px;}
 section.vision section.discussion .comment-count {display: inline-block; margin-left: 50px;}
