@@ -194,3 +194,17 @@ section.schemes-list .card .read-more a:hover {color: #4d0026;}
 
 section.schemes-list section.schemes {padding: 20px 30px;}
 section.schemes-list section.schemes ul li {text-decoration: none; list-style-type: none; display: inline-block;}
+
+
+/* Scheme add */
+section.scheme-add .header {background-color: #4d0026; color: white; padding: 40px 70px 0;}
+section.scheme-add .header .flex {display: flex;}
+section.scheme-add .header .title-block {flex: 0.7;}
+section.scheme-add .header .title-block h1 {font-size: 40px; margin: 20px 40px 0 0;}
+section.scheme-add .header .title-block h2 {color: #f2bd54; margin: 10px 0 30px;}
+section.scheme-add .header .description-block {flex: 1; margin-top: 10px; margin-right: 60px;}
+section.scheme-add .header .new-scheme {flex: 0.5; margin: 20px 20px 0 0; vertical-align: bottom;}
+section.scheme-add .header .new-scheme .new-scheme-button {width: 100px; padding: 7.5px 10px; border-radius: 7.5px; background-color: #f2bd54; text-decoration: none; color: white; transition: .3s; display: block; margin: 15px auto; text-align: center;}
+section.scheme-add .header .new-scheme .new-scheme-button:hover {color: #4d0026}
+
+section.scheme-add .form {padding: 10px 70px;}
