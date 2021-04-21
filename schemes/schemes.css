@@ -115,7 +115,7 @@ section.builder section.map div.map {width: calc(100% - 100px); margin: 20px 50p
 section.builder section.map .map img {border-radius: 1em; width: 100%;}
 section.builder section.map p.description {margin: 10px 0 10px 50px;}
 
-section.builder section.toolbox a.publish {float: right; margin: 27.5px 20px 0 0; font-size: 20px; text-decoration: none; border-radius: .3em; background-color: #4d0026; color: white; padding: 5px 10px;}
+section.builder section.toolbox a.publish {float: right; margin: 27.5px 20px 0 0;}
 section.builder section.toolbox hr {margin-top: 85px;}
 section.builder section.toolbox .padded-content {padding: 25px 25px 25px 35px;}
 section.builder section.toolbox .padded-content h5 {margin: 0;}
@@ -150,8 +150,7 @@ section.schemes-list .header .description-block {flex: 2.5; margin-top: 10px; ma
 section.schemes-list .header hr {margin-left: -70px; margin-top: 20px; margin-bottom: 0; width: calc(100vw + 70px); }
 section.schemes-list .header .header-controls {display: flex; padding: 25px 0;}
 section.schemes-list .header .header-controls .new-scheme {flex: 1; padding-top: 10px;}
-section.schemes-list .header .header-controls .new-scheme .new-scheme-button {width: 100px; padding: 7.5px 10px; border-radius: 7.5px; background-color: #f2bd54; text-decoration: none; color: white; transition: .3s;}
-section.schemes-list .header .header-controls .new-scheme .new-scheme-button:hover {color: #4d0026}
+section.schemes-list .header .header-controls .new-scheme .new-scheme-button {width: 100px; padding: 7.5px 10px;}
 section.schemes-list .header .header-controls .segmented-control {flex: 1;}
 section.schemes-list .header .header-controls .segmented-control .ios-segmented-control {margin: 0;}
 section.schemes-list .header .header-controls .search-bar {flex: 1; padding-left: 50px;}
