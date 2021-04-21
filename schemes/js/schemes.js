@@ -209,7 +209,6 @@ var schemes = (function ($) {
 
 				}
 			});
-
 			
 			// On drop on map, create an icon
 			var mapdiv = document.getElementById("map")
@@ -218,7 +217,8 @@ var schemes = (function ($) {
 				var coordinates = leafletMap.mouseEventToLatLng (e);
 				L.marker(coordinates,
 					{
-						icon: L.icon({iconUrl: './images/waypoint.png'})
+						icon: L.icon({iconUrl: './images/waypoint.png'}),
+						draggable: true
 					})
 				.addTo(leafletMap)
 			}
