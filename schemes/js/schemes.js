@@ -174,7 +174,8 @@ var schemes = (function ($) {
 
 			// Allow objects to be draggable onto the map
 			$('.tool').draggable ({
-				revert: 'invalid'
+				revert: 'invalid',
+				stack: '#map'
 			});
 
 			// Add map as droppable target
