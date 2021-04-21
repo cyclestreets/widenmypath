@@ -171,6 +171,18 @@ var schemes = (function ($) {
 				zoomOffset: -1,
 				accessToken: _settings.mapboxApiKey
 			}).addTo(mymap);
+
+			// Allow objects to be draggable onto the map
+			$('.tool').draggable ({
+				revert: 'invalid'
+			});
+
+			// Add map as droppable target
+			$('#map').droppable({
+				drop: function() {
+					console.log ('dropped');
+				}
+			});
 			
 			// When clicking on the title bar, make it editable
 			$('.builder .map h2').on ('click', function (event){
