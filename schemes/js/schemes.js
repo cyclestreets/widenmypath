@@ -67,7 +67,7 @@ var schemes = (function ($) {
 			// Builder options
 			schemes.initBuilder ();
 		},
-		
+
 		
 		// Segmented control
 		segmentedControl: function ()
@@ -173,7 +173,7 @@ var schemes = (function ($) {
 		initBuilder: function ()
 		{
 			// Start Leaflet
-			var mymap = L.map('map').setView([51.505, -0.09], 13);
+			var leafletMap = L.map('map').setView([51.505, -0.09], 13);
 			L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 				maxZoom: 18,
@@ -181,7 +181,7 @@ var schemes = (function ($) {
 				tileSize: 512,
 				zoomOffset: -1,
 				accessToken: _settings.mapboxApiKey
-			}).addTo(mymap);
+			}).addTo(leafletMap);
 
 			// Allow objects to be draggable onto the map
 			$('.tool').draggable ({
@@ -192,9 +192,22 @@ var schemes = (function ($) {
 			// Add map as droppable target
 			$('#map').droppable({
 				drop: function() {
-					console.log ('dropped');
+					// Add drop logic here
 				}
 			});
+
+			
+			// On drop on map, create an icon
+			var mapdiv = document.getElementById("map")
+			mapdiv.ondrop = function (e) {
+				e.preventDefault()
+				var coordinates = leafletMap.mouseEventToLatLng (e);
+				L.marker(coordinates,
+					{
+						icon: L.icon({iconUrl: './images/waypoint.png'})
+					})
+				.addTo(leafletMap)
+			}
 			
 			// When clicking on the title bar, make it editable
 			$('.builder .map h2').on ('click', function (event){
