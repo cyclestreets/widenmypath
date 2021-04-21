@@ -24,39 +24,50 @@ var schemes = (function ($) {
 					_settings[setting] = config[setting];
 				}
 			});
-
-			// Set the page 
-			var _page = page;
 			
 			// Initialise ActDev UI for the respective page
-			//var initFunction = 'initUi' + _page.charAt (0).toUpperCase () + _page.slice (1); 
-			// !TODO add individual page loading
-			//schemes[initFunction] ();
-
-			schemes.initUi ();
-
+			var initFunction = 'initUi' + page.charAt (0).toUpperCase () + page.slice (1); 
+			schemes[initFunction] ();
 		},
 		
 		
 		// Function to initialise the UI
-		initUi: function ()
+		initUiSchemesList: function ()
 		{
 			// Segmented controls
 			schemes.segmentedControl ();
 
+			// Search
+			schemes.initSearch ();
+		},
+		
+		
+		initUiVisionShow: function ()
+		{
+			// Segmented controls
+			schemes.segmentedControl ();
+			
+			// Discussion
+			schemes.initDiscussion ();
+		},
+
+
+		initUiSchemeShow: function ()
+		{
+			// Segmented controls
+			schemes.segmentedControl ();
+		},
+
+
+		initUiVisionAdd: function ()
+		{
 			// Toolbox drawers
 			schemes.toolbox ();
 
 			// Builder options
 			schemes.initBuilder ();
-
-			// Discussion
-			schemes.initDiscussion ();
-
-			// Search
-			schemes.initSearch ();
 		},
-
+		
 		
 		// Segmented control
 		segmentedControl: function ()
