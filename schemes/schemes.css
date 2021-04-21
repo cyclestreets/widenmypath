@@ -1,7 +1,7 @@
 /* General styles */
 .button {padding: 7.5px 10px; border-radius: 7.5px; text-decoration: none; transition: .3s; text-align: center;}
 .button.button-general {background-color: #f2bd54; color: #4d0026; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 5px 0 rgba(0,0,0,0.12);}
-.button.button-general:hover {color: #75083f; box-shadow: 0 3px 10px 0 rgba(0,0,0,0.2),0 3px 8px 0 rgba(0,0,0,0.19);}
+.button.button-general:hover {color: #e9e9e9; box-shadow: 0 3px 10px 0 rgba(0,0,0,0.2),0 3px 8px 0 rgba(0,0,0,0.19);}
 
 /* Scheme show section */
 section.scheme-show {display: flex; min-height: calc(100% - 30px); padding-top: 30px}
@@ -188,8 +188,7 @@ section.scheme-add .header .title-block h1 {font-size: 40px; margin: 20px 40px 0
 section.scheme-add .header .title-block h2 {color: #f2bd54; margin: 10px 0 30px;}
 section.scheme-add .header .description-block {flex: 1; margin-top: 50px; margin-right: 60px;}
 section.scheme-add .header .new-scheme {flex: 0.5; margin: 50px 20px 0 0; vertical-align: bottom;}
-section.scheme-add .header .new-scheme .new-scheme-button {width: 100px; padding: 7.5px 10px; border-radius: 7.5px; background-color: #f2bd54; text-decoration: none; color: white; transition: .3s; display: block; margin: 15px auto; text-align: center;}
-section.scheme-add .header .new-scheme .new-scheme-button:hover {color: #4d0026}
+section.scheme-add .header .new-scheme .new-scheme-button {width: 100px; display: block; margin: 15px auto; text-align: center;}
 section.scheme-add .form {padding: 10px 70px;}
 
 
