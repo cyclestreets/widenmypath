@@ -25,6 +25,10 @@
 
 	<link rel="stylesheet" type="text/css" href="/css/widenmypath.css?202104" />
 
+	<!-- Leaflet-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
 	<!-- Fontawesome icons -->
 	<script src="/js/lib/fontawesome/fontawesome-kit-7bd5544b77.js"></script>
 	
@@ -70,8 +74,8 @@
 			<h2 class="untitled">Click to add vision title</h2>
 			<h3>Martin Lucas-Smith</h3>
 			<h4 class="untitled">Click to add vision description</h4>
-			<div class="map">
-				<img class="map" src="/images/placeholders/big_map_placeholder.png" />
+			<div id="map">
+				
 			</div>
 			<h2>Q&A</h2>
 			<h4>How does your design ensure that people with disabilities are not disadvantaged</h4>
