@@ -1,14 +1,30 @@
 var schemes = (function ($) {
 	
 	'use strict';	
+
+	var _settings = {
+		// CycleStreets API; obtain a key at https://www.cyclestreets.net/api/apply/
+		apiBaseUrl: 'https://api.cyclestreets.net',
+		apiKey: 'YOUR_API_KEY',
+		
+		// Mapbox API key
+		mapboxApiKey: 'YOUR_MAPBOX_API_KEY',
+	}
 	
 	return {
 		
 	// Public functions
 		
 		// Main function
-		initialise: function ()
+		initialise: function (config)
 		{
+			// Merge the configuration into the settings
+			$.each (_settings, function (setting, value) {
+				if (config.hasOwnProperty(setting)) {
+					_settings[setting] = config[setting];
+				}
+			});
+			
 			schemes.initUi ();
 		},
 		
