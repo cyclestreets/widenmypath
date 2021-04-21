@@ -187,9 +187,27 @@ section.scheme-add .header .flex {display: flex;}
 section.scheme-add .header .title-block {flex: 0.7;}
 section.scheme-add .header .title-block h1 {font-size: 40px; margin: 20px 40px 0 0;}
 section.scheme-add .header .title-block h2 {color: #f2bd54; margin: 10px 0 30px;}
-section.scheme-add .header .description-block {flex: 1; margin-top: 10px; margin-right: 60px;}
-section.scheme-add .header .new-scheme {flex: 0.5; margin: 20px 20px 0 0; vertical-align: bottom;}
+section.scheme-add .header .description-block {flex: 1; margin-top: 50px; margin-right: 60px;}
+section.scheme-add .header .new-scheme {flex: 0.5; margin: 50px 20px 0 0; vertical-align: bottom;}
 section.scheme-add .header .new-scheme .new-scheme-button {width: 100px; padding: 7.5px 10px; border-radius: 7.5px; background-color: #f2bd54; text-decoration: none; color: white; transition: .3s; display: block; margin: 15px auto; text-align: center;}
 section.scheme-add .header .new-scheme .new-scheme-button:hover {color: #4d0026}
-
 section.scheme-add .form {padding: 10px 70px;}
+
+
+/* Segmented control */
+.ios-segmented-control {background: #E7E6E4; border-radius: 10px; margin: 10px; padding: 2px; border: none; outline: none; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+.ios-segmented-control .option {position: relative; cursor: pointer;}
+.ios-segmented-control .option:hover input:not(:checked) + label span, .ios-segmented-control .option:active input:not(:checked) + label span, .ios-segmented-control .option:focus input:not(:checked) + label span {transform: scale(1.1);}
+.ios-segmented-control .option:active input:not(:checked) + label span {transform: scale(.95);}  
+.ios-segmented-control .option label {position: relative; display: block; text-align: center; padding: 3px 0vmin; background: rgba(255,255,255,0); font-weight: 500; color: black; font-size: 16px; height: 30px; line-height: 30px; text-overflow: clip; overflow: hidden;}  
+.ios-segmented-control .option label::before, .ios-segmented-control .option label::after {content: ''; width: 1px; background: rgba(142,142,147,.15); position: absolute; top: 14%; bottom: 14%; will-change: background; -webkit-transition: background .3s ease; transition: background .3s ease;}  
+.ios-segmented-control .option label::before {left: 0; transform: translateX(-.5px);}  
+.ios-segmented-control .option label::after {right: 0; transform: translateX(.5px);}  
+.ios-segmented-control .option:first-of-type {grid-column: 1; grid-row: 1; box-shadow: none;}  
+.ios-segmented-control .option:first-of-type label::before {opacity: 0;}  
+.ios-segmented-control .option:last-of-type label::after {opacity: 0;}
+.ios-segmented-control .option input {position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; padding: 0; margin: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none; outline: none; border: none; opacity: 0;}  
+.ios-segmented-control .selection {background: #F2BD54; border: .5px solid rgba(0,0,0,0.04); box-shadow: 0 3px 8px 0 rgba(0,0,0,0.12), 0 3px 1px 0 rgba(0,0,0,0.04); border-radius: 10px; grid-column: 1; grid-row: 1; z-index: 2; will-change: transform; -webkit-transition: transform .2s ease; transition: transform .2s ease;}  
+.ios-segmented-control .option label span {display: block; position: relative; z-index: 2; -webkit-transition: all .2s ease; transition: all .2s ease; will-change: transform;}
+.ios-segmented-control .option input:checked+label::before, .ios-segmented-control .option input:checked+label::after {background: var(--background);z-index: 1;}
+.ios-segmented-control .option input:checked+label {cursor: default;}
