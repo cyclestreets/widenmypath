@@ -134,6 +134,7 @@ section.builder section.toolbox .toolbox-card .close-card {float: right; margin:
 section.builder section.toolbox .toolbox-card h1, section.builder section.toolbox .toolbox-card h2 {color: #f2bd54;}
 section.builder section.toolbox .toolbox-card p {color: white; text-align: left;}
 section.builder section.toolbox .toolbox-card h2 {font-size: 13px;}
+section.builder section.toolbox .toolbox-card .tool-placeholder {width: 100px; height: 74px; padding: 10px 5px; margin-bottom: 15px;}
 section.builder section.toolbox .toolbox-card .map-icon {display: inline-block; width: 100px; border-radius: .4em; border: 1px solid white; color: white; background-color: #4d0026; padding: 10px 5px;}
 section.builder section.toolbox .toolbox-card .map-icon i {font-size: 50px; display: block; margin: 0 auto; text-align: center;}
 section.builder section.toolbox .toolbox-card .map-icon p {display: block; font-size: 12px; text-align: center; margin: 5px 0;}

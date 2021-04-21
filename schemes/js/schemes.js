@@ -10,6 +10,9 @@ var schemes = (function ($) {
 		// Mapbox API key
 		mapboxApiKey: 'YOUR_MAPBOX_API_KEY',
 	}
+
+	var _initialToolPosition = null; // Store the initial dragged position of a tool
+	var _draggedToolType = null; // When dragging a tool in builder, store the tool type
 	
 	return {
 		
@@ -186,13 +189,24 @@ var schemes = (function ($) {
 			// Allow objects to be draggable onto the map
 			$('.tool').draggable ({
 				revert: 'invalid',
-				stack: '#map'
+				stack: '#map',
+				start: function (e, ui) {
+					$('.tool').animate ({'opacity': 0.5})
+					_initialToolPosition = $(this).offset();
+				}
 			});
 
 			// Add map as droppable target
 			$('#map').droppable({
 				drop: function() {
-					// Add drop logic here
+					// Hide element
+					$('.tool').animate ({'opacity': 0, 'width': 0, 'height': 0}, function () {
+						// Return the ement to the box
+						var {top, left} = _initialToolPosition;
+						$('.tool').offset ({top, left});
+						$('.tool').animate ({'opacity': 1, 'width': 100, 'height': 74});
+					});
+
 				}
 			});
 
