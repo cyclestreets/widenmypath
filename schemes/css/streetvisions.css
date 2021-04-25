@@ -34,7 +34,7 @@ section.scheme-show section.content ul li {list-style-type: none;}
 section.scheme-show section.content .library_card {display: inline-block; width: 350px; margin: 0 30px 30px 0; line-height: 1.42857143; background-color: #fff; border-radius: .4em; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); transition: box-shadow .25s; color: black;}
 section.scheme-show section.content .library_card:hover {box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);}
 section.scheme-show section.content .library_card .card-image {width: 350px; height: 200px; border-top-left-radius: 2px; border-top-right-radius: 2px; display: block; overflow: hidden;}
-section.scheme-show section.content .library_card .card-image img {width: 350px; height: 200px; object-fit: cover; transition: all .25s ease; object-position: 50% 5%;} 
+section.scheme-show section.content .library_card .card-image img {width: 350px; height: 200px; object-fit: cover; transition: all .25s ease; object-position: 50% 5%;}
 section.scheme-show section.content .library_card .content {padding: 5px 15px 15px 15px; text-align: left;}
 section.scheme-show section.content .library_card .content .likes {float: right;}
 section.scheme-show section.content .library_card .content .likes i {color: #fe2645; padding-right: 5px;}
@@ -162,7 +162,7 @@ section.schemes-list .card {display: inline-block; width: 350px; margin: 0 30px 
 section.schemes-list .card:hover {box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);}
 section.schemes-list .card .post-code {position: absolute; border-radius: 100%; background-color: #f2bd54; margin: -48px 115px; color: #4d0026; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
 section.schemes-list .card .card-image {width: 350px; height: 200px; border-top-left-radius: .7em; border-top-right-radius: .7em; display: block; overflow: hidden;}
-section.schemes-list .card .card-image img {width: 350px; height: 200px; object-fit: cover; transition: all .25s ease; object-position: 50% 5%;} 
+section.schemes-list .card .card-image img {width: 350px; height: 200px; object-fit: cover; transition: all .25s ease; object-position: 50% 5%;}
 section.schemes-list .card .content {padding: 5px 15px 15px 15px; text-align: left;}
 section.schemes-list .card .content .likes {float: right;}
 section.schemes-list .card .content .likes i {color: #f2bd54; padding-right: 5px;}
@@ -197,16 +197,16 @@ section.scheme-add .form {padding: 10px 70px;}
 .ios-segmented-control {background: #E7E6E4; border-radius: 10px; margin: 10px; padding: 2px; border: none; outline: none; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
 .ios-segmented-control .option {position: relative; cursor: pointer;}
 .ios-segmented-control .option:hover input:not(:checked) + label span, .ios-segmented-control .option:active input:not(:checked) + label span, .ios-segmented-control .option:focus input:not(:checked) + label span {transform: scale(1.1);}
-.ios-segmented-control .option:active input:not(:checked) + label span {transform: scale(.95);}  
-.ios-segmented-control .option label {position: relative; display: block; text-align: center; padding: 3px 0vmin; background: rgba(255,255,255,0); font-weight: 500; color: black; font-size: 16px; height: 30px; line-height: 30px; text-overflow: clip; overflow: hidden;}  
-.ios-segmented-control .option label::before, .ios-segmented-control .option label::after {content: ''; width: 1px; background: rgba(142,142,147,.15); position: absolute; top: 14%; bottom: 14%; will-change: background; -webkit-transition: background .3s ease; transition: background .3s ease;}  
-.ios-segmented-control .option label::before {left: 0; transform: translateX(-.5px);}  
-.ios-segmented-control .option label::after {right: 0; transform: translateX(.5px);}  
-.ios-segmented-control .option:first-of-type {grid-column: 1; grid-row: 1; box-shadow: none;}  
-.ios-segmented-control .option:first-of-type label::before {opacity: 0;}  
+.ios-segmented-control .option:active input:not(:checked) + label span {transform: scale(.95);}
+.ios-segmented-control .option label {position: relative; display: block; text-align: center; padding: 3px 0vmin; background: rgba(255,255,255,0); font-weight: 500; color: black; font-size: 16px; height: 30px; line-height: 30px; text-overflow: clip; overflow: hidden;}
+.ios-segmented-control .option label::before, .ios-segmented-control .option label::after {content: ''; width: 1px; background: rgba(142,142,147,.15); position: absolute; top: 14%; bottom: 14%; will-change: background; -webkit-transition: background .3s ease; transition: background .3s ease;}
+.ios-segmented-control .option label::before {left: 0; transform: translateX(-.5px);}
+.ios-segmented-control .option label::after {right: 0; transform: translateX(.5px);}
+.ios-segmented-control .option:first-of-type {grid-column: 1; grid-row: 1; box-shadow: none;}
+.ios-segmented-control .option:first-of-type label::before {opacity: 0;}
 .ios-segmented-control .option:last-of-type label::after {opacity: 0;}
-.ios-segmented-control .option input {position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; padding: 0; margin: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none; outline: none; border: none; opacity: 0;}  
-.ios-segmented-control .selection {background: #F2BD54; border: .5px solid rgba(0,0,0,0.04); box-shadow: 0 3px 8px 0 rgba(0,0,0,0.12), 0 3px 1px 0 rgba(0,0,0,0.04); border-radius: 10px; grid-column: 1; grid-row: 1; z-index: 2; will-change: transform; -webkit-transition: transform .2s ease; transition: transform .2s ease;}  
+.ios-segmented-control .option input {position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; padding: 0; margin: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none; outline: none; border: none; opacity: 0;}
+.ios-segmented-control .selection {background: #F2BD54; border: .5px solid rgba(0,0,0,0.04); box-shadow: 0 3px 8px 0 rgba(0,0,0,0.12), 0 3px 1px 0 rgba(0,0,0,0.04); border-radius: 10px; grid-column: 1; grid-row: 1; z-index: 2; will-change: transform; -webkit-transition: transform .2s ease; transition: transform .2s ease;}
 .ios-segmented-control .option label span {display: block; position: relative; z-index: 2; -webkit-transition: all .2s ease; transition: all .2s ease; will-change: transform;}
 .ios-segmented-control .option input:checked+label::before, .ios-segmented-control .option input:checked+label::after {background: var(--background);z-index: 1;}
 .ios-segmented-control .option input:checked+label {cursor: default;}
