@@ -1,4 +1,4 @@
-var schemes = (function ($) {
+var streetvisions = (function ($) {
 	
 	'use strict';	
 
@@ -38,39 +38,39 @@ var schemes = (function ($) {
 		initUiSchemesList: function ()
 		{
 			// Segmented controls
-			schemes.segmentedControl ();
+			streetvisions.segmentedControl ();
 
 			// Search
-			schemes.initSearch ();
+			streetvisions.initSearch ();
 		},
 		
 		
 		initUiVisionShow: function ()
 		{
 			// Segmented controls
-			schemes.segmentedControl ();
+			streetvisions.segmentedControl ();
 			
 			// Discussion
-			schemes.initDiscussion ();
+			streetvisions.initDiscussion ();
 		},
 
 
 		initUiSchemeShow: function ()
 		{
 			// Segmented controls
-			schemes.segmentedControl ();
+			streetvisions.segmentedControl ();
 		},
 
 
 		initUiVisionAdd: function ()
 		{
 			// Toolbox drawers
-			schemes.toolbox ();
+			streetvisions.toolbox ();
 
 			// Builder options
-			schemes.initBuilder ();
+			streetvisions.initBuilder ();
 		},
-
+		
 		
 		// Segmented control
 		segmentedControl: function ()
