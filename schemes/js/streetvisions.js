@@ -1,16 +1,29 @@
 var streetvisions = (function ($) {
 	
-	'use strict';	
-
+	'use strict';
+	
 	var _settings = {
+		
 		// CycleStreets API; obtain a key at https://www.cyclestreets.net/api/apply/
 		apiBaseUrl: 'https://api.cyclestreets.net',
 		apiKey: 'YOUR_API_KEY',
 		
 		// Mapbox API key
 		mapboxApiKey: 'YOUR_MAPBOX_API_KEY',
+		
+		// Initial map location
+		defaultLatitude: false,
+		defaultLongitude: false,
+		defaultZoom: false,
+		
+		// Tiles
+		tileUrl: false,
+		
+		// Data
+		geojsonData: {}
 	}
 
+	// Properties
 	var _initialToolPosition = null; // Store the initial dragged position of a tool
 	var _draggedToolType = null; // When dragging a tool in builder, store the tool type
 	
@@ -69,6 +82,25 @@ var streetvisions = (function ($) {
 
 			// Builder options
 			streetvisions.initBuilder ();
+		},
+		
+		
+		// Leaflet map
+		leafletMap: function (geojsonData)
+		{
+			// Create a map
+			var map = L.map ('map').setView ([_settings.defaultLatitude, _settings.defaultLongitude], _settings.defaultZoom);
+			
+			// Add tile background
+			L.tileLayer (_settings.tileUrl, {
+				attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+			}).addTo (map);
+			
+			// Add the GeoJSON to the map
+			if (geojsonData) {
+				var feature = L.geoJSON (geojsonData).addTo (map);
+				map.fitBounds(feature.getBounds());
+			}
 		},
 		
 		
