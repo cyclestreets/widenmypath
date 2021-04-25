@@ -75,9 +75,12 @@ var streetvisions = (function ($) {
 		{
 			// Segmented controls
 			streetvisions.segmentedControl ();
+			
+			// Add a map with the specified data
+			streetvisions.leafletMap (_settings.geojsonData);
 		},
-
-
+		
+		
 		visionadd: function ()
 		{
 			// Toolbox drawers
