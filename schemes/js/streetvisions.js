@@ -143,10 +143,10 @@ var streetvisions = (function ($) {
 
 
 		// Enable toolbox drawers
-		toolbox: function () 
+		toolbox: function ()
 		{
 			// Ensure correct default position
-			$.each($('.toolbox-header'), function (indexInArray, toolboxHeader) { 
+			$.each($('.toolbox-header'), function (indexInArray, toolboxHeader) {
 				
 				// If any of these are NOT set to be open
 				if (!$(toolboxHeader).hasClass('toolbox-open')) {
@@ -288,10 +288,10 @@ var streetvisions = (function ($) {
 
 
 		// Enable the discussion functionality
-		initDiscussion: function () 
+		initDiscussion: function ()
 		{
 			// Ensure correct default position
-			$.each($('.discussion-header'), function (indexInArray, discussion) { 
+			$.each($('.discussion-header'), function (indexInArray, discussion) {
 				
 				// If any of these are NOT set to be open
 				if (!$(discussion).hasClass('discussion-open')) {
