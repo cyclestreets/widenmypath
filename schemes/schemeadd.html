@@ -76,9 +76,73 @@
         </section>
 
         <section class="form">
-            <form>
+				
                 <h1>To add a new scheme, please fill out the form.</h1>
-            </form>
+
+
+<div class="ultimateform">
+
+<script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+			function removeCheck() { window.onbeforeunload = null; }
+			$(document).ready(function() {
+			    $('#ultimateForm :input').one('change', function() {
+			        window.onbeforeunload = function() {
+			            return 'Leaving this page will cause edits to be lost. Press the submit button on the page if you wish to save your data.';
+			        }
+			    });
+			    $('#ultimateForm input[type=submit]').click(function() { removeCheck() });
+			});
+		
+</script>
+
+
+<form id="ultimateForm" method="post" name="form" action="/schemes/add.html" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
+
+<table summary="Online submission form">
+	<tr class="moniker input required">
+		<td class="title">Moniker:&nbsp;*<br />
+			<span class="restriction">(A specific pattern is required)</span>
+		</td>
+		<td class="data"><input name="form[moniker]" id="form_moniker" type="text" size="40" maxlength="50" required="required" value="" /></td>
+	</tr>
+	<tr class="name input required">
+		<td class="title">Scheme name:&nbsp;*</td>
+		<td class="data"><input name="form[name]" id="form_name" type="text" size="40" maxlength="255" required="required" value="" /></td>
+	</tr>
+	<tr class="description textarea required">
+		<td class="title">Description:&nbsp;*</td>
+		<td class="data"><textarea name="form[description]" id="form_description" cols="30" rows="5" required="required"></textarea></td>
+	</tr>
+	<tr class="link textarea">
+		<td class="title">Link giving more info:</td>
+		<td class="data"><textarea name="form[link]" id="form_link" cols="30" rows="5"></textarea></td>
+	</tr>
+	<tr class="boundary textarea required">
+		<td class="title">Scheme boundary (GeoJSON):&nbsp;*</td>
+		<td class="data"><textarea name="form[boundary]" id="form_boundary" cols="30" rows="5" required="required"></textarea></td>
+	</tr>
+	<tr class="username input required">
+		<td class="title">CycleStreets username/e-mail:&nbsp;*</td>
+		<td class="data"><input name="form[username]" id="form_username" type="text" size="30" required="required" value="" /></td>
+	</tr>
+	<tr class="password password required">
+		<td class="title">CycleStreets password:&nbsp;*</td>
+		<td class="data"><input name="form[password]" id="form_password" type="password" size="30" required="required" value="" /></td>
+	</tr>
+</table>
+
+
+<p class="submit"><input type="submit" value="Submit!" accesskey="s" class="button" /></p>
+
+</form>
+<p class="requiredmessage"><strong>*</strong> Items marked with an asterisk [*] are required fields and must be fully completed.</p>
+</div>
+				
+
+
+
         </section>
 </body>
 
