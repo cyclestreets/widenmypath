@@ -348,13 +348,12 @@ var streetvisions = (function ($) {
 
 		
 		// Initialise the search box
-		initSearch: function () {
-			$(document).ready(function(){
-				$("#search").on("keyup", function() {
-					var value = $(this).val().toLowerCase();
-					$(".schemes ul li").filter(function() {
-						$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-					});
+		initSearch: function ()
+		{
+			$('#search').on ('keyup', function () {
+				var value = $(this).val ().toLowerCase ();
+				$('.schemes ul li').filter (function () {
+					$(this).toggle ($(this).text ().toLowerCase ().indexOf (value) > -1);
 				});
 			});
 		}
