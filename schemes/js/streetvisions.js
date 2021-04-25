@@ -32,7 +32,7 @@ var streetvisions = (function ($) {
 	// Public functions
 		
 		// Main function
-		initialise: function (config, page = null)
+		initialise: function (config, action)
 		{
 			// Merge the configuration into the settings
 			$.each (_settings, function (setting, value) {
@@ -41,14 +41,17 @@ var streetvisions = (function ($) {
 				}
 			});
 			
-			// Initialise ActDev UI for the respective page
-			var initFunction = 'initUi' + page.charAt (0).toUpperCase () + page.slice (1); 
-			schemes[initFunction] ();
+			// Run action, if defined and existing
+			if (action) {
+				if (typeof streetvisions[action] == 'function') {
+					streetvisions[action] ();
+				}
+			}
 		},
 		
 		
 		// Function to initialise the UI
-		initUiSchemesList: function ()
+		schemeslist: function ()
 		{
 			// Segmented controls
 			streetvisions.segmentedControl ();
@@ -58,7 +61,7 @@ var streetvisions = (function ($) {
 		},
 		
 		
-		initUiVisionShow: function ()
+		visionshow: function ()
 		{
 			// Segmented controls
 			streetvisions.segmentedControl ();
@@ -68,14 +71,14 @@ var streetvisions = (function ($) {
 		},
 
 
-		initUiSchemeShow: function ()
+		schemeshow: function ()
 		{
 			// Segmented controls
 			streetvisions.segmentedControl ();
 		},
 
 
-		initUiVisionAdd: function ()
+		visionadd: function ()
 		{
 			// Toolbox drawers
 			streetvisions.toolbox ();
