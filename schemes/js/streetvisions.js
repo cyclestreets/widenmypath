@@ -25,7 +25,118 @@ var streetvisions = (function ($) {
 
 	// Properties
 	var _initialToolPosition = null; // Store the initial dragged position of a tool
-	var _draggedToolType = null; // When dragging a tool in builder, store the tool type
+	var _draggedTool = null; // Store the tool being dragged
+	var toolboxObjects = [
+		{
+			type: 'cycleParking', 
+			description: 'A parking area for bicycles.',
+			groups: 'cycling',
+			icon: 'fa-parking',
+		},
+		{
+			type: 'seating', 
+			description: 'Public outdoor seating, like a bench or seat.',
+			groups: 'walking',
+			icon: 'fa-chair',
+		},
+		{
+			type: 'parklet', 
+			description: 'A parklet is a sidewalk extension that provides more space and amenities for people using the street. Usually parklets are installed on parking lanes and use several parking spaces. Parklets typically extend out from the sidewalk at the level of the sidewalk to the width of the adjacent parking space.',
+			groups: 'walking',
+			icon: 'fa-tree',
+		},
+		{
+			type: 'cycleLane', 
+			description: 'A lane for bicycles.',
+			groups: 'cycling',
+			icon: 'fa-road',
+		},
+		{
+			type: 'pointClosure', 
+			description: 'Stop through-traffic to open up the space for cycling and walking',
+			groups: ['driving', 'cycling'],
+			icon: 'fa-hand-paper',
+		},
+		{
+			type: 'carParking', 
+			description: 'Parking space or spaces for cars.',
+			groups: 'driving',
+			icon: 'fa-parking',
+		},
+		{
+			type: 'deliveryBay', 
+			description: 'A delivery bay is a space where delivery vehicles can temporarily park while engaging in deliveries, without blocking the pavement.',
+			groups: ['driving', 'walking'],
+			icon: 'fa-parking',
+		},
+		{
+			type: 'chargingPoint', 
+			description: 'A charging station for vehicles.',
+			groups: ['cycling', 'driving'],
+			icon: 'fa-truck-loading',
+		},
+		{
+			type: 'trafficCalming', 
+			description: 'A device like a road hump, that causes traffic to slow.',
+			groups: 'driving',
+			icon: 'fa-traffic-light',
+		},
+		{
+			type: 'plantingArea', 
+			description: 'Small area for greenery',
+			groups: ['walking', 'nature'],
+			icon: 'fa-seedling',
+		},
+		{
+			type: 'tree',
+			description: '',
+			groups: ['walking', 'nature'],
+			icon: 'fa-tree',
+		},
+		{
+			type: 'pavementImprovement', 
+			description: '',
+			groups: 'pedestrians',
+			icon: 'fa-walking',
+		},
+		{
+			type: 'crossing', 
+			description: 'Pedestrian crossing',
+			groups: 'pedestrians',
+			icon: 'fa-traffic-light',
+		},
+		{
+			type: 'playArea', 
+			description: '',
+			groups: 'pedestrians',
+			icon: 'fa-snowman',
+		},
+		{
+			type:'cafeSpace', 
+			description: 'External seating and tables for nearby café/restaurant.',
+			groups: 'walking',
+			icon: 'fa-coffee',
+		},
+		{
+			type: 'parkingRestriction', 
+			description: '',
+			groups: 'driving',
+			icon: 'fa-parking',
+		},
+		{
+			type: 'bollard', 
+			description: '',
+			groups: ['driving', 'cycling'],
+			icon: 'fa-car-crash',
+		},
+		{
+			type: 'disabledParking', 
+			description: 'A specially reserved parking space.',
+			groups: 'driving',
+			icon: 'fa-parking',
+		}
+	]
+
 	
 	return {
 		
@@ -83,6 +194,9 @@ var streetvisions = (function ($) {
 		
 		visionadd: function ()
 		{
+			// Add toolbox objects from defintion
+			streetvisions.populateToolbox ();
+			
 			// Toolbox drawers
 			streetvisions.toolbox ();
 
@@ -139,6 +253,64 @@ var streetvisions = (function ($) {
 			function forEachElement (className, fn) {
 				Array.from (document.querySelectorAll (className)).forEach (fn);
 			}
+		},
+
+
+		populateToolbox: function ()
+		{
+			// Iterate through each of the toolbox objects
+			var html;
+			var toolboxGroup;
+			var toolboxOpen
+			var toolboxPrettyName;
+			toolboxObjects.map ((tool) => {
+				// If groups is a string, convert it into an array
+				var groups = (!Array.isArray (tool.groups) ? [tool.groups] : tool.groups)
+				
+				// Iterate through the groups
+				groups.map ((group) => {
+					toolboxGroup = $('.toolbox .' + group);
+					toolboxPrettyName = streetvisions.capitalizeFirstLetter (group);
+					
+					// If there is no toolbox-header for this group, add it. 
+					if (toolboxGroup.length === 0) {
+						// If this is the first toolbox group, have it open by default
+						toolboxOpen = ($('.toolbox-header').length == 0 ? 'toolbox-open' : '');
+						
+						// Build the HTML for the toolbox drawer
+						html = '';
+						html += `<div class="toolbox-header ${group} ${toolboxOpen}">`;
+						html += '<i class="fa fa-chevron-down"></i>';
+						html +=	`<h5>${toolboxPrettyName}</h5>`;
+						html += '<div class="group-contents"><ul></ul></div></div>';
+	
+						// Add this to the toolbox 
+						$('div.toolbox').append(html);
+					}
+					
+					// Add this tool to the existing header
+					var toolboxGroupUl = $('.toolbox .' + group + ' ul');
+					var toolPrettyName = streetvisions.convertCamelCaseToSentence (tool.type);
+					$(toolboxGroupUl).append (
+						`<li><i class="fa ${tool.icon}"></i><p>${toolPrettyName}</p></li>`
+					);
+				})
+			});
+		},
+
+
+		capitalizeFirstLetter: function (string) 
+		{
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		},
+
+
+		convertCamelCaseToSentence: function (string){
+			return (string
+				.replace(/^[a-z]|[A-Z]/g, function(v, i) {
+					return i === 0 ? v.toUpperCase() : " " + v.toLowerCase();
+				})
+			);
 		},
 
 
