@@ -397,11 +397,12 @@ var streetvisions = (function ($) {
 			}).addTo(leafletMap);
 
 			// Allow objects to be draggable onto the map
-			$('.tool').draggable ({
+			$('.toolbox .group-contents ul li').draggable ({
 				revert: 'invalid',
 				stack: '#map',
 				start: function (e, ui) {
-					$('.tool').animate ({'opacity': 0.5})
+					_draggedTool = $(this);
+					$(this).animate ({'opacity': 0.5})
 					_initialToolPosition = $(this).offset();
 				}
 			});
@@ -410,11 +411,11 @@ var streetvisions = (function ($) {
 			$('#map').droppable({
 				drop: function() {
 					// Hide element
-					$('.tool').animate ({'opacity': 0, 'width': 0, 'height': 0}, function () {
+					$(_draggedTool).animate ({'opacity': 0}, function () {
 						// Return the ement to the box
 						var {top, left} = _initialToolPosition;
-						$('.tool').offset ({top, left});
-						$('.tool').animate ({'opacity': 1, 'width': 100, 'height': 74});
+						$(_draggedTool).animate ({'opacity': 1});
+						$(_draggedTool).offset ({top, left});
 					});
 
 				}
