@@ -108,9 +108,9 @@ section.builder section.map i.back-arrow {position: absolute; top: 60px; left: 2
 section.builder section.map h1 {margin: 22.5px 0 0 60px; font-size: 35px; display: inline-block; color: white;}
 section.builder section.map p {color: white; display: inline-block;}
 section.builder section.map hr {margin: 20px 0;}
-section.builder section.map h2 {color: #f2bd54; padding-left: 5px; margin: 0 10px 2.5px 45px; font-size: 30px;}
+section.builder section.map h2 {color: #f2bd54; padding-left: 5px; margin: 0 10px 2.5px 45px; font-size: 30px; max-width: 90%;}
 section.builder section.map h3 {color: white; padding-left: 50px; margin: 0 0 12.5px 0;}
-section.builder section.map h4 {color: white; padding-left: 5px; max-width: 50%; font-size: 15px; margin: 0 0 0 45px;}
+section.builder section.map h4 {color: white; padding-left: 5px; max-width: 90%; font-size: 15px; margin: 0 0 0 45px; min-height: 60px;}
 section.builder section.map #map {height: 500px; width: calc(100% - 100px); margin: 20px 50px 15px;}
 section.builder section.map p.description {margin: 10px 0 10px 50px;}
 
