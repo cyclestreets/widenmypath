@@ -440,11 +440,21 @@ var streetvisions = (function ($) {
 				revert: 'invalid',
 				stack: '#leaflet',
 				start: function (e, ui) {
-					// Disable the help indicator
+					// Disable the help indicator as user has now dragged onto map
 					$('.leafletInstructions').addClass ('hidden');
+					
+					// Store the toolname
 					_draggedTool = $(this);
+					
+					// Add dragging style
 					$(this).animate ({'opacity': 0.5})
+					
+					// Save initial position, to be used to return the item to this position when it's dropped
 					_initialToolPosition = $(this).offset();
+				},
+				stop: function () {
+					// Add dragging style
+					$(this).animate ({'opacity': 1})
 				}
 			});
 
