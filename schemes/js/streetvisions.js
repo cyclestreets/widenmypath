@@ -397,6 +397,8 @@ var streetvisions = (function ($) {
 				revert: 'invalid',
 				stack: '#leaflet',
 				start: function (e, ui) {
+					// Disable the help indicator
+					$('.leafletInstructions').addClass ('hidden');
 					_draggedTool = $(this);
 					$(this).animate ({'opacity': 0.5})
 					_initialToolPosition = $(this).offset();

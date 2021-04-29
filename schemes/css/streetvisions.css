@@ -115,7 +115,10 @@ section.builder section.map h3 {color: white; padding-left: 50px; margin: 0 0 12
 section.builder section.map h4 {color: white; padding-left: 5px; max-width: 90%; font-size: 15px; margin: 0 0 0 45px;}
 section.builder section.map .title h4 {min-height: 60px;}
 section.builder section.map #leaflet {height: 500px; width: calc(100% - 100px); margin: 20px 50px 15px; border-radius: 10px; z-index: 500;}
-section.builder section.map #leaflet .addToMapInstruction {z-index: 2;}
+section.builder section.map #leaflet .leafletInstructions {position: relative; z-index: 2000; width: 100%; height: 100%; backdrop-filter: blur(10px); background: rgba(0,0,0,0.7); display: flex; object-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.5s ease;}
+section.builder section.map #leaflet .leafletInstructions.hidden {display: none;}
+section.builder section.map #leaflet .leafletInstructions h1 {color: #f2bd54; margin-bottom: 15px;}
+section.builder section.map #leaflet .leafletInstructions p {display: block; margin: 0 auto 50px;; text-align: center;}
 section.builder section.map p.description {margin: 10px 0 10px 50px;}
 
 section.builder section.toolbox a.publish {float: right; margin: 27.5px 20px 0 0;}
