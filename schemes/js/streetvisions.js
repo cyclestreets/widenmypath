@@ -259,8 +259,8 @@ var streetvisions = (function ($) {
 			var html;
 			var toolboxGroup;
 			var toolboxOpen
-			var toolboxPrettyName;
-			toolboxObjects.map ((tool) => {
+			var toolboxPrettyName;			
+			toolboxObjects.map ((tool, i) => {
 				// If groups is a string, convert it into an array
 				var groups = (!Array.isArray (tool.groups) ? [tool.groups] : tool.groups)
 				
@@ -287,12 +287,24 @@ var streetvisions = (function ($) {
 					
 					// Add this tool to the existing header
 					var toolboxGroupUl = $('.toolbox .' + group + ' ul');
+					var style = getColourCSS(i, toolboxObjects.length);
 					var toolPrettyName = streetvisions.convertCamelCaseToSentence (tool.type);
 					$(toolboxGroupUl).append (
-						`<li data-tool="${tool.type}"><i class="fa ${tool.icon}"></i><p>${toolPrettyName}</p></li>`
+						`<li data-tool="${tool.type}" style="background-color: ${style}; color: white;"><i class="fa ${tool.icon}"></i><p>${toolPrettyName}</p></li>`
 					);
 				})
 			});
+
+			// Generate random colour for tools
+			function getColourCSS(i, length) {
+				const randomInt = (min, max) => {
+					return Math.floor(Math.random() * (max - min + 1)) + min;
+				};
+				var h = randomInt(0, 360);
+				var s = randomInt(42, 98);
+				var l = randomInt(30, 50);
+				return `hsl(${h},${s}%,${l}%)`;
+			};
 		},
 
 
