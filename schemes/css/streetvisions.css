@@ -120,7 +120,7 @@ section.builder section.map #leaflet .leafletInstructions.hidden {display: none;
 section.builder section.map #leaflet .leafletInstructions h1 {color: #f2bd54; margin-bottom: 15px; }
 section.builder section.map #leaflet .leafletInstructions p {display: block; margin: 0 auto 50px;; text-align: center;}
 section.builder section.map p.description {margin: 10px 0 10px 50px;}
-
+section.builder section.map .leaflet-marker-icon.leafletFontAwesomeIcon .fa-stack-1x {top: -9px; transform: scale(0.9);}
 @keyframes pulse {
     0% {transform: scale(1, 1);}
     50% {transform: scale(1.1, 1.1);}

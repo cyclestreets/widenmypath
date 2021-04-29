@@ -22,7 +22,8 @@ var streetvisions = (function ($) {
 
 	// Properties
 	var _initialToolPosition = null; // Store the initial dragged position of a tool
-	var _draggedTool = null; // Store the tool being dragged
+	var _draggedTool = null; // Div of the tool being dragged
+	var _draggedToolObject = null; // Object containing information about the tool being dragged
 	var toolboxObjects = [
 		{
 			type: 'cycleParking', 
@@ -445,6 +446,9 @@ var streetvisions = (function ($) {
 					
 					// Store the toolname
 					_draggedTool = $(this);
+					var tool = $(this).data('tool');
+					_draggedToolObject = toolboxObjects.find(o => o.type === tool);
+					_draggedToolObject.colour = $(this).css('background-color');
 					
 					// Add dragging style
 					$(this).animate ({'opacity': 0.5})
@@ -468,9 +472,27 @@ var streetvisions = (function ($) {
 						$(_draggedTool).animate ({'opacity': 1});
 						$(_draggedTool).offset ({top, left});
 					});
-
 				}
 			});
+			
+			// Template for the FontAwesome icon to drop onto map
+			var fontAwesomeIcon = function () {
+				// Get icon of tool that is currently being dragged
+				var icon = _draggedToolObject.icon;
+				var colour = _draggedToolObject.colour;
+
+				return L.divIcon({
+					html: `
+					<span class="fa-stack fa-2x">
+  						<i class="fas fa-map-marker fa-stack-2x" style="color: ${colour}"></i>
+  						<i class="fa ${icon} fa-stack-1x" style="color: white"></i>
+					</span>
+					`,
+					iconSize: [20, 20],
+					iconAnchor: L.point(39, 60),
+					className: 'leafletFontAwesomeIcon'
+				});
+			};
 			
 			// On drop on map, create an icon
 			var mapdiv = document.getElementById('leaflet')
@@ -479,15 +501,12 @@ var streetvisions = (function ($) {
 				var coordinates = leafletMap.mouseEventToLatLng (e);
 				L.marker(coordinates,
 					{
-						icon: L.icon({
-							iconUrl: './images/waypoint.png',
-							iconAnchor: L.point(15, 36)
-						}),
+						icon: fontAwesomeIcon(),
 						draggable: true
 
 					})
 				.addTo(leafletMap)
-			}
+			};
 			
 			// When clicking on the title bar, make it editable
 			$('.builder .title h2, .builder .title h4, .builder p.description').on ('click', function (event){
