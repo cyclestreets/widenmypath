@@ -138,13 +138,10 @@ section.builder section.toolbox .toolbox-header .group-contents ul li p {display
 
 section.builder section.toolbox .toolbox-card {position: fixed; bottom: 0; right: 10px; width: calc(100vw / 3.5); background-color: #4d0026; border-top-left-radius: .4em; border-top-right-radius: .3em; padding: 10px 25px; box-shadow: 0 5px 4px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.3);}
 section.builder section.toolbox .toolbox-card .close-card {float: right; margin: 5px 0; padding: 10px 5px; color: white;}
-section.builder section.toolbox .toolbox-card h1, section.builder section.toolbox .toolbox-card h2 {color: #f2bd54;}
+section.builder section.toolbox .toolbox-card i.icon {margin-right: 10px; color: #f2bd54;}
+section.builder section.toolbox .toolbox-card h1 {color: #f2bd54; display: inline-block; margin-bottom: 0;}
 section.builder section.toolbox .toolbox-card p {color: white; text-align: left;}
 section.builder section.toolbox .toolbox-card h2 {font-size: 13px;}
-section.builder section.toolbox .toolbox-card .tool-placeholder {width: 100px; height: 74px; padding: 10px 5px; margin-bottom: 15px;}
-section.builder section.toolbox .toolbox-card .map-icon {display: inline-block; width: 100px; border-radius: .4em; border: 1px solid white; color: white; background-color: #4d0026; padding: 10px 5px;}
-section.builder section.toolbox .toolbox-card .map-icon i {font-size: 50px; display: block; margin: 0 auto; text-align: center;}
-section.builder section.toolbox .toolbox-card .map-icon p {display: block; font-size: 12px; text-align: center; margin: 5px 0;}
 
 
 /* Schemes list */

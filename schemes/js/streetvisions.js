@@ -289,7 +289,7 @@ var streetvisions = (function ($) {
 					var toolboxGroupUl = $('.toolbox .' + group + ' ul');
 					var toolPrettyName = streetvisions.convertCamelCaseToSentence (tool.type);
 					$(toolboxGroupUl).append (
-						`<li><i class="fa ${tool.icon}"></i><p>${toolPrettyName}</p></li>`
+						`<li data-tool="${tool.type}"><i class="fa ${tool.icon}"></i><p>${toolPrettyName}</p></li>`
 					);
 				})
 			});
@@ -362,20 +362,48 @@ var streetvisions = (function ($) {
 				}
 				
 			};
-
-			// Display a toolbox card when the element is selected
-			// !TODO having "read" the card once could be saved as a cookie, so the user doesn't have to constantly do this extra step to add map elements
-			$('.toolbox .group-contents ul li').on ('click', function () {
-				$('.toolbox-card').slideDown ();
-			});
-
 			// Enable the toolbox card to be closed
 			$('.close-card').on ('click', function (){
-				$('.toolbox-card').slideUp ();
+				hideHelpCard ();
 			});
 
 			// Initially, hide the toolbox popup
 			$('.toolbox-card').hide ();
+
+			// Hide help card
+			function hideHelpCard () {
+				$('.toolbox-card').slideUp ();
+			}
+
+			// Open help card
+			function openHelpCard () {
+				$('.toolbox-card').slideDown ();
+			}
+			
+			// Populate help card
+			function populateHelpCard (type) {
+				var object = toolboxObjects.find(o => o.type === type);
+
+				if (object == 'undefined') {
+					return false
+				}
+				
+				// Populate card
+				$('.toolbox-card i.icon').removeClass().addClass('icon fa').addClass(object.icon);
+				$('.toolbox-card h1').text(streetvisions.convertCamelCaseToSentence(object.type));
+				$('.toolbox-card p').text(object.description);
+			}
+
+			// When clicking a tool, populate the help box
+			$('.toolbox .group-contents ul li').on ('click', function () {
+				var toolType = $(this).data('tool');
+				if (!toolType) {
+					hideHelpCard();
+					return;
+				}
+				populateHelpCard (toolType);
+				openHelpCard ();
+			});
 		},
 
 	
