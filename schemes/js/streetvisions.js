@@ -509,7 +509,7 @@ var streetvisions = (function ($) {
 
 				if (!canPublish) {
 					streetvisions.showModal ({
-						text: 'Oops...',
+						text: '<i class="fa fa-exclamation"></i> Oops...',
 						description: "It seems you haven't filled out all the information we need for this vision yet. Please check you have filled out the title, description, and FAQ questions."
 					});
 				}
@@ -520,7 +520,7 @@ var streetvisions = (function ($) {
 		// Function to display a modal
 		showModal: function (modalObject)
 		{
-			$('.modalBackground h1').text(modalObject.text);
+			$('.modalBackground h1').html(modalObject.text);
 			$('.modalBackground p').text(modalObject.description);
 			$('.modalBackground').show();
 		},
