@@ -466,8 +466,12 @@ var streetvisions = (function ($) {
 				var coordinates = leafletMap.mouseEventToLatLng (e);
 				L.marker(coordinates,
 					{
-						icon: L.icon({iconUrl: './images/waypoint.png'}),
+						icon: L.icon({
+							iconUrl: './images/waypoint.png',
+							iconAnchor: L.point(15, 36)
+						}),
 						draggable: true
+
 					})
 				.addTo(leafletMap)
 			}
