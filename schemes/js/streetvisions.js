@@ -431,13 +431,7 @@ var streetvisions = (function ($) {
 			}
 			
 			// When clicking on the title bar, make it editable
-			$('.builder .map h2').on ('click', function (event){
-				makeContentEditable (event.target);
-				removeUntitledClass (event.target);
-			});
-
-			// When clicking on the description bar, make it editable
-			$('.builder .map h4').on ('click', function (event){
+			$('.builder .title h2, .builder .title h4, .builder p.description').on ('click', function (event){
 				makeContentEditable (event.target);
 				removeUntitledClass (event.target);
 			});
