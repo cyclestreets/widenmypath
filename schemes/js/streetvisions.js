@@ -383,7 +383,7 @@ var streetvisions = (function ($) {
 		initBuilder: function ()
 		{
 			// Start Leaflet
-			var leafletMap = L.map('map').setView([51.505, -0.09], 13);
+			var leafletMap = L.map('leaflet').setView([51.505, -0.09], 13);
 			L.tileLayer (_settings.tileUrl, {
 				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 				maxZoom: 18,
@@ -395,7 +395,7 @@ var streetvisions = (function ($) {
 			// Allow objects to be draggable onto the map
 			$('.toolbox .group-contents ul li').draggable ({
 				revert: 'invalid',
-				stack: '#map',
+				stack: '#leaflet',
 				start: function (e, ui) {
 					_draggedTool = $(this);
 					$(this).animate ({'opacity': 0.5})
@@ -404,7 +404,7 @@ var streetvisions = (function ($) {
 			});
 
 			// Add map as droppable target
-			$('#map').droppable({
+			$('#leaflet').droppable({
 				drop: function() {
 					// Hide element
 					$(_draggedTool).animate ({'opacity': 0}, function () {
@@ -418,7 +418,7 @@ var streetvisions = (function ($) {
 			});
 			
 			// On drop on map, create an icon
-			var mapdiv = document.getElementById("map")
+			var mapdiv = document.getElementById('leaflet')
 			mapdiv.ondrop = function (e) {
 				e.preventDefault()
 				var coordinates = leafletMap.mouseEventToLatLng (e);
