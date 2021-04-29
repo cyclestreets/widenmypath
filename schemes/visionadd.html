@@ -68,17 +68,16 @@
 			streetvisions.initialise (config, 'visionadd');
 		});
 	</script>
-	
-	
+
 	<section class="builder">
 		<section class="map">
 			<a href="/schemes/schemeshow.html"> <i class="back-arrow fa fa-chevron-circle-left"></i></a>
 			<h1>Changes on Mill Road</h1>
 			<hr />
 			<div class="title">
-				<h2 class="untitled"> Click to add vision title</h2>
+				<h2 class="untitled required"> Click to add vision title</h2>
 				<h3>Jordan Smith</h3>
-				<h4 class="untitled"> Click to add vision description</h4>
+				<h4 class="untitled required"> Click to add vision description</h4>
 			</div>
 			<div id="leaflet">
 				<div class="leafletInstructions">
@@ -88,13 +87,13 @@
 			</div>
 			<h2>Q&A</h2>
 			<h4>How does your design ensure that people with disabilities are not disadvantaged?</h4>
-			<p class="description untitled">Click to add your answer</p>
+			<p class="description untitled required">Click to add your answer</p>
 			
 			<h4>What effects, if any would your design have on any local businesses, e.g. on deliveries and customer access?</h4>
-			<p class="description untitled">Click to add your answer</p>
+			<p class="description untitled required">Click to add your answer</p>
 			
 			<h4>How does your design ensure that access to properties remains possible (even if through-traffic is not permitted)?</h4>
-			<p class="description untitled">Click to add your answer</p>
+			<p class="description untitled required">Click to add your answer</p>
 		</section>
 
 		<section class="toolbox">
@@ -115,6 +114,18 @@
 		</section>
 		
 	</section>
+
+	<div class="modalBackground">
+		<div class="modalContent">
+			<div class="modal box-shadow">
+				<h1><i class="fa fa-exclamation"></i> Oops...</h1>
+				<hr>
+				<p>It seems you haven't filled out all the information we need for this vision yet. Please check you have
+					filled out the title, description, and FAQ questions.</p>
+				<a class="button button-general" href="#">Ok</a>
+			</div>
+		</div>
+	</div>
 	
 	<!-- End schemes module -->
 

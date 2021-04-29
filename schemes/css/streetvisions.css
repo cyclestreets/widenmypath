@@ -149,6 +149,13 @@ section.builder section.toolbox .toolbox-card h1 {color: #f2bd54; display: inlin
 section.builder section.toolbox .toolbox-card p {color: white; text-align: left;}
 section.builder section.toolbox .toolbox-card h2 {font-size: 13px;}
 
+.modalBackground {display: none;}
+.modalBackground .modalContent {display: flex; position: absolute; top: 0; width: 100%; height: 100%; background-color: rgba(51, 51, 51, 0.7); z-index: 9999; flex-direction: column; align-items: center; justify-content: center}  
+.modalBackground .modal {display: block; margin: auto;  width: 500px; border-radius: 15px; background-color: white;  padding: 20px;}
+.modalBackground .modal h1, .modalBackground .modal i {color: #4d0026;}
+.modalBackground .modal hr {margin-left: -20px; width: calc(100% + 38px);}
+.modalBackground .modal p {display: inline-block;}
+.modalBackground .modal a.button-general {display: block; float: right; width: 50px; margin-top: 20px;}
 
 
 /* Schemes list */

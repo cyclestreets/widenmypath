@@ -191,6 +191,9 @@ var streetvisions = (function ($) {
 		
 		visionadd: function ()
 		{
+			// Init modal
+			streetvisions.initModal ();
+			
 			// Add toolbox objects from defintion
 			streetvisions.populateToolbox ();
 			
@@ -493,6 +496,40 @@ var streetvisions = (function ($) {
 				// Change the opacity to indicate action
 				$(target).removeClass ('untitled');
 			};
+
+			// When clicking publish button, check if all fields have been filled in
+			$('.publish').on('click', function () {
+				var canPublish = true;
+				$.each($('.required'), function (indexInArray, textElement) {
+					if ($(textElement).text().includes('Click to add')) {
+						canPublish = false;
+					}
+					if (!canPublish) {return;}
+				});
+
+				if (!canPublish) {
+					streetvisions.showModal ({
+						text: 'Oops...',
+						description: "It seems you haven't filled out all the information we need for this vision yet. Please check you have filled out the title, description, and FAQ questions."
+					});
+				}
+			});
+		},
+
+
+		// Function to display a modal
+		showModal: function (modalObject)
+		{
+			$('.modalBackground h1').text(modalObject.text);
+			$('.modalBackground p').text(modalObject.description);
+			$('.modalBackground').show();
+		},
+
+		initModal: function () 
+		{
+			$('.modal .button').on ('click', function () {
+				$('.modalBackground').hide();
+			})
 		},
 
 
