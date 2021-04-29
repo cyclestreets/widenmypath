@@ -489,7 +489,7 @@ var streetvisions = (function ($) {
 					</span>
 					`,
 					iconSize: [20, 20],
-					iconAnchor: L.point(39, 60),
+					iconAnchor: L.point(41, 62),
 					className: 'leafletFontAwesomeIcon'
 				});
 			};
