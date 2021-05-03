@@ -427,7 +427,7 @@ var streetvisions = (function ($) {
 		initBuilder: function ()
 		{
 			// Start Leaflet
-			var leafletMap = L.map('leaflet').setView([51.505, -0.09], 13);
+			var leafletMap = L.map('leaflet').setView([51.505, -0.09], 16);
 			L.tileLayer (_settings.tileUrl, {
 				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 				maxZoom: 18,
