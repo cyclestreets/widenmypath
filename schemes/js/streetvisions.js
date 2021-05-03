@@ -495,6 +495,7 @@ var streetvisions = (function ($) {
 				});
 			};
 
+			// Check the bounds of a leaflet marker, return bool in/out box
 			const checkBounds = function (marker, northEast, southWest) {
     			var bounds = new L.LatLngBounds(
 					new L.LatLng(northEast[0], northEast[1]),
@@ -505,6 +506,7 @@ var streetvisions = (function ($) {
 			};
 			
 			// On drop on map, create an icon
+			// Also, create the drag handler for the marker
 			var mapdiv = document.getElementById('leaflet')
 			mapdiv.ondrop = function (e) {
 				e.preventDefault()
@@ -514,9 +516,9 @@ var streetvisions = (function ($) {
 					{
 						icon: fontAwesomeIcon(),
 						draggable: true
-
 					})
-				marker.on('move', function (event) {
+				
+					marker.on('move', function (event) {
 					var bounds = _leafletMap.getBounds();
 					var northEast = [bounds._northEast.lat-0.001, bounds._northEast.lng-0.001];
 					var southWest = [bounds._southWest.lat-0.001, bounds._southWest.lng-0.001];
@@ -525,6 +527,15 @@ var streetvisions = (function ($) {
 						_leafletMap.removeLayer(marker);
 					};
 				});
+
+				// On drop, show a modal to add description to this marker
+				// !TODO check if this is actually one of our toolbox elements being dropped?
+				var htmlContent = '<h1><i class="fa fa-person-sign"></i>New marker</h1>';
+				htmlContent += '<hr>';
+				htmlContent += '<p>Please describe the element you just added:';
+				htmlContent += '<input placeholder="This element will..." />'
+
+				streetvisions.showModal(false, htmlContent);
 			
 				marker.addTo(_leafletMap);
 			};
@@ -576,10 +587,21 @@ var streetvisions = (function ($) {
 
 
 		// Function to display a modal
-		showModal: function (modalObject)
+		showModal: function (modalObject, htmlContent = false, onClick = false)
 		{
-			$('.modalBackground h1').html(modalObject.text);
-			$('.modalBackground p').text(modalObject.description);
+			if (modalObject) {
+				$('.modalBackground h1').html(modalObject.text);
+				$('.modalBackground p').text(modalObject.description);
+			} else {
+				$('.modalContent .innerContent').html (htmlContent);
+			}
+			
+			if (onClick) {
+				$('.modal ok-button').on('click', function () {
+					onClick();
+				})
+			};
+
 			$('.modalBackground').show();
 		},
 

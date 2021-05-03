@@ -156,6 +156,7 @@ section.builder section.toolbox .toolbox-card h2 {font-size: 13px;}
 .modalBackground .modal hr {margin-left: -20px; width: calc(100% + 38px);}
 .modalBackground .modal p {display: inline-block;}
 .modalBackground .modal a.button-general {display: block; float: right; width: 50px; margin-top: 20px;}
+.modalBackground .modal input {width: 100%; margin: 10px 0;}
 
 
 /* Schemes list */
