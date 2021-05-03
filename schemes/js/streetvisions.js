@@ -523,14 +523,15 @@ var streetvisions = (function ($) {
 					var northEast = [bounds._northEast.lat-0.001, bounds._northEast.lng-0.001];
 					var southWest = [bounds._southWest.lat-0.001, bounds._southWest.lng-0.001];
 					if (!checkBounds(marker, northEast, southWest)) {
-						$(this._icon).fadeOut();
-						_leafletMap.removeLayer(marker);
+						$(this._icon).fadeOut(150, function () {
+							_leafletMap.removeLayer(marker);
+						});
 					};
 				});
 
 				// On drop, show a modal to add description to this marker
 				// !TODO check if this is actually one of our toolbox elements being dropped?
-				var htmlContent = '<h1><i class="fa fa-person-sign"></i>New marker</h1>';
+				var htmlContent = '<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> New marker</h1>';
 				htmlContent += '<hr>';
 				htmlContent += '<p>Please describe the element you just added:';
 				htmlContent += '<input placeholder="This element will..." />'
