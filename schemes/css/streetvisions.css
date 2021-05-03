@@ -100,38 +100,40 @@ section.vision .newDiscussion .createNewDiscussion:hover {background-color: #4d0
 
 /* Builder interface */
 section.builder {display: flex; min-height: 100%; padding-top: 30px}
-section.builder section.map {flex: 1.8; background-color: #4d0026; box-shadow: 0 5px 4px 0 rgba(0,0,0,0.4),0 6px 5px 0 rgba(0,0,0,0.7);}
-section.builder section.toolbox {flex: 1; color: black; }
+section.builder section.map {flex: 1.8; }
+section.builder section.map .map-header {margin: 20px; border-radius: 10px; background-color: #4d0026; box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4),0 3px 3px 0 rgba(0,0,0,0.7);}
+section.builder section.toolbox {flex: 1; color: black;}
 section.builder section.map .untitled {opacity: 0.5;}
 
-section.builder section.map i.back-arrow {position: absolute; top: 60px; left: 20px; font-size: 25px; transform: 0.5s; color: white;}
-section.builder section.map h1 {margin: 22.5px 0 0 60px; font-size: 35px; display: inline-block; color: white;}
-section.builder section.map p {color: white; display: inline-block;}
-section.builder section.map hr {margin: 20px 0;}
-section.builder section.map h2 {color: #f2bd54; padding-left: 5px; margin: 0 10px 2.5px 45px; font-size: 30px; max-width: 90%;}
+section.builder section.map .map-header i.back-arrow {display: inline-block; font-size: 25px; margin-left: 15px; transition: 0.5s; color: white; vertical-align: super;}
+section.builder section.map .map-header i.back-arrow:hover {transform: scale(1.1); color: #f2bd54;}
+section.builder section.map .map-header h1 {margin: 17.5px 0 0 25px; font-size: 35px; display: inline-block; color: white;}
+section.builder section.map .map-header a.publish {float: right; margin: 0; margin: 17.5px 20px;}
+section.builder section.map .map-header hr {margin: 15px 0; margin-bottom: 15px; border: none; height: 0.5px; background-color: #eee}
+section.builder section.map .map-header h3 {color: #eee; padding-left: 50px; margin: 10px 12.5px 0 30px;}
+section.builder section.map .map-header h2 {color: #eee; padding-left: 5px; margin: 0 10px 2.5px 45px; font-size: 30px; max-width: 90%;}
+section.builder section.map .map-header h4 {color: #eee; margin: 15px 10px 10px 70px; min-height: 60px;}
 section.builder section.map .untitled {padding-left: 10px;}
 section.builder section.map .untitled:before {font-family: 'Font Awesome 5 Free'; position: relative; top: 0; left: 0; content:'\f303';}
-section.builder section.map h3 {color: white; padding-left: 50px; margin: 0 0 12.5px 0;}
-section.builder section.map h4 {color: white; padding-left: 5px; max-width: 90%; font-size: 15px; margin: 0 0 0 45px;}
-section.builder section.map .title h4 {min-height: 60px;}
-section.builder section.map #leaflet {height: 500px; width: calc(100% - 100px); margin: 20px 50px 15px; border-radius: 10px; z-index: 500;}
+section.builder section.map h2 {color: #4d0026; margin-left: 20px;}
+section.builder section.map .questions h2 {margin-bottom: 0;}
+section.builder section.map .questions h4 {color: #4d0026; max-width: 90%; font-size: 15px; margin: 10px 0 0 50px;}
+section.builder section.map p {color: #4d0026; display: inline-block;}
+section.builder section.map p.description {margin: 10px 0 10px 50px; color: #4d0026;}
+section.builder section.map #leaflet {height: 500px; width: calc(100% - 40px); margin: 20px 20px 15px 20px; border-radius: 10px; z-index: 500;}
 section.builder section.map #leaflet .leafletInstructions {position: relative; z-index: 2000; width: 100%; height: 100%; backdrop-filter: blur(10px); background: rgba(0,0,0,0.7); display: flex; object-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.5s ease; animation: pulse 4s ease infinite;}
 section.builder section.map #leaflet .leafletInstructions.hidden {display: none;}
 section.builder section.map #leaflet .leafletInstructions h1 {color: #f2bd54; margin-bottom: 15px; }
 section.builder section.map #leaflet .leafletInstructions p {display: block; margin: 0 auto 50px;; text-align: center;}
-section.builder section.map p.description {margin: 10px 0 10px 50px;}
 section.builder section.map .leaflet-marker-icon.leafletFontAwesomeIcon .fa-stack-1x {top: -9px; transform: scale(0.9);}
 @keyframes pulse {
     0% {transform: scale(1, 1);}
     50% {transform: scale(1.1, 1.1);}
     100% {transform: scale(1, 1);}
 }
-
-section.builder section.toolbox a.publish {float: right; margin: 27.5px 20px 0 0;}
-section.builder section.toolbox hr {margin-top: 85px;}
-section.builder section.toolbox .padded-content {padding: 25px 25px 25px 35px;}
+section.builder section.toolbox h2 {display: inline-block; margin: 35px 0 10px; color: #4d0026; font-size: 35px;}
+section.builder section.toolbox .padded-content {padding: 0 25px 25px 20px;}
 section.builder section.toolbox .padded-content h5 {margin: 0;}
-section.builder section.toolbox h4 {display: inline-block; margin: 25px 0 15px; color: #f2bd54; font-size: 25px;}
 section.builder section.toolbox .toolbox-header>i {transition: .5s;}
 section.builder section.toolbox .toolbox-header>i.rotated {transform: rotate(-90deg);}
 section.builder section.toolbox .toolbox-header h5 {display: inline-block; margin: 10px 7.5px;}
