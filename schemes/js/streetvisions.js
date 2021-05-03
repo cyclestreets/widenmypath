@@ -24,6 +24,7 @@ var streetvisions = (function ($) {
 	var _initialToolPosition = null; // Store the initial dragged position of a tool
 	var _draggedTool = null; // Div of the tool being dragged
 	var _draggedToolObject = null; // Object containing information about the tool being dragged
+	var _leafletMap; 
 	var toolboxObjects = [
 		{
 			type: 'cycleParking', 
@@ -427,14 +428,14 @@ var streetvisions = (function ($) {
 		initBuilder: function ()
 		{
 			// Start Leaflet
-			var leafletMap = L.map('leaflet').setView([51.505, -0.09], 16);
+			_leafletMap = L.map('leaflet').setView([51.505, -0.09], 16);
 			L.tileLayer (_settings.tileUrl, {
 				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 				maxZoom: 18,
 				id: 'mapbox/streets-v11',
 				tileSize: 512,
 				zoomOffset: -1
-			}).addTo(leafletMap);
+			}).addTo(_leafletMap);
 
 			// Allow objects to be draggable onto the map
 			$('.toolbox .group-contents ul li').draggable ({
@@ -493,20 +494,48 @@ var streetvisions = (function ($) {
 					className: 'leafletFontAwesomeIcon'
 				});
 			};
+
+			const checkBounds = function (marker, northEast, southWest) {
+    			var bounds = new L.LatLngBounds(
+					new L.LatLng(northEast[0], northEast[1]),
+					new L.LatLng(southWest[0], southWest[1])
+				);
+				var markerPosition = marker.getLatLng();
+				return bounds.contains(new L.LatLng(markerPosition.lat, markerPosition.lng))
+			};
 			
 			// On drop on map, create an icon
 			var mapdiv = document.getElementById('leaflet')
 			mapdiv.ondrop = function (e) {
 				e.preventDefault()
-				var coordinates = leafletMap.mouseEventToLatLng (e);
-				L.marker(coordinates,
+				var coordinates = _leafletMap.mouseEventToLatLng (e);
+				var marker = L.marker(
+					coordinates,
 					{
 						icon: fontAwesomeIcon(),
 						draggable: true
 
 					})
-				.addTo(leafletMap)
+				marker.on('move', function (event) {
+					var bounds = _leafletMap.getBounds();
+					var northEast = [bounds._northEast.lat-0.001, bounds._northEast.lng-0.001];
+					var southWest = [bounds._southWest.lat-0.001, bounds._southWest.lng-0.001];
+					if (!checkBounds(marker, northEast, southWest)) {
+						$(this._icon).fadeOut();
+						_leafletMap.removeLayer(marker);
+					};
+				});
+			
+				marker.addTo(_leafletMap);
 			};
+
+
+			// When dragging a marker on the map, save it, clone it to an image, and remove it, so it can be dragged off the map
+			$('.leaflet-marker-icon').draggable({
+				start: function () {
+					console.log ('start');
+				}
+			})
 			
 			// When clicking on the title bar, make it editable
 			$('.builder .title h2, .builder .title h4, .builder p.description').on ('click', function (event){
