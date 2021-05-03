@@ -102,7 +102,7 @@ section.vision .newDiscussion .createNewDiscussion:hover {background-color: #4d0
 section.builder {display: flex; min-height: 100%; padding-top: 30px}
 section.builder section.map {flex: 1.8; }
 section.builder section.map .map-header {margin: 20px; border-radius: 10px; background-color: #4d0026; box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4),0 3px 3px 0 rgba(0,0,0,0.7);}
-section.builder section.toolbox {flex: 1; color: black;}
+section.builder section.toolbox {flex: 1; color: black; margin-left: 15px;}
 section.builder section.map .untitled {opacity: 0.5;}
 
 section.builder section.map .map-header i.back-arrow {display: inline-block; font-size: 25px; margin-left: 15px; transition: 0.5s; color: white; vertical-align: super;}
