@@ -223,6 +223,9 @@ var streetvisions = (function ($) {
 			L.tileLayer (_settings.tileUrl, {
 				attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo (map);
+
+			// Add a layer group to manage dropped tools
+			_toolLayerGroup = L.layerGroup().addTo(map);
 			
 			// Add the GeoJSON to the map
 			if (geojsonData) {
@@ -517,11 +520,13 @@ var streetvisions = (function ($) {
 			mapdiv.ondrop = function (e) {
 				e.preventDefault()
 				var coordinates = _leafletMap.mouseEventToLatLng (e);
+				var id = Date.now().toString();
 				var marker = L.marker(
 					coordinates,
 					{
 						icon: fontAwesomeIcon(),
-						draggable: true
+						draggable: true,
+						uniqueId: id,
 					})
 				
 					marker.on('move', function (event) {
@@ -534,19 +539,54 @@ var streetvisions = (function ($) {
 						});
 					};
 				});
-
+				
 				// On drop, show a modal to add description to this marker
 				// !TODO check if this is actually one of our toolbox elements being dropped?
 				var htmlContent = '<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> New marker</h1>';
 				htmlContent += '<hr>';
-				htmlContent += '<p>Please describe the element you just added:';
-				htmlContent += '<input placeholder="This element will..." />'
-
-				streetvisions.showModal(false, htmlContent);
+				htmlContent += '<p>Please describe the element you just added:</p>';
+				htmlContent += '<textarea class="description" placeholder="This element will..." rows="4"></textarea>';
+				htmlContent += `<a class="button button-general close-popup" data-new="true" data-id="${id}" href="#">Save</a>`;
+				//streetvisions.showModal(false, htmlContent);
 			
 				marker.addTo(_leafletMap);
+
+				// Add custom class to this marker
+				$(marker._icon).addClass(id);
+
+				// Store this marker
+				_leafletMarkers.push({
+					coordinates: coordinates,
+					object: _draggedToolObject,
+					id: id
+				})
+				
+				Tipped.create('.' + id, htmlContent, {skin: 'light', hideOn: false, padding: 20});
+				Tipped.show('.' + id);
 			};
 
+			// When clicking close on a popup box, save the details
+			$(document).on('click', '.close-popup', function (event) {
+				var objectId = $(this).data('id');
+				var description = $(this).siblings('.description').first().val();
+				
+				var markerKey = _leafletMarkers.findIndex(marker => marker.id == objectId);
+				_leafletMarkers[markerKey].description = description;
+
+				Tipped.hide('.' + objectId);
+				
+				// If this was a first-time popup, delete it and add a normal one without the "New marker" title
+				if ($(this).data('new')){
+					Tipped.remove('.' + objectId);
+					var typeOfObject = streetvisions.convertCamelCaseToSentence(_leafletMarkers[markerKey].object.type);
+					var html = '';
+					html += `<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> ${typeOfObject}</h1>`;
+					html += '<hr>';
+					html += `<textarea class="description" rows="4">${description}</textarea>`;
+					html += `<a class="button button-general close-popup" data-new="false" data-id="${objectId}" href="#">Save</a>`;
+					Tipped.create('.' + objectId, html, {skin: 'light', padding: 20});
+				}
+			});
 
 			// When dragging a marker on the map, save it, clone it to an image, and remove it, so it can be dragged off the map
 			$('.leaflet-marker-icon').draggable({
