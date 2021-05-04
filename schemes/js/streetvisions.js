@@ -24,13 +24,15 @@ var streetvisions = (function ($) {
 	var _initialToolPosition = null; // Store the initial dragged position of a tool
 	var _draggedTool = null; // Div of the tool being dragged
 	var _draggedToolObject = null; // Object containing information about the tool being dragged
-	var _leafletMap; 
+	var _leafletMap; // Class property leaflet map
+	var _leafletMarkers = []; // User-added map markers
 	var toolboxObjects = [
 		{
 			type: 'cycleParking', 
 			description: 'A parking area for bicycles.',
 			groups: 'cycling',
 			icon: 'fa-parking',
+			colour: '#3BA735'
 		},
 		{
 			type: 'seating', 
@@ -67,12 +69,14 @@ var streetvisions = (function ($) {
 			description: 'A delivery bay is a space where delivery vehicles can temporarily park while engaging in deliveries, without blocking the pavement.',
 			groups: ['driving', 'walking'],
 			icon: 'fa-parking',
+			colour: '#0D6FBE'
 		},
 		{
 			type: 'chargingPoint', 
 			description: 'A charging station for vehicles.',
 			groups: ['cycling', 'driving'],
 			icon: 'fa-truck-loading',
+			colour: '#4D3BAB'
 		},
 		{
 			type: 'trafficCalming', 
@@ -91,6 +95,7 @@ var streetvisions = (function ($) {
 			description: '',
 			groups: ['walking', 'nature'],
 			icon: 'fa-tree',
+			colour: '#2B8732'
 		},
 		{
 			type: 'pavementImprovement', 
@@ -127,6 +132,7 @@ var streetvisions = (function ($) {
 			description: '',
 			groups: ['driving', 'cycling'],
 			icon: 'fa-car-crash',
+			colour: '#862EB2'
 		},
 		{
 			type: 'disabledParking', 
