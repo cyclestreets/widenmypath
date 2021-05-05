@@ -539,7 +539,7 @@ var streetvisions = (function ($) {
 						uniqueId: id,
 					})
 				
-					marker.on('move', function (event) {
+				marker.on('move', function (event) {
 					var bounds = _leafletMap.getBounds();
 					var northEast = [bounds._northEast.lat-0.001, bounds._northEast.lng-0.001];
 					var southWest = [bounds._southWest.lat-0.001, bounds._southWest.lng-0.001];
@@ -548,6 +548,9 @@ var streetvisions = (function ($) {
 							_leafletMap.removeLayer(marker);
 						});
 					};
+
+					var markerKey = _leafletMarkers.findIndex(marker => marker.id == id);
+					_leafletMarkers[markerKey].latLng = [marker._latlng.lat, marker._latlng.lng];
 				});
 				
 				// On drop, show a modal to add description to this marker
@@ -560,15 +563,19 @@ var streetvisions = (function ($) {
 			
 				marker.addTo(_leafletMap);
 
+				
 				// Add custom class to this marker
 				$(marker._icon).addClass(id);
-
+				
 				// Store this marker
 				_leafletMarkers.push({
-					coordinates: coordinates,
 					object: _draggedToolObject,
 					id: id
 				})
+				
+				// Update the marker object with current coordinates
+				var markerKey = _leafletMarkers.findIndex(marker => marker.id == id);
+				_leafletMarkers[markerKey].latLng = [marker._latlng.lat, marker._latlng.lng];
 				
 				Tipped.create('.' + id, htmlContent, {skin: 'light', hideOn: false, padding: '20px', size: 'huge', offset: { x: 30, y: 0 }});
 				Tipped.show('.' + id);
@@ -626,13 +633,14 @@ var streetvisions = (function ($) {
 					}
 					if (!canPublish) {return;}
 				});
-
+				
 				// If all fields aren't filled out, don't publish
 				if (!canPublish) {
 					streetvisions.showModal ({
 						text: '<i class="fa fa-exclamation"></i> Oops...',
 						description: "It seems you haven't filled out all the information we need for this vision yet. Please check you have filled out the title, description, and FAQ questions."
 					});
+					return;
 				}
 
 				// Gather the textual data into an object
@@ -649,9 +657,27 @@ var streetvisions = (function ($) {
 					visionFAQ: faq
 				}
 
+				var geojsonFeatures = _leafletMarkers.map (marker => ({
+						"type": "Feature",
+						"properties": {
+							"description": marker.description,
+							"type": marker.object.type,
+							"typeDescription": marker.object.description,
+							"groups": marker.object.groups,
+							"icon": marker.object.icon,
+							"colour": marker.object.colour
+						},
+						"geometry": {
+							"type": "Point",
+							"coordinates": marker.latLng
+						}
+				}))
+			
 				// Populate hidden form with stringified object
 				var stringifiedJson = JSON.stringify(textualData);
+				var stringifiedGeoJsonFeatures = JSON.stringify(geojsonFeatures)
 				$('#builderDataObject').attr('value', stringifiedJson);
+				$('#geojsonFeatures').attr('value', stringifiedGeoJsonFeatures);
 			});
 		},
 
