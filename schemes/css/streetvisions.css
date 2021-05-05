@@ -217,6 +217,7 @@ section.schemes-list .card .read-more a {text-decoration: none; display: block; 
 section.schemes-list .card .read-more a:hover {color: #4d0026;}
 
 section.schemes-list section.schemes {padding: 20px 30px;}
+section.schemes-list section.schemes ul {display: flex; flex-wrap: wrap; justify-content: center;}
 section.schemes-list section.schemes ul li {text-decoration: none; list-style-type: none; display: inline-block;}
 
 
