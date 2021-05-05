@@ -547,7 +547,6 @@ var streetvisions = (function ($) {
 				htmlContent += '<p>Please describe the element you just added:</p>';
 				htmlContent += '<textarea class="description" placeholder="This element will..." rows="4"></textarea>';
 				htmlContent += `<a class="button button-general close-popup" data-new="true" data-id="${id}" href="#">Save</a>`;
-				//streetvisions.showModal(false, htmlContent);
 			
 				marker.addTo(_leafletMap);
 
@@ -587,13 +586,6 @@ var streetvisions = (function ($) {
 					Tipped.create('.' + objectId, html, {skin: 'light', padding: 20});
 				}
 			});
-
-			// When dragging a marker on the map, save it, clone it to an image, and remove it, so it can be dragged off the map
-			$('.leaflet-marker-icon').draggable({
-				start: function () {
-					console.log ('start');
-				}
-			})
 			
 			// When clicking on the title bar, make it editable
 			$('.builder .title h2, .builder .title h4, .builder p.description').on ('click', function (event){
@@ -615,6 +607,7 @@ var streetvisions = (function ($) {
 
 			// When clicking publish button, check if all fields have been filled in
 			$('.publish').on('click', function () {
+				// Check if all fields have been filled out
 				var canPublish = true;
 				$.each($('.required'), function (indexInArray, textElement) {
 					if ($(textElement).text().includes('Click to add')) {
@@ -623,12 +616,31 @@ var streetvisions = (function ($) {
 					if (!canPublish) {return;}
 				});
 
+				// If all fields aren't filled out, don't publish
 				if (!canPublish) {
 					streetvisions.showModal ({
 						text: '<i class="fa fa-exclamation"></i> Oops...',
 						description: "It seems you haven't filled out all the information we need for this vision yet. Please check you have filled out the title, description, and FAQ questions."
 					});
 				}
+
+				// Gather the textual data into an object
+				var faq = []
+				$.each($('.question'), function (indexInArray, object) { 
+					faq.push ({
+						question: $(object).find('h4').first().text(),
+						answer: $(object).find('p').first().text()
+					});
+				});
+				var textualData = {
+					visionTitle: $('.title h2').text(),
+					visionDescription: $('.title h4').text(),
+					visionFAQ: faq
+				}
+
+				// Populate hidden form with stringified object
+				var stringifiedJson = JSON.stringify(textualData);
+				$('#builderDataObject').attr('value', stringifiedJson);
 			});
 		},
 
