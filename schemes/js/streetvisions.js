@@ -373,32 +373,43 @@ var streetvisions = (function ($) {
 			});
 
 			// Enable toolbox headers to be clickable
-			$('.toolbox-header>h5').on ('click', function (event) {
+			$('.toolbox-header > h5').on ('click', function (event) {
 				toggleToolbox (event);
 			});
 
 			// Enable toolbox chevrons to be clickable
-			$('.toolbox-header>i').on ('click', function (event) {
+			$('.toolbox-header > i').on ('click', function (event) {
 				toggleToolbox (event);
 			});
-
+			
 			// Function to toggle a toolbox open or closed
 			var toggleToolbox = function (event) {
+				
 				// Get current toolbox drawer status
 				var toolboxHeader = $($(event.target)).closest ('.toolbox-header').first();
-				var isOpen = $(toolboxHeader).hasClass ('toolbox-open');
-
-				if (isOpen) {
+				var isCurrentlyOpen = $(toolboxHeader).hasClass ('toolbox-open');
+				
+				// Close action
+				if (isCurrentlyOpen) {
 					$(toolboxHeader).removeClass ('toolbox-open');
 					$(toolboxHeader).find ('i').first ().addClass ('rotated');
 					$(toolboxHeader).find ('.group-contents').first ().slideToggle ();
-				} else {
+				
+				// Open action
+				} else {	// If currently closed
+					
+					// Close any existing first
+					$('.toolbox .toolbox-header i').addClass ('rotated');
+					$('.toolbox .toolbox-header.toolbox-open .group-contents').slideUp ();
+					$('.toolbox .toolbox-header.toolbox-open').removeClass ('toolbox-open');
+					
+					// Open new current
 					$(toolboxHeader).addClass ('toolbox-open');
 					$(toolboxHeader).find ('i').first ().removeClass ('rotated');
 					$(toolboxHeader).find ('.group-contents').first ().slideToggle ();
 				}
-				
 			};
+			
 			// Enable the toolbox card to be closed
 			$('.close-card').on ('click', function (){
 				hideHelpCard ();
