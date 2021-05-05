@@ -25,13 +25,15 @@ var streetvisions = (function ($) {
 		geojsonData: {}
 	};
 
-	// Properties
+	// Properties/state
 	var _initialToolPosition = null; // Store the initial dragged position of a tool
 	var _draggedTool = null; // Div of the tool being dragged
 	var _draggedToolObject = null; // Object containing information about the tool being dragged
 	var _leafletMap; // Class property leaflet map
 	var _leafletMarkers = []; // User-added map markers
-	var toolboxObjects = [
+	
+	// Definitions
+	var _toolboxObjects = [
 		{
 			type: 'cycleParking', 
 			description: 'A parking area for bicycles.',
@@ -284,7 +286,7 @@ var streetvisions = (function ($) {
 			var toolboxGroup;
 			var toolboxOpen;
 			var toolboxPrettyName;			
-			toolboxObjects.map (function (tool, i) {
+			_toolboxObjects.map (function (tool, i) {
 				
 				// If groups is a string, convert it into an array
 				var groups = (!Array.isArray (tool.groups) ? [tool.groups] : tool.groups);
@@ -305,14 +307,14 @@ var streetvisions = (function ($) {
 						html += '<i class="fa fa-chevron-down"></i>';
 						html +=	`<h5>${toolboxPrettyName}</h5>`;
 						html += '<div class="group-contents"><ul></ul></div></div>';
-	
+						
 						// Add this to the toolbox 
 						$('div.toolbox').append(html);
 					}
 					
 					// Add this tool to the existing header
 					var toolboxGroupUl = $('.toolbox .' + group + ' ul');
-					var style = getColourCSS (i, toolboxObjects.length);
+					var style = getColourCSS (i, _toolboxObjects.length);
 					var toolPrettyName = streetvisions.convertCamelCaseToSentence (tool.type);
 					$(toolboxGroupUl).append (
 						`<li data-tool="${tool.type}" style="background-color: ${style}; color: white;"><i class="fa ${tool.icon}"></i><p>${toolPrettyName}</p></li>`
@@ -430,7 +432,7 @@ var streetvisions = (function ($) {
 			
 			// Populate help card
 			function populateHelpCard (type) {
-				var object = toolboxObjects.find ((o) => o.type === type);
+				var object = _toolboxObjects.find ((o) => o.type === type);
 
 				if (object == 'undefined') {
 					return false;
@@ -486,7 +488,7 @@ var streetvisions = (function ($) {
 					// Store the toolname
 					_draggedTool = $(this);
 					var tool = $(this).data('tool');
-					_draggedToolObject = toolboxObjects.find ((o) => (o.type === tool));
+					_draggedToolObject = _toolboxObjects.find ((o) => (o.type === tool));
 					_draggedToolObject.colour = $(this).css('background-color');
 					
 					// Add dragging style
@@ -592,9 +594,7 @@ var streetvisions = (function ($) {
 					'id': id
 				});
 				
-
 				// Update the marker object with current coordinates
-console.log (_draggedToolObject);
 				var markerKey = _leafletMarkers.findIndex ((marker) => (marker.id == id));
 				_leafletMarkers[markerKey].latLng = [marker._latlng.lat, marker._latlng.lng];
 				
