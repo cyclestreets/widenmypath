@@ -545,7 +545,7 @@ var streetvisions = (function ($) {
 				var htmlContent = '<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> New marker</h1>';
 				htmlContent += '<hr>';
 				htmlContent += '<p>Please describe the element you just added:</p>';
-				htmlContent += '<textarea class="description" placeholder="This element will..." rows="4"></textarea>';
+				htmlContent += '<textarea class="description" placeholder="This element improves the community by..." rows="4"></textarea>';
 				htmlContent += `<a class="button button-general close-popup" data-new="true" data-id="${id}" href="#">Save</a>`;
 			
 				marker.addTo(_leafletMap);
@@ -560,7 +560,7 @@ var streetvisions = (function ($) {
 					id: id
 				})
 				
-				Tipped.create('.' + id, htmlContent, {skin: 'light', hideOn: false, padding: 20});
+				Tipped.create('.' + id, htmlContent, {skin: 'light', hideOn: false, padding: '20px', size: 'huge'});
 				Tipped.show('.' + id);
 			};
 
@@ -581,9 +581,10 @@ var streetvisions = (function ($) {
 					var html = '';
 					html += `<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> ${typeOfObject}</h1>`;
 					html += '<hr>';
+					html += '<p>To edit this marker, please write in the box below:</p>'
 					html += `<textarea class="description" rows="4">${description}</textarea>`;
 					html += `<a class="button button-general close-popup" data-new="false" data-id="${objectId}" href="#">Save</a>`;
-					Tipped.create('.' + objectId, html, {skin: 'light', padding: 20});
+					Tipped.create('.' + objectId, html, {skin: 'light', size: 'huge'});
 				}
 			});
 			

@@ -157,7 +157,16 @@ section.builder section.toolbox .toolbox-card h2 {font-size: 13px;}
 .tpd-content p {font-size: 16px;}
 .tpd-content textarea {display: block; width: 97%; height: 50px; margin-bottom: 10px; border-radius: 5px; padding: 5px;}
 .tpd-content a {text-decoration: none !important; float: right;}
-
+.tpd-content hr {margin-left: -15px; width: calc(100% + 28px);}
+.tpd-size-huge .tpd-content, .tpd-size-huge .tpd-title {padding: 15px; font-size: 15px; line-height: 20px;}
+.tpd-size-huge .tpd-background { border-radius: 10px; }
+.tpd-size-huge .tpd-stem {width: 24px; height: 12px;margin-left: 8px; margin-top: 2px;}
+.tpd-size-huge.tpd-no-radius .tpd-stem { margin-left: 10px; }
+.tpd-size-huge .tpd-close { margin: 11px 5px 11px 5px; }
+.tpd-size-huge .tpd-close-icon { font-size: 32px; }
+.tpd-size-huge .tpd-spinner {width: 66px; height: 50px;}
+.tpd-size-huge .tpd-spinner-spin { margin: 14px 0 0 22px; }
+.tpd-size-huge .tpd-spinner-spin, .tpd-size-huge .tpd-spinner-spin:after {width: 22px; height: 22px;}
 
 .modalBackground {display: none;}
 .modalBackground .modalContent {display: flex; position: absolute; top: 0; width: 100%; height: 100%; background-color: rgba(51, 51, 51, 0.7); z-index: 9999; flex-direction: column; align-items: center; justify-content: center}  
