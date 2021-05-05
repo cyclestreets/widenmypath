@@ -536,18 +536,19 @@ var streetvisions = (function ($) {
 			
 			// On drop on map, create an icon
 			// Also, create the drag handler for the marker
-			var mapdiv = document.getElementById('leaflet');
+			var mapdiv = document.getElementById ('leaflet');
 			mapdiv.ondrop = function (e) {
-				e.preventDefault();
+				e.preventDefault ();
+				
 				var coordinates = _leafletMap.mouseEventToLatLng (e);
 				var id = Date.now().toString();
 				var marker = L.marker (coordinates, {
-					icon: fontAwesomeIcon(),
+					icon: fontAwesomeIcon (),
 					draggable: true,
 					uniqueId: id
 				});
 				
-				marker.on('move', function (event) {
+				marker.on ('move', function (event) {
 					var bounds = _leafletMap.getBounds();
 					var northEast = [bounds._northEast.lat-0.001, bounds._northEast.lng-0.001];
 					var southWest = [bounds._southWest.lat-0.001, bounds._southWest.lng-0.001];
@@ -568,9 +569,8 @@ var streetvisions = (function ($) {
 				htmlContent += '<p>Please describe the element you just added:</p>';
 				htmlContent += '<textarea class="description" placeholder="This element improves the community by..." rows="4"></textarea>';
 				htmlContent += `<a class="button button-general close-popup" data-new="true" data-id="${id}" href="#">Save</a>`;
-			
-				marker.addTo(_leafletMap);
-
+				
+				marker.addTo (_leafletMap);
 				
 				// Add custom class to this marker
 				$(marker._icon).addClass(id);
@@ -581,16 +581,18 @@ var streetvisions = (function ($) {
 					'id': id
 				});
 				
+
 				// Update the marker object with current coordinates
+console.log (_draggedToolObject);
 				var markerKey = _leafletMarkers.findIndex ((marker) => (marker.id == id));
 				_leafletMarkers[markerKey].latLng = [marker._latlng.lat, marker._latlng.lng];
 				
-				Tipped.create('.' + id, htmlContent, {skin: 'light', hideOn: false, padding: '20px', size: 'huge', offset: { x: 30, y: 0 }});
-				Tipped.show('.' + id);
+				Tipped.create ('.' + id, htmlContent, {skin: 'light', hideOn: false, padding: '20px', size: 'huge', offset: { x: 30, y: 0 }});
+				Tipped.show ('.' + id);
 			};
-
+			
 			// When clicking close on a popup box, save the details
-			$(document).on('click', '.close-popup', function (event) {
+			$(document).on ('click', '.close-popup', function (event) {
 				var objectId = $(this).data('id');
 				var description = $(this).siblings('.description').first().val();
 				
