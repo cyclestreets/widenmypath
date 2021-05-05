@@ -667,7 +667,7 @@ var streetvisions = (function ($) {
 			}
 			
 			if (onClick) {
-				$('.modal ok-button').on('click', function () {
+				$(document).on('click', '.modal .ok-button', function () {
 					onClick();
 				})
 			};
@@ -734,14 +734,20 @@ var streetvisions = (function ($) {
 				}
 			};
 
+			// Handler for creating new discussion topic
+			const handleNewDiscussion = function () {
+				// Get new discussion topic
+				var newTopic = $('.newTopicTitle').val();
+				$('.modalBackground').hide();
+			};
+			
 			// Enable a new discussion to be created (display new discussion modal)
 			$('.new-topic').on ('click', function () {
-				$('.newDiscussion').show ();
-			});
-
-			// Close modal
-			$('.closeModal').on ('click', function () {
-				$('.newDiscussion').slideToggle ();
+				var htmlContent = '<h1><i class="fa fa-plus-circle"></i> New discussion</h1>';
+				htmlContent += '<hr>';
+				htmlContent += '<p>Please enter a short topic title for this discussion:</p>';
+				htmlContent += '<input class="newTopicTitle" placeholder="New topic..." />';
+				streetvisions.showModal(false, htmlContent, handleNewDiscussion);
 			});
 		},
 

@@ -97,7 +97,6 @@ section.vision section.discussion .discussion-header .answer p.author {display: 
 section.vision section.discussion .discussion-header .answer p.timestamp {display: inline-block; font-size: 10.5px; margin: 0;}
 section.vision section.discussion .discussion-header .answer input {display: block; margin: 10px 0; width: 100%; line-height: 30px; border-radius: .5em; padding: 2.5px 5px;}
 section.vision section.discussion .new-topic {margin: 20px 0; border: 1px solid transparent; transition: 0.3s; display: inline-block; padding: 7.5px; border-radius: 0.3em;}
-section.vision section.discussion .new-topic:hover {border: 1px solid black;}
 section.vision section.discussion .new-topic p {display: inline-block; margin: 0;}
 section.vision .newDiscussion {display: none; position: absolute; top: 30%; left: 45%; width: 300px; box-shadow: 0 8px 17px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.7); padding: 25px; background: white; border-radius: .5em;}
 section.vision .newDiscussion .closeModal {float: right; margin: 0;}
