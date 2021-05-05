@@ -157,6 +157,7 @@ section.builder section.toolbox .toolbox-card h2 {font-size: 13px;}
 .tpd-content p {font-size: 16px;}
 .tpd-content textarea {display: block; width: 97%; height: 50px; margin-bottom: 10px; border-radius: 5px; padding: 5px;}
 .tpd-content a {text-decoration: none !important; float: right;}
+.tpd-content h1 {margin-top: 0;}
 .tpd-content hr {margin-left: -15px; width: calc(100% + 28px);}
 .tpd-size-huge .tpd-content, .tpd-size-huge .tpd-title {padding: 15px; font-size: 15px; line-height: 20px;}
 .tpd-size-huge .tpd-background { border-radius: 10px; }
