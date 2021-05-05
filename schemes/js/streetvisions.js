@@ -212,6 +212,11 @@ var streetvisions = (function ($) {
 			// Init modal
 			streetvisions.initModal ();
 			
+			// Populate pretty names, adding these to the definitions
+			$.each (_toolboxObjects, function (index, tool) {
+				_toolboxObjects[index].prettyName = streetvisions.convertCamelCaseToSentence (tool.type);
+			});
+			
 			// Add toolbox objects from defintion
 			streetvisions.populateToolbox ();
 			
@@ -315,9 +320,8 @@ var streetvisions = (function ($) {
 					// Add this tool to the existing header
 					var toolboxGroupUl = $('.toolbox .' + group + ' ul');
 					var style = getColourCSS (i, _toolboxObjects.length);
-					var toolPrettyName = streetvisions.convertCamelCaseToSentence (tool.type);
 					$(toolboxGroupUl).append (
-						`<li data-tool="${tool.type}" style="background-color: ${style}; color: white;"><i class="fa ${tool.icon}"></i><p>${toolPrettyName}</p></li>`
+						`<li data-tool="${tool.type}" style="background-color: ${style}; color: white;"><i class="fa ${tool.icon}"></i><p>${tool.prettyName}</p></li>`
 					);
 				});
 			});
