@@ -633,7 +633,7 @@ var streetvisions = (function ($) {
 					}
 					if (!canPublish) {return;}
 				});
-				
+
 				// If all fields aren't filled out, don't publish
 				if (!canPublish) {
 					streetvisions.showModal ({
@@ -657,22 +657,22 @@ var streetvisions = (function ($) {
 					visionFAQ: faq
 				}
 
-				var geojsonFeatures = _leafletMarkers.map (marker => ({
-						"type": "Feature",
-						"properties": {
-							"description": marker.description,
-							"type": marker.object.type,
-							"typeDescription": marker.object.description,
-							"groups": marker.object.groups,
-							"icon": marker.object.icon,
-							"colour": marker.object.colour
-						},
-						"geometry": {
-							"type": "Point",
-							"coordinates": marker.latLng
+				var geojsonFeatures = {
+					"type": "FeatureCollection",
+    				"features":_leafletMarkers.map (marker => (
+						{
+							"type": "Feature",
+							"properties": {
+								"description": marker.description,
+								"type": marker.object.type,
+							},
+							"geometry": {
+								"type": "Point",
+								"coordinates": marker.latLng
 						}
-				}))
-			
+					}))
+				}
+				
 				// Populate hidden form with stringified object
 				var stringifiedJson = JSON.stringify(textualData);
 				var stringifiedGeoJsonFeatures = JSON.stringify(geojsonFeatures)
