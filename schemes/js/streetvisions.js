@@ -495,9 +495,10 @@ var streetvisions = (function ($) {
 				drop: function() {
 					// Hide element
 					$(_draggedTool).animate ({'opacity': 0}, function () {
+						
 						// Return the element to the box
-						var top = _initialToolPosition[0];
-						var left = _initialToolPosition[1];
+						var top = _initialToolPosition.top;
+						var left = _initialToolPosition.left;
 						$(_draggedTool).animate ({'opacity': 1});
 						$(_draggedTool).offset ({top, left});
 					});
