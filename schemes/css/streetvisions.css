@@ -53,10 +53,14 @@ section.scheme-show section.content .library_card .read-more p {display: inline-
 section.scheme-show section.content .library_card .read-more .details a {text-decoration: none; color: black; padding: 5px 7.5px; border: 1px solid grey; border-radius: .4em; transition: 0.5s;}
 section.scheme-show section.content .library_card .read-more .details a:hover {background-color: #4d0026; color: white;}
 
-/* Vision view + discussion */
+/* Vision list + discussion */
 section.vision {display: flex; min-height: 100%; padding-top: 30px}
-section.vision section.map {flex: 1.8; margin: 10px; background-color: #4d0026; border-radius: 10px; box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4),0 3px 3px 0 rgba(0,0,0,0.7);}
+section.vision section.map {flex: 1.8;}
+section.vision section.map .map-header {margin: 20px; border-radius: 10px; background-color: #4d0026; box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4),0 3px 3px 0 rgba(0,0,0,0.7);}
 section.vision section.discussion {flex: 1; color: black;}
+
+section.vision section.map #leaflet {height: 500px; width: calc(100% - 40px); margin: 20px 20px 15px 20px; border-radius: 10px; z-index: 500; box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 3px 3px 0 rgba(0, 0, 0, 0.7);}
+section.vision section.map .leaflet-marker-icon.leafletFontAwesomeIcon .fa-stack-1x {top: -9px; transform: scale(0.9);}
 
 section.vision section.map i.back-arrow {position: absolute; top: 70px; left: 30px; font-size: 25px; transform: 0.5s; color: white;}
 section.vision section.map h1 {margin: 22.5px 0 0 60px; font-size: 35px; display: inline-block; color: white;}
@@ -70,6 +74,10 @@ section.vision section.map h4 {color: white; padding-left: 50px; max-width: 50%;
 section.vision section.map div.map {width: calc(100% - 100px); margin: 20px 50px 15px;}
 section.vision section.map .map img {border-radius: 1em; width: 100%;}
 section.vision section.map p.description {margin: 10px 0 10px 50px;}
+
+section.vision section.map .questions {margin: 10px 20px; border-radius: 10px; background-color: #4d0026; box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 3px 3px 0 rgba(0, 0, 0, 0.7);}
+section.vision section.map .questions h2 {margin-bottom: 0; margin-top: 10px; padding-top: 15px; color: white;}
+section.vision section.map .questions h4 {color: #eee; max-width: 90%; font-size: 15px; margin: 10px 0 0 50px;}
 
 section.vision section.discussion h1 {margin: 27.5px 0 31px 25px; font-size: 30px;}
 section.vision section.discussion i.share {float: right; margin: 27.5px 15px 0 0; font-size: 30px;}

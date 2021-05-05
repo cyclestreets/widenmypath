@@ -184,6 +184,9 @@ var streetvisions = (function ($) {
 			
 			// Discussion
 			streetvisions.initDiscussion ();
+
+			// Map
+			streetvisions.initLeaflet ('leaflet');
 		},
 
 
@@ -217,7 +220,7 @@ var streetvisions = (function ($) {
 		leafletMap: function (geojsonData)
 		{
 			// Create a map
-			var map = L.map ('map').setView ([_settings.defaultLatitude, _settings.defaultLongitude], _settings.defaultZoom);
+			var map = L.map ('leaflet').setView ([_settings.defaultLatitude, _settings.defaultLongitude], _settings.defaultZoom);
 			
 			// Add tile background
 			L.tileLayer (_settings.tileUrl, {
@@ -432,12 +435,11 @@ var streetvisions = (function ($) {
 			});
 		},
 
-	
-		// Builder options
-		initBuilder: function ()
+
+		// Initiate a Leaflet map
+		initLeaflet: function (element)
 		{
-			// Start Leaflet
-			_leafletMap = L.map('leaflet').setView([51.505, -0.09], 16);
+			_leafletMap = L.map(element).setView([51.505, -0.09], 16);
 			L.tileLayer (_settings.tileUrl, {
 				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 				maxZoom: 18,
@@ -445,6 +447,14 @@ var streetvisions = (function ($) {
 				tileSize: 512,
 				zoomOffset: -1
 			}).addTo(_leafletMap);
+		},
+
+	
+		// Builder options
+		initBuilder: function ()
+		{
+			// Start Leaflet
+			streetvisions.initLeaflet('leaflet')
 
 			// Allow objects to be draggable onto the map
 			$('.toolbox .group-contents ul li').draggable ({

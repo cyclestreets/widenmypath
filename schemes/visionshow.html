@@ -52,6 +52,10 @@
 	
 	<!-- Fontawesome icons -->
 	<script src="/schemes/js/lib/fontawesome/fontawesome-kit-7bd5544b77.js"></script>
+
+	<!-- Leaflet-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 	
 	<link rel="stylesheet" type="text/css" href="/schemes/css/streetvisions.css" />
 	<script src="./js/.config.js"></script>
@@ -65,21 +69,26 @@
 	
 	<section class="vision">
 		<section class="map">
-			<a href="/schemes/schemeshow.html"> <i class="back-arrow fa fa-chevron-circle-left"></i></a>
-			<h1>Scheme title here</h1>
-			<div class="likes">
-				<i class="fa fa-heart"></i><p>88</p>
+			<div class="map-header">
+				<a href="/schemes/schemeshow.html"> <i class="back-arrow fa fa-chevron-circle-left"></i></a>
+				<h1>Scheme title here</h1>
+				<div class="likes">
+					<i class="fa fa-heart"></i><p>88</p>
+				</div>
+				<hr />
+				<h2>Changes on Mill Road</h2>
+				<h3>Jordan Smith</h3>
+				<h4>Describing the parklet. Eum earum ad at suscipit omnis est. Quas voluptas quasi ab deserunt</h4>
+				<div class="map">
+				</div>
 			</div>
-			<hr />
-			<h2>Changes on Mill Road</h2>
-			<h3>Jordan Smith</h3>
-			<h4>Describing the parklet. Eum earum ad at suscipit omnis est. Quas voluptas quasi ab deserunt</h4>
-			<div class="map">
-				<img class="map" src="/images/placeholders/big_map_placeholder.png" />
+			<div id="leaflet">
 			</div>
-			<h2>Q&A</h2>
-			<h4>How does your design ensure that people with disabilities are not disadvantaged</h4>
-			<p class="description">Proposal description. Eum earum ad at suscipit omnis est. Quas voluptas quasi ab deserunt</p>
+			<div class="questions">
+				<h2>Q&A</h2>
+				<h4>How does your design ensure that people with disabilities are not disadvantaged</h4>
+				<p class="description">Proposal description. Eum earum ad at suscipit omnis est. Quas voluptas quasi ab deserunt</p>
+			</div>
 		</section>
 
 		<section class="discussion">
