@@ -581,10 +581,10 @@ var streetvisions = (function ($) {
 				
 				// Show a modal to add description to this marker
 				// !TODO check if this is actually one of our toolbox elements being dropped?
-				var htmlContent = '<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> New marker</h1>';
+				var htmlContent = '<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> ' + _draggedToolObject.prettyName + '</h1>';
 				htmlContent += '<hr />';
 				htmlContent += '<p>Describe how this element improves the area:</p>';
-				htmlContent += '<input class="description" placeholder="This element improves the community by&hellip;" autofocus="autofocus" />';
+				htmlContent += '<input class="description" autofocus="autofocus" />';
 				htmlContent += `<a class="button button-general close-popup" data-new="true" data-id="${id}" href="#">Save</a>`;
 				
 				marker.addTo (_leafletMap);
