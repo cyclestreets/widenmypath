@@ -81,7 +81,7 @@ section.vision section.map .questions h2 {margin-bottom: 0; margin-top: 10px; pa
 section.vision section.map .questions h4 {color: #eee; max-width: 90%; font-size: 15px; margin: 10px 0 0 50px;}
 
 section.vision section.discussion h1 {margin: 47.5px 0 22px 20px; font-size: 30px;}
-section.vision section.discussion i.share {float: right; margin: 27.5px 15px 0 0; font-size: 30px;}
+section.vision section.discussion a.share {float: right; margin: 45px 30px 0 0; cursor: pointer;}
 section.vision section.discussion .discussion-content {padding: 25px 25px 25px 35px;}
 section.vision section.discussion .discussion-content h5 {margin: 0;}
 section.vision section.discussion h4 {display: inline-block; margin: 25px 0 15px; color: #f2bd54; font-size: 25px;}
