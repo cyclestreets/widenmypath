@@ -668,7 +668,7 @@ var streetvisions = (function ($) {
 							},
 							"geometry": {
 								"type": "Point",
-								"coordinates": marker.latLng
+								"coordinates": [marker.latLng[1], marker.latLng[0]]
 						}
 					}))
 				}
@@ -676,6 +676,7 @@ var streetvisions = (function ($) {
 				// Populate hidden form with stringified object
 				var stringifiedJson = JSON.stringify(textualData);
 				var stringifiedGeoJsonFeatures = JSON.stringify(geojsonFeatures)
+				
 				$('#builderDataObject').attr('value', stringifiedJson);
 				$('#geojsonFeatures').attr('value', stringifiedGeoJsonFeatures);
 			});
