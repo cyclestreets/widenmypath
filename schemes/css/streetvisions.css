@@ -142,6 +142,7 @@ section.builder section.map .leaflet-marker-icon.leafletFontAwesomeIcon .fa-stac
     100% {transform: scale(1, 1);}
 }
 section.builder section.toolbox h2 {display: inline-block; margin: 35px 0 10px; color: #4d0026; font-size: 35px;}
+section.builder section.toolbox h5 {cursor: pointer;}
 section.builder section.toolbox .padded-content {padding: 0 25px 25px 20px;}
 section.builder section.toolbox .padded-content h5 {margin: 0;}
 section.builder section.toolbox .toolbox-header>i {transition: .5s;}
