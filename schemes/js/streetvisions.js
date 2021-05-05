@@ -560,7 +560,7 @@ var streetvisions = (function ($) {
 					id: id
 				})
 				
-				Tipped.create('.' + id, htmlContent, {skin: 'light', hideOn: false, padding: '20px', size: 'huge'});
+				Tipped.create('.' + id, htmlContent, {skin: 'light', hideOn: false, padding: '20px', size: 'huge', offset: { x: 30, y: 0 }});
 				Tipped.show('.' + id);
 			};
 
@@ -584,7 +584,7 @@ var streetvisions = (function ($) {
 					html += '<p>To edit this marker, please write in the box below:</p>'
 					html += `<textarea class="description" rows="4">${description}</textarea>`;
 					html += `<a class="button button-general close-popup" data-new="false" data-id="${objectId}" href="#">Save</a>`;
-					Tipped.create('.' + objectId, html, {skin: 'light', size: 'huge'});
+					Tipped.create('.' + objectId, html, {skin: 'light', size: 'huge', offset: { x: 30, y: 0 }});
 				}
 			});
 			
