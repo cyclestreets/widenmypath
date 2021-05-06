@@ -649,7 +649,7 @@ var streetvisions = (function ($) {
 			};
 
 			// When clicking publish button, check if all fields have been filled in
-			$('.publish').on('click', function () {
+			$('.publish').on('click', function (event) {
 				// Check if all fields have been filled out
 				var canPublish = true;
 				$.each($('.required'), function (indexInArray, textElement) {
@@ -665,22 +665,18 @@ var streetvisions = (function ($) {
 						text: '<i class="fa fa-exclamation"></i> Oops...',
 						description: "It seems you haven't filled out all the information we need for this vision yet. Please check you have filled out the title, description, and FAQ questions."
 					});
+					event.preventDefault();
 					return;
 				}
 
-				// Gather the textual data into an object
-				var faq = [];
+				// Gather the questionnaire data into an object
+				var questionnaire = [];
 				$.each ($('.question'), function (indexInArray, object) {
-					faq.push ({
+					questionnaire.push ({
 						question: $(object).find('h4').first().text(),
 						answer: $(object).find('p').first().text()
 					});
 				});
-				var textualData = {
-					visionTitle: $('.title h2').text(),
-					visionDescription: $('.title h4').text(),
-					visionFAQ: faq
-				};
 
 				var geojsonFeatures = {
 					type: 'FeatureCollection',
@@ -700,11 +696,10 @@ var streetvisions = (function ($) {
 				};
 				
 				// Populate hidden form with stringified object
-				var stringifiedJson = JSON.stringify(textualData);
-				var stringifiedGeoJsonFeatures = JSON.stringify(geojsonFeatures);
-				
-				$('#builderDataObject').attr('value', stringifiedJson);
-				$('#geojsonFeatures').attr('value', stringifiedGeoJsonFeatures);
+				$('#name').attr('value', $('.title h2').text());
+				$('#description').attr('value', $('.title h4').text());
+				$('#components').attr('value', JSON.stringify(geojsonFeatures));
+				$('#questionnaire').attr('value', JSON.stringify(questionnaire));
 			});
 		},
 

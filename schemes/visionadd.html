@@ -73,16 +73,18 @@
 		});
 	</script>
 
-	<section class="builder">
-		<form id="builderData">
-			<input type="text" id="builderDataObject" name="builderDataObject" value="">
-			<input type="text" id="geojsonFeatures" name="geojsonFeatures" value="">
+	<section class="builder" method="post">
+		<form id="visionForm">
+			<input type="text" id="name" name="name" value="">
+			<input type="text" id="description" name="description" value="">
+			<input type="text" id="components" name="components" value="">
+			<input type="text" id="questionnaire" name="questionnaire" value="">
 		</form>
 		<section class="map">
 			<div class="map-header">
 				<a href="/schemes/schemeshow.html"> <i class="back-arrow fa fa-chevron-circle-left"></i></a>
 				<h1>Changes on Mill Road</h1>
-				<a class="button button-general publish" type="submit" href="#">Publish <i class="fa fa-upload"></i></a>
+				<button type="submit" class="button button-general publish" form="visionForm">Publish <i class="fa fa-upload"></i></button>
 				
 				<hr />
 				<div class="title">
