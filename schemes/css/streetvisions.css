@@ -109,8 +109,8 @@ section.vision .newDiscussion .createNewDiscussion:hover {background-color: #4d0
 /* Builder interface */
 section.builder {display: flex; min-height: 100%; padding-top: 30px}
 section.builder form {display: none;}
-section.builder section.map {flex: 1.8; }
-section.builder section.map .map-header {margin: 20px; border-radius: 10px; background-color: #4d0026; box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4),0 3px 3px 0 rgba(0,0,0,0.7);}
+section.builder section.map {flex: 2.1; }
+section.builder section.map .map-header {margin: 20px 20px 10px; border-radius: 10px; background-color: #4d0026; box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4),0 3px 3px 0 rgba(0,0,0,0.7);}
 section.builder section.toolbox {flex: 1; color: black; margin-left: 15px;}
 section.builder section.map .untitled {opacity: 0.5;}
 
@@ -130,9 +130,10 @@ section.builder section.map .questions h2 {margin-bottom: 0; margin-top: 10px; p
 section.builder section.map .questions h4 {color: #eee; max-width: 90%; font-size: 15px; margin: 10px 0 0 50px;}
 section.builder section.map p {color: #eee; display: inline-block;}
 section.builder section.map p.description {margin: 10px 0 10px 50px; color: #eee;}
-section.builder section.map #leaflet {height: 500px; width: calc(100% - 40px); margin: 20px 20px 15px 20px; border-radius: 10px; z-index: 500; box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 3px 3px 0 rgba(0, 0, 0, 0.7);}
-section.builder section.map #leaflet .leafletInstructions {position: relative; z-index: 2000; width: 100%; height: 100%; backdrop-filter: blur(10px); background: rgba(0,0,0,0.7); display: flex; object-position: center; flex-direction: column; align-items: center; justify-content: center; transition: all 0.5s ease; animation: pulse 4s ease infinite;}
+section.builder section.map #leaflet {height: 500px; width: calc(100% - 40px); margin: 0 20px; border-radius: 10px; z-index: 500; box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 3px 3px 0 rgba(0, 0, 0, 0.7);}
+section.builder section.map #leaflet .leafletInstructions {position: relative; z-index: 2000; width: 100%; height: 100%; backdrop-filter: blur(2px) saturate(100%) contrast(45%) brightness(70%); -webkit-backdrop-filter: blur(2px) saturate(100%) contrast(45%) brightness(70%); display: flex; object-position: center; flex-direction: column; align-items: center; justify-content: center; transition: all 0.5s ease; padding: 20px; }
 section.builder section.map #leaflet .leafletInstructions.hidden {display: none;}
+section.builder section.map #leaflet .leafletInstructions .content {animation: pulse 4s ease infinite; display: block;}
 section.builder section.map #leaflet .leafletInstructions h1 {color: #f2bd54; margin-bottom: 15px; }
 section.builder section.map #leaflet .leafletInstructions p {display: block; margin: 0 auto 50px;; text-align: center; color: #eee}
 section.builder section.map .leaflet-marker-icon.leafletFontAwesomeIcon .fa-stack-1x {top: -9px; transform: scale(0.9);}
@@ -168,6 +169,7 @@ section.builder section.toolbox .toolbox-card h2 {font-size: 13px;}
 .tpd-content a {text-decoration: none !important; float: right;}
 .tpd-content h1 {margin-top: 0;}
 .tpd-content hr {margin-left: -15px; width: calc(100% + 28px);}
+.tpd-content textarea {width: 100%;}
 .tpd-size-huge .tpd-content, .tpd-size-huge .tpd-title {padding: 15px; font-size: 15px; line-height: 20px;}
 .tpd-size-huge .tpd-background { border-radius: 10px; }
 .tpd-size-huge .tpd-stem {width: 24px; height: 12px;margin-left: 8px; margin-top: 2px;}
