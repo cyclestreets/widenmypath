@@ -189,13 +189,14 @@ section.builder section.toolbox .toolbox-card h2 {font-size: 13px;}
 
 
 /* Schemes list */
-section.schemes-list .header {background-color: #4d0026; color: white; padding: 40px 70px 0;}
+section.schemes-list {padding-top: 20px; }
+section.schemes-list .header {background-color: #4d0026; color: white; padding: 20px 70px 0; margin: 20px 60px 0; border-radius: 10px; box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4),0 3px 3px 0 rgba(0,0,0,0.7);}
 section.schemes-list .header .flex {display: flex;}
 section.schemes-list .header .title-block {flex: 1;}
 section.schemes-list .header .title-block h1 {font-size: 40px; margin: 20px 40px 0 0;}
 section.schemes-list .header .title-block h2 {color: #f2bd54; margin: 10px 0;}
 section.schemes-list .header .description-block {flex: 2.5; margin-top: 10px; margin-right: 60px;}
-section.schemes-list .header hr {margin-left: -70px; margin-top: 20px; margin-bottom: 0; width: calc(100vw + 70px); }
+section.schemes-list .header hr {margin-left: -70px; margin-top: 20px; margin-bottom: 0; width: calc(100% + 140px); }
 section.schemes-list .header .header-controls {display: flex; padding: 25px 0;}
 section.schemes-list .header .header-controls .new-scheme {flex: 1; padding-top: 10px;}
 section.schemes-list .header .header-controls .new-scheme .new-scheme-button {width: 100px; padding: 7.5px 10px;}
