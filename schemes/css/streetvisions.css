@@ -231,7 +231,8 @@ section.schemes-list section.schemes ul li {text-decoration: none; list-style-ty
 
 
 /* Scheme add */
-section.scheme-add .header {background-color: #4d0026; color: white; padding: 40px 70px 0;}
+section.scheme-add {padding-top: 20px;}
+section.scheme-add .header {background-color: #4d0026; color: white; padding: 10px 70px 0; margin: 40px 100px 10px; border-radius: 10px; box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4),0 3px 3px 0 rgba(0,0,0,0.7);}
 section.scheme-add .header .flex {display: flex;}
 section.scheme-add .header .title-block {flex: 0.7;}
 section.scheme-add .header .title-block h1 {font-size: 40px; margin: 20px 40px 0 0;}
