@@ -239,10 +239,11 @@ section.scheme-add .header .title-block h2 {color: #f2bd54; margin: 10px 0 30px;
 section.scheme-add .header .description-block {flex: 1; margin-top: 25px; margin-right: 60px;}
 section.scheme-add .header .new-scheme {flex: 0.5; margin: 50px 20px 0 0; vertical-align: bottom;}
 section.scheme-add .header .new-scheme .new-scheme-button {width: 100px; display: block; margin: 15px auto; text-align: center;}
-section.scheme-add {background-image: url('/schemes/images/cyclepath.jpg'); background-repeat: no-repeat; background-size: cover;}
+section.scheme-add {background-image: url('/schemes/images/cyclepath.jpg'); background-repeat: no-repeat; background-size: cover; height: 100%;}
 section.scheme-add .form {display: flex; object-position: center; flex-direction: column; align-items: center; justify-content: center;}
 section.scheme-add .form .content {width: auto; padding: 10px 70px; border-radius: 10px;margin: 20px auto; backdrop-filter: blur(5px) saturate(100%) contrast(45%) brightness(150%); -webkit-backdrop-filter: blur(5px) saturate(100%) contrast(45%) brightness(150%);}
-section.scheme-add .form input:not('.submit'), section.scheme-add .form textarea {width: 100%;}
+section.scheme-add .form input, section.scheme-add .form textarea {width: 100%;}
+section.scheme-add .form input.button {width: 100px;}
 
 /* Segmented control */
 .ios-segmented-control {background: #E7E6E4; border-radius: 10px; margin: 10px; padding: 2px; border: none; outline: none; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
