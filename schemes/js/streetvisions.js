@@ -608,8 +608,13 @@ var streetvisions = (function ($) {
 			
 			// When clicking close on a popup box, save the details
 			$(document).on ('click', '.close-popup', function (event) {
-				var objectId = $(this).data('id');
-				var description = $(this).siblings('.description').first().val();
+				saveDetails (this);
+			});
+
+			// Helper to save details
+			var saveDetails = function (input) {
+				var objectId = $(input).data('id');
+				var description = $(input).siblings('.description').first().val();
 				
 				var markerKey = _leafletMarkers.findIndex ((marker) => (marker.id == objectId));
 				_leafletMarkers[markerKey].description = description;
@@ -617,7 +622,7 @@ var streetvisions = (function ($) {
 				Tipped.hide('.' + objectId);
 				
 				// If this was a first-time popup, delete it and add a normal one without the "New marker" title
-				if ($(this).data('new')){
+				if ($(input).data('new')){
 					Tipped.remove('.' + objectId);
 					var typeOfObject = streetvisions.convertCamelCaseToSentence(_leafletMarkers[markerKey].object.type);
 					var html = '';
@@ -627,6 +632,16 @@ var streetvisions = (function ($) {
 					html += `<textarea class="description" rows="4">${description}</textarea>`;
 					html += `<a class="button button-general close-popup" data-new="false" data-id="${objectId}" href="#">Save</a>`;
 					Tipped.create('.' + objectId, html, {skin: 'light', size: 'huge', offset: { x: 30, y: 0 }});
+				}
+			};
+
+			// Close popup when pressing enter key
+			document.addEventListener('keypress', function (e) {
+				if (e.key === 'Enter') {
+					if ($(e.target).hasClass('description')) {
+						var input = $(e.target).siblings('.button').first();
+						saveDetails(input);
+					}
 				}
 			});
 			
