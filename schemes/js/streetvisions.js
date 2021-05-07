@@ -566,6 +566,8 @@ var streetvisions = (function ($) {
 				});
 				
 				marker.on ('move', function (event) {
+					Tipped.hideAll();
+					
 					var bounds = _leafletMap.getBounds();
 					var northEast = [bounds._northEast.lat-0.001, bounds._northEast.lng-0.001];
 					var southWest = [bounds._southWest.lat-0.001, bounds._southWest.lng-0.001];
@@ -581,7 +583,7 @@ var streetvisions = (function ($) {
 				
 				// Show a modal to add description to this marker
 				// !TODO check if this is actually one of our toolbox elements being dropped?
-				var htmlContent = '<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> ' + _draggedToolObject.prettyName + '</h1>';
+				var htmlContent = '<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> ' + _draggedToolObject.prettyName + '</h1><i class="fa fa-times-circle exit-popup"></i>';
 				htmlContent += '<hr />';
 				htmlContent += '<p>Describe how this element improves the area:</p>';
 				htmlContent += '<input class="description" autofocus="autofocus" />';
@@ -602,7 +604,7 @@ var streetvisions = (function ($) {
 				var markerKey = _leafletMarkers.findIndex ((marker) => (marker.id == id));
 				_leafletMarkers[markerKey].latLng = [marker._latlng.lat, marker._latlng.lng];
 				
-				Tipped.create ('.' + id, htmlContent, {skin: 'light', hideOn: false, padding: '20px', size: 'huge', offset: { x: 30, y: 0 }});
+				Tipped.create ('.' + id, htmlContent, {skin: 'light', hideOthers: true, hideOn: false, padding: '20px', size: 'huge', offset: { x: 30, y: 0 }});
 				Tipped.show ('.' + id);
 			};
 			
@@ -626,23 +628,28 @@ var streetvisions = (function ($) {
 					Tipped.remove('.' + objectId);
 					var typeOfObject = streetvisions.convertCamelCaseToSentence(_leafletMarkers[markerKey].object.type);
 					var html = '';
-					html += `<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> ${typeOfObject}</h1>`;
+					html += `<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> ${typeOfObject}</h1><i class="fa fa-times-circle exit-popup"></i>`;
 					html += '<hr>';
 					html += '<p>To edit this marker, please write in the box below:</p>';
 					html += `<textarea class="description" rows="4">${description}</textarea>`;
 					html += `<a class="button button-general close-popup" data-new="false" data-id="${objectId}" href="#">Save</a>`;
-					Tipped.create('.' + objectId, html, {skin: 'light', size: 'huge', offset: { x: 30, y: 0 }});
+					Tipped.create('.' + objectId, html, {skin: 'light', size: 'huge', hideOthers: true, offset: { x: 30, y: 0 }});
 				}
 			};
 
 			// Close popup when pressing enter key
 			document.addEventListener('keypress', function (e) {
 				if (e.key === 'Enter') {
-					if ($(e.target).hasClass('description')) {
-						var input = $(e.target).siblings('.button').first();
-						saveDetails(input);
+					if ($(e.target).hasClass ('description')) {
+						var input = $(e.target).siblings ('.button').first();
+						saveDetails (input);
 					}
 				}
+			});
+
+			// Exit popup without saving
+			$(document).on('click', '.exit-popup', function () {
+				Tipped.hideAll();
 			});
 			
 			// When clicking on the title bar, make it editable
@@ -653,8 +660,8 @@ var streetvisions = (function ($) {
 			
 			// Select and edit content
 			var makeContentEditable = function (target) {
-				$(target).attr('contenteditable','true');
-				document.execCommand('selectAll',false,null);
+				$(target).attr ('contenteditable','true');
+				document.execCommand ('selectAll',false, null);
 			};
 
 			// Remove untitled status
