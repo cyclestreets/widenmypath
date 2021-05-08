@@ -652,10 +652,12 @@ var streetvisions = (function ($) {
 					Tipped.hideAll();
 					
 					var bounds = _leafletMap.getBounds();
-					var northEast = [bounds._northEast.lat-0.001, bounds._northEast.lng-0.001];
-					var southWest = [bounds._southWest.lat-0.001, bounds._southWest.lng-0.001];
+					var northEast = [bounds._northEast.lat-0.0015, bounds._northEast.lng-0.0015];
+					var southWest = [bounds._southWest.lat-0.0015, bounds._southWest.lng-0.0015];
 					if (!checkBounds (marker, northEast, southWest)) {
+						var offset = getOffset(marker._icon);
 						$(this._icon).fadeOut(150, function () {
+							poofEvent (offset.left, offset.top)
 							marker.deleteMarker();
 						});
 					}
@@ -699,10 +701,54 @@ var streetvisions = (function ($) {
 				_leafletMap.eachLayer((layer) => {
 					if (layer.hasOwnProperty('streetVisionsId') && layer.streetVisionsId == id) {
 						Tipped.hide('.' + id);
+						var offset = getOffset(layer._icon);
+						poofEvent (offset.left, offset.top)
 						layer.remove();
 					}
 				});
+
 			});
+
+			function getOffset(el) {
+				const rect = el.getBoundingClientRect();
+				return {
+					left: rect.left + window.scrollX,
+					top: rect.top + window.scrollY
+				};
+			}
+
+			// Poof of smoke eye-candy
+			function animatePoof() {
+				var bgTop = 0,
+					frame = 0,
+					frames = 6,
+					frameSize = 32,
+					frameRate = 80,
+					puff = $('#puff');
+				var animate = function () {
+					if (frame < frames) {
+						puff.css({
+							backgroundPosition: "0 " + bgTop + "px"
+						});
+						bgTop = bgTop - frameSize;
+						frame++;
+						setTimeout(animate, frameRate);
+					}
+				};
+				animate();
+				setTimeout("$('#puff').hide()", frames * frameRate);
+			}
+
+			var poofEvent = function (left, top) {	
+				var xOffset = -20;
+				var yOffset = -5;
+				$(this).fadeOut('fast');
+				$('#puff').css({
+					left: left - xOffset + 'px',
+					top: top - yOffset + 'px'
+				}).show();
+				animatePoof();
+			};
 			
 			// When clicking close on a popup box, save the details
 			$(document).on ('click', '.close-popup', function (event) {
