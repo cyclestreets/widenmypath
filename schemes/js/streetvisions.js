@@ -642,6 +642,12 @@ var streetvisions = (function ($) {
 					uniqueId: id
 				});
 				
+				marker.deleteMarker = function () {
+					_leafletMap.removeLayer (marker);
+				}
+				
+				marker.streetVisionsId = id;
+				
 				marker.on ('move', function (event) {
 					Tipped.hideAll();
 					
@@ -650,21 +656,21 @@ var streetvisions = (function ($) {
 					var southWest = [bounds._southWest.lat-0.001, bounds._southWest.lng-0.001];
 					if (!checkBounds (marker, northEast, southWest)) {
 						$(this._icon).fadeOut(150, function () {
-							_leafletMap.removeLayer (marker);
+							marker.deleteMarker();
 						});
 					}
 					
 					var markerKey = _leafletMarkers.findIndex ((marker) => (marker.id == id));
 					_leafletMarkers[markerKey].latLng = [marker._latlng.lat, marker._latlng.lng];
 				});
-				
+
 				// Show a modal to add description to this marker
 				// !TODO check if this is actually one of our toolbox elements being dropped?
 				var htmlContent = '<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> ' + _draggedToolObject.prettyName + '</h1><i class="fa fa-times-circle exit-popup"></i>';
 				htmlContent += '<hr />';
 				htmlContent += '<p>Describe how this element improves the area:</p>';
 				htmlContent += '<input class="description" autofocus="autofocus" />';
-				htmlContent += `<a class="button button-general close-popup" data-new="true" data-id="${id}" href="#">Save</a>`;
+				htmlContent += `<a data-id="${id}" class="button delete-button"><i class="fa fa-trash-alt"></i></a><a class="button button-general close-popup" data-new="true" data-id="${id}" href="#">Save</a>`;
 				
 				marker.addTo (_leafletMap);
 				
@@ -683,7 +689,20 @@ var streetvisions = (function ($) {
 				
 				Tipped.create ('.' + id, htmlContent, {skin: 'light', hideOthers: true, hideOn: false, padding: '20px', size: 'huge', offset: { x: 30, y: 0 }});
 				Tipped.show ('.' + id);
+
+				$('.tpd-content input').focus();
 			};
+
+			// Handler for marker deletion
+			$(document).on('click', '.button.delete-button', function (event) {
+				var id = $(this).data('id');
+				_leafletMap.eachLayer((layer) => {
+					if (layer.hasOwnProperty('streetVisionsId') && layer.streetVisionsId == id) {
+						Tipped.hide('.' + id);
+						layer.remove();
+					}
+				});
+			});
 			
 			// When clicking close on a popup box, save the details
 			$(document).on ('click', '.close-popup', function (event) {
@@ -707,9 +726,9 @@ var streetvisions = (function ($) {
 					var html = '';
 					html += `<h1><i class="fa fa-hard-hat" style="color: #f2bd54"></i> ${typeOfObject}</h1><i class="fa fa-times-circle exit-popup"></i>`;
 					html += '<hr>';
-					html += '<p>To edit this marker, please write in the box below:</p>';
+					html += '<p>Edit this marker in the box below:</p>';
 					html += `<textarea class="description" rows="4">${description}</textarea>`;
-					html += `<a class="button button-general close-popup" data-new="false" data-id="${objectId}" href="#">Save</a>`;
+					html += `<a data-id="${objectId}" class="button delete-button"><i class="fa fa-trash-alt"></i></a><a class="button button-general close-popup" data-new="false" data-id="${objectId}" href="#">Save</a>`;
 					Tipped.create('.' + objectId, html, {skin: 'light', size: 'huge', hideOthers: true, offset: { x: 30, y: 0 }});
 				}
 			};
