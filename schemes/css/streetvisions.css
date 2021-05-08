@@ -132,6 +132,10 @@ section.builder section.map .questions h4 {color: #eee; max-width: 90%; font-siz
 section.builder section.map p {color: #eee; display: inline-block;}
 section.builder section.map p.description {margin: 10px 0 10px 50px; color: #eee;}
 section.builder section.map #leaflet {height: 500px; width: calc(100% - 40px); margin: 0 20px; border-radius: 10px; z-index: 500; box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 3px 3px 0 rgba(0, 0, 0, 0.7);}
+section.builder section.map #leaflet .geocoder {position: absolute; z-index: 20001; height: 50px; top: 10px; right: 10px;}
+section.builder section.map #leaflet .geocoder button.geocoder-button {display: inline-block; position: absolute; right: 0; height: 40px; width: 40px; border-radius: 10px; border: none; font-size: 18px; background-color: white;}
+section.builder section.map #leaflet .geocoder button.geocoder-button:hover {background-color: #eee;}
+section.builder section.map #leaflet .geocoder input {position: absolute; right: 0; border-radius: 10px; padding: 10px; width: 20px; margin: 0; border: none; display: inline-block;}
 section.builder section.map #leaflet .leafletInstructions {position: relative; z-index: 2000; width: 100%; height: 100%; backdrop-filter: blur(2px) saturate(100%) contrast(45%) brightness(70%); -webkit-backdrop-filter: blur(2px) saturate(100%) contrast(45%) brightness(70%); display: flex; object-position: center; flex-direction: column; align-items: center; justify-content: center; transition: all 0.5s ease; padding: 20px; }
 section.builder section.map #leaflet .leafletInstructions.hidden {display: none;}
 section.builder section.map #leaflet .leafletInstructions .content {animation: pulse 4s ease infinite; display: block;}
@@ -143,6 +147,17 @@ section.builder section.map .leaflet-marker-icon.leafletFontAwesomeIcon .fa-stac
     50% {transform: scale(1.1, 1.1);}
     100% {transform: scale(1, 1);}
 }
+
+/* Geocoder autocomplete */
+.ui-autocomplete-loading + .loader {display: inline-block;}
+.ui-autocomplete {background-color: white; width: 200px; list-style: none; margin-left: 0; padding-left: 0; border-radius: 10px; z-index: 9999;}
+.ui-autocomplete li {list-style: none; margin-left: 0; padding-left: 0;}
+.ui-autocomplete li:first-child a {padding-top: 9px;}
+.ui-autocomplete li a {padding: 5px 15px 3px; display: block; color: #4d0026;}
+.ui-autocomplete li a span {color: gray; font-size: 0.81em;}
+.ui-autocomplete li a.ui-state-active {cursor: pointer; background-color: #fbf6f8; border-radius: 10px;}
+.ui-helper-hidden-accessible {display: none;}
+
 section.builder section.toolbox h2 {display: inline-block; margin: 35px 0 10px; color: #4d0026; font-size: 35px;}
 section.builder section.toolbox h5 {cursor: pointer;}
 section.builder section.toolbox>p {padding-right: 25px;}

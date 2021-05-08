@@ -12,6 +12,12 @@ var streetvisions = (function ($) {
 		// CycleStreets API; obtain a key at https://www.cyclestreets.net/api/apply/
 		apiBaseUrl: 'https://api.cyclestreets.net',
 		apiKey: 'YOUR_API_KEY',
+
+		// Geocoder API URL; re-use of settings values represented as placeholders {%apiBaseUrl}, {%apiKey}, {%autocompleteBbox}, are supported
+		geocoderApiUrl: '{%apiBaseUrl}/v2/geocoder?key={%apiKey}&bounded=1&bbox={%autocompleteBbox}',
+		
+		// BBOX for autocomplete results biasing
+		autocompleteBbox: '-6.6577,49.9370,1.7797,57.6924',
 		
 		// Initial map location
 		defaultLatitude: false,
@@ -474,12 +480,80 @@ var streetvisions = (function ($) {
 			}).addTo(_leafletMap);
 		},
 
+		// Helper function to implement settings placeholder substitution in a string
+		settingsPlaceholderSubstitution: function (string, supportedPlaceholders)
+		{
+			// Substitute each placeholder
+			var placeholder;
+			$.each(supportedPlaceholders, function (index, field) {
+				placeholder = '{%' + field + '}';
+				string = string.replace(placeholder, _settings[field]);
+			});
+			
+			// Return the modified string
+			return string;
+		},
+
 	
 		// Builder options
 		initBuilder: function ()
 		{
 			// Start Leaflet
 			streetvisions.initLeaflet('leaflet');
+
+			// Add geocoder
+			var geocoder = function ()
+			{
+				// Geocoder URL; re-use of settings values is supported, represented as placeholders {%apiBaseUrl}, {%apiKey}, {%autocompleteBbox}
+				var geocoderApiUrl = streetvisions.settingsPlaceholderSubstitution (_settings.geocoderApiUrl, ['apiBaseUrl', 'apiKey', 'autocompleteBbox']);
+				
+				// Attach the autocomplete library behaviour to the location control
+				autocomplete.addTo ('.geocoder input', {
+					sourceUrl: geocoderApiUrl,
+					select: function (event, ui) {
+						var bbox = ui.item.feature.properties.bbox.split(',');	// W,S,E,N
+						_leafletMap.fitBounds([
+							[bbox[1], bbox[0]],
+							[bbox[3], bbox[2]]
+						]);						
+						
+						closeSearchBox();
+
+						event.preventDefault();
+					}
+				});
+			};
+			geocoder ();
+
+			// Enable search box
+			$('#browse-search-box').on('click', function () {
+				$(this).focus();
+			});
+
+			$('.geocoder-button').on('click', function () {
+				openSearchBox();
+			});
+
+			$('.geocoder-button').on('mouseover', function () {
+				openSearchBox();
+			});
+
+			$('.geocoder-button').on('mouseleave', function () {
+				setTimeout(function () {
+					if ($('.geocoder input').val() == '') {
+						closeSearchBox();
+					}
+				}, 1500);
+			});
+
+			var closeSearchBox = function () {
+				$('.geocoder input').animate({'width': '20px'});
+			};
+
+			var openSearchBox = function () {
+				$('.geocoder input').animate({'width': '300px'});
+				$('#browse-search-box').focus();
+			};
 
 			// Allow objects to be draggable onto the map
 			$('.toolbox .group-contents ul li').draggable ({

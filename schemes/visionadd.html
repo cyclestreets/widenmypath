@@ -64,6 +64,8 @@
 	<script type="text/javascript" src="/schemes/js/lib/tipped/dist/js/tipped.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/schemes/js/lib/tipped/dist/css/tipped.css"/>
 	
+	<script type="text/javascript" src="/schemes/js/lib/geocoder.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="/schemes/css/streetvisions.css" />
 	<script src="./js/.config.js"></script>
 	<script src="/schemes/js/streetvisions.js"></script>
@@ -94,6 +96,10 @@
 				</div>
 			</div>
 			<div id="leaflet">
+				<div class="geocoder">
+					<input id="browse-search-box" type="text" name="location" autocomplete="off" placeholder="Move map to place or postcode" tabindex="1" spellcheck="false" autocorrect="off" class="ui-autocomplete-input" />
+					<button class="geocoder-button"><i class="fa fa-search"></i></button>
+				</div>
 				<div class="leafletInstructions">
 					<div class="content">
 						<h1><i class="fa fa-hammer"></i> Widen My Path</h1>
@@ -102,7 +108,7 @@
 				</div>
 			</div>
 			<div class="questions">
-
+				
 				<h2><i class="fa fa-question-circle"></i> Q&A</h2>
 				<div class="question">
 					<h4>How does your design ensure that people with disabilities are not disadvantaged?</h4>
