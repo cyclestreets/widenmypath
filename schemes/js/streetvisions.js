@@ -545,16 +545,19 @@ var streetvisions = (function ($) {
 					}
 				}, 1500);
 			});
-
+			
 			var closeSearchBox = function () {
 				$('.geocoder input').animate({'width': '20px'});
 			};
-
+			
 			var openSearchBox = function () {
 				$('.geocoder input').animate({'width': '300px'});
 				$('#browse-search-box').focus();
 			};
-
+			setTimeout(function () {
+				openSearchBox();
+			}, 1000);
+			
 			// Allow objects to be draggable onto the map
 			$('.toolbox .group-contents ul li').draggable ({
 				revert: 'invalid',
