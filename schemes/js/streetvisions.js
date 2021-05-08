@@ -512,10 +512,13 @@ var streetvisions = (function ($) {
 					sourceUrl: geocoderApiUrl,
 					select: function (event, ui) {
 						var bbox = ui.item.feature.properties.bbox.split(',');	// W,S,E,N
-						_leafletMap.fitBounds([
+						_leafletMap.flyToBounds([
 							[bbox[1], bbox[0]],
 							[bbox[3], bbox[2]]
-						]);						
+						],{
+							duration: 2,
+							maxZoom: 14
+						});						
 						
 						closeSearchBox();
 
@@ -619,7 +622,7 @@ var streetvisions = (function ($) {
 			};
 
 			// Check the bounds of a leaflet marker, return bool in/out box
-			const checkBounds = function (marker, northEast, southWest) {
+			var checkBounds = function (marker, northEast, southWest) {
     			var bounds = new L.LatLngBounds(
 					new L.LatLng(northEast[0], northEast[1]),
 					new L.LatLng(southWest[0], southWest[1])
@@ -627,8 +630,6 @@ var streetvisions = (function ($) {
 				var markerPosition = marker.getLatLng();
 				return bounds.contains(new L.LatLng(markerPosition.lat, markerPosition.lng));
 			};
-
-			$('.deleteTarget').hide();
 			
 			// On drop on map, create an icon
 			// Also, create the drag handler for the marker
@@ -636,6 +637,7 @@ var streetvisions = (function ($) {
 			mapdiv.ondrop = function (e) {
 				e.preventDefault ();
 				
+				// Create a new Leaflet Marker
 				var coordinates = _leafletMap.mouseEventToLatLng (e);
 				var id = Date.now().toString();
 				var marker = L.marker (coordinates, {
@@ -644,33 +646,50 @@ var streetvisions = (function ($) {
 					uniqueId: id
 				});
 				
+				// Handler for Marker deletion
 				marker.deleteMarker = function () {
 					_leafletMap.removeLayer (marker);
 				}
 				
+				// Handler for Marker move
 				marker.streetVisionsId = id;
-				
 				marker.on ('move', function (event) {
+					// Once we start moving a marker, hide all popups
 					Tipped.hideAll();
 
+					// Show the delete target
 					$('.deleteTarget').slideDown('slow');
-					
+
+					// If we are dragging the icon to near the border of the map, delete it
+					// Get the map bounds
 					var bounds = _leafletMap.getBounds();
 					var northEast = [bounds._northEast.lat-0.001, bounds._northEast.lng-0.001];
 					var southWest = [bounds._southWest.lat+0.001, bounds._southWest.lng+0.001];
+					
+					// Check if the marker is outside those bounds
 					if (!checkBounds (marker, northEast, southWest)) {
+						// Get the offset of the icon, to send to the puff delete animation
 						var offset = getOffset(marker._icon);
+						
+						// Fade out the icon
 						$(this._icon).fadeOut(150, function () {
+							// Hide delete target
 							$('.deleteTarget').slideUp();
+							
+							// Display poof animation
 							poofEvent (offset.left, offset.top)
+							
+							// Delete the marker from Leaflet
 							marker.deleteMarker();
 						});
 					}
 					
+					// If we are just dragging it around, update the position of the marker
 					var markerKey = _leafletMarkers.findIndex ((marker) => (marker.id == id));
 					_leafletMarkers[markerKey].latLng = [marker._latlng.lat, marker._latlng.lng];
 				});
 
+				// On Marker move end, hide the delete target
 				marker.on ('moveend', function () {
 					$('.deleteTarget').slideUp();
 				})
@@ -683,12 +702,13 @@ var streetvisions = (function ($) {
 				htmlContent += '<input class="description" autofocus="autofocus" />';
 				htmlContent += `<a data-id="${id}" class="button delete-button"><i class="fa fa-trash-alt"></i></a><a class="button button-general close-popup" data-new="true" data-id="${id}" href="#">Save</a>`;
 				
+				// Add the Marker to Leaflet
 				marker.addTo (_leafletMap);
 				
 				// Add custom class to this marker
 				$(marker._icon).addClass(id);
 				
-				// Store this marker
+				// Store this marker in a global object
 				_leafletMarkers.push({
 					object: _draggedToolObject,
 					'id': id
@@ -698,9 +718,11 @@ var streetvisions = (function ($) {
 				var markerKey = _leafletMarkers.findIndex ((marker) => (marker.id == id));
 				_leafletMarkers[markerKey].latLng = [marker._latlng.lat, marker._latlng.lng];
 				
+				// Create and display a popup
 				Tipped.create ('.' + id, htmlContent, {skin: 'light', hideOthers: true, hideOn: false, padding: '20px', size: 'huge', offset: { x: 30, y: 0 }});
 				Tipped.show ('.' + id);
 
+				// Give focus to the input box
 				$('.tpd-content input').focus();
 			};
 
@@ -718,15 +740,19 @@ var streetvisions = (function ($) {
 
 			});
 
-			function getOffset(el) {
-				const rect = el.getBoundingClientRect();
+			// Hide deletion target on load
+			$('.deleteTarget').hide();
+			
+			// Get the offset of an element
+			function getOffset(element) {
+				const rect = element.getBoundingClientRect();
 				return {
 					left: rect.left + window.scrollX,
 					top: rect.top + window.scrollY
 				};
 			}
 
-			// Poof of smoke eye-candy
+			// Poof of smoke eye-candy animation
 			function animatePoof() {
 				var bgTop = 0,
 					frame = 0,
@@ -748,6 +774,7 @@ var streetvisions = (function ($) {
 				setTimeout("$('#puff').hide()", frames * frameRate);
 			}
 
+			// Controller for the poof event
 			var poofEvent = function (left, top) {	
 				var xOffset = -20;
 				var yOffset = -5;
@@ -764,7 +791,7 @@ var streetvisions = (function ($) {
 				saveDetails (this);
 			});
 
-			// Helper to save details
+			// Helper to save details of a marker
 			var saveDetails = function (input) {
 				var objectId = $(input).data('id');
 				var description = $(input).siblings('.description').first().val();

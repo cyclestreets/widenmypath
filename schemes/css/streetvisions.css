@@ -142,7 +142,7 @@ section.builder section.map #leaflet .leafletInstructions .content {animation: p
 section.builder section.map #leaflet .leafletInstructions h1 {color: #f2bd54; margin-bottom: 15px; }
 section.builder section.map #leaflet .leafletInstructions p {display: block; margin: 0 auto 10px; text-align: left; color: #eee}
 
-section.builder section.map #leaflet .deleteTarget {position: relative; z-index: 2000; width: 100%; height: 100%; display: flex; object-position: center; flex-direction: column; align-items: center; justify-content: end; transition: all 0.5s ease; padding: 20px; background: rgb(255,0,0); background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(255,255,255,0) 32%);}
+section.builder section.map #leaflet .deleteTarget {position: relative; z-index: 2000; width: 100%; height: 100%; display: flex; object-position: center; flex-direction: column; align-items: center; justify-content: end; transition: all 0.5s ease; padding: 20px; background: rgb(255, 255, 255); background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(255,255,255,0) 32%);}
 
 section.builder section.map #leaflet .deleteTarget .content {animation: pulse 4s ease infinite; display: block; position: absolute; bottom: 55px;}
 section.builder section.map #leaflet .deleteTarget .content:hover {transform: scale(1.1);}
