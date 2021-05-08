@@ -135,11 +135,18 @@ section.builder section.map #leaflet .geocoder {position: absolute; z-index: 200
 section.builder section.map #leaflet .geocoder button.geocoder-button {display: inline-block; position: absolute; right: 0; height: 40px; width: 40px; border-radius: 10px; border: none; font-size: 18px; background-color: white;}
 section.builder section.map #leaflet .geocoder button.geocoder-button:hover {background-color: #eee;}
 section.builder section.map #leaflet .geocoder input {position: absolute; right: 0; border-radius: 10px; padding: 10px; width: 20px; margin: 0; border: none; display: inline-block;}
+
 section.builder section.map #leaflet .leafletInstructions {position: relative; z-index: 2000; width: 100%; height: 100%; backdrop-filter: blur(2px) saturate(100%) contrast(45%) brightness(70%); -webkit-backdrop-filter: blur(2px) saturate(100%) contrast(45%) brightness(70%); display: flex; object-position: center; flex-direction: column; align-items: center; justify-content: center; transition: all 0.5s ease; padding: 20px; }
 section.builder section.map #leaflet .leafletInstructions.hidden {display: none;}
 section.builder section.map #leaflet .leafletInstructions .content {animation: pulse 4s ease infinite; display: block;}
 section.builder section.map #leaflet .leafletInstructions h1 {color: #f2bd54; margin-bottom: 15px; }
 section.builder section.map #leaflet .leafletInstructions p {display: block; margin: 0 auto 10px; text-align: left; color: #eee}
+
+section.builder section.map #leaflet .deleteTarget {position: relative; z-index: 2000; width: 100%; height: 100%; display: flex; object-position: center; flex-direction: column; align-items: center; justify-content: end; transition: all 0.5s ease; padding: 20px; background: rgb(255,0,0); background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(255,255,255,0) 32%);}
+
+section.builder section.map #leaflet .deleteTarget .content {animation: pulse 4s ease infinite; display: block; position: absolute; bottom: 55px;}
+section.builder section.map #leaflet .deleteTarget .content:hover {transform: scale(1.1);}
+
 section.builder section.map .leaflet-marker-icon.leafletFontAwesomeIcon .fa-stack-1x {top: -9px; transform: scale(0.9);}
 @keyframes pulse {
     0% {transform: scale(1, 1);}

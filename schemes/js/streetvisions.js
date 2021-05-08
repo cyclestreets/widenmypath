@@ -627,6 +627,8 @@ var streetvisions = (function ($) {
 				var markerPosition = marker.getLatLng();
 				return bounds.contains(new L.LatLng(markerPosition.lat, markerPosition.lng));
 			};
+
+			$('.deleteTarget').hide();
 			
 			// On drop on map, create an icon
 			// Also, create the drag handler for the marker
@@ -650,13 +652,16 @@ var streetvisions = (function ($) {
 				
 				marker.on ('move', function (event) {
 					Tipped.hideAll();
+
+					$('.deleteTarget').slideDown('slow');
 					
 					var bounds = _leafletMap.getBounds();
-					var northEast = [bounds._northEast.lat-0.0015, bounds._northEast.lng-0.0015];
-					var southWest = [bounds._southWest.lat-0.0015, bounds._southWest.lng-0.0015];
+					var northEast = [bounds._northEast.lat-0.001, bounds._northEast.lng-0.001];
+					var southWest = [bounds._southWest.lat+0.001, bounds._southWest.lng+0.001];
 					if (!checkBounds (marker, northEast, southWest)) {
 						var offset = getOffset(marker._icon);
 						$(this._icon).fadeOut(150, function () {
+							$('.deleteTarget').slideUp();
 							poofEvent (offset.left, offset.top)
 							marker.deleteMarker();
 						});
@@ -665,6 +670,10 @@ var streetvisions = (function ($) {
 					var markerKey = _leafletMarkers.findIndex ((marker) => (marker.id == id));
 					_leafletMarkers[markerKey].latLng = [marker._latlng.lat, marker._latlng.lng];
 				});
+
+				marker.on ('moveend', function () {
+					$('.deleteTarget').slideUp();
+				})
 
 				// Show a modal to add description to this marker
 				// !TODO check if this is actually one of our toolbox elements being dropped?
