@@ -146,6 +146,7 @@ section.builder section.map #leaflet .deleteTarget {position: relative; z-index:
 
 section.builder section.map #leaflet .deleteTarget .content {animation: pulse 4s ease infinite; display: block; position: absolute; bottom: 55px;}
 section.builder section.map #leaflet .deleteTarget .content:hover {transform: scale(1.1);}
+section.builder section.map #leaflet .deleteTarget .content i {border: 2px solid black; padding: 10px; border-radius: 10px;}
 
 section.builder section.map .leaflet-marker-icon.leafletFontAwesomeIcon .fa-stack-1x {top: -9px; transform: scale(0.9);}
 @keyframes pulse {
