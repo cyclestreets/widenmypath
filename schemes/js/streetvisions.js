@@ -742,6 +742,12 @@ var streetvisions = (function ($) {
 
 			// Hide deletion target on load
 			$('.deleteTarget').hide();
+
+			
+			// On map move, hide popups
+			_leafletMap.on('movestart', function(e) {
+				Tipped.hideAll();
+			});
 			
 			// Get the offset of an element
 			function getOffset(element) {
