@@ -658,7 +658,7 @@ var streetvisions = (function ($) {
 					Tipped.hideAll();
 
 					// Show the delete target
-					$('.deleteTarget').slideDown('slow');
+					$('.deleteTarget').show();
 
 					// If we are dragging the icon to near the border of the map, delete it
 					// Get the map bounds
@@ -674,7 +674,7 @@ var streetvisions = (function ($) {
 						// Fade out the icon
 						$(this._icon).fadeOut(150, function () {
 							// Hide delete target
-							$('.deleteTarget').slideUp();
+							$('.deleteTarget').hide();
 							
 							// Display poof animation
 							poofEvent (offset.left, offset.top)
@@ -691,7 +691,7 @@ var streetvisions = (function ($) {
 
 				// On Marker move end, hide the delete target
 				marker.on ('moveend', function () {
-					$('.deleteTarget').slideUp();
+					$('.deleteTarget').hide();
 				})
 
 				// Show a modal to add description to this marker
