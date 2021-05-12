@@ -38,120 +38,133 @@ var streetvisions = (function ($) {
 	var _leafletMap; // Class property leaflet map
 	var _leafletMarkers = []; // User-added map markers
 	
-	// Definitions
+	// Definitions	
 	var _toolboxObjects = [
 		{
 			type: 'cycleParking', 
 			description: 'A parking area for bicycles.',
 			groups: 'cycling',
 			icon: 'fa-parking',
-			colour: '#3BA735'
+			colour: '#069BED'
 		},
 		{
 			type: 'seating', 
 			description: 'Public outdoor seating, like a bench or seat.',
 			groups: 'walking',
-			icon: 'fa-chair'
+			icon: 'fa-chair',
+			colour: '#1A8D8A'
 		},
 		{
 			type: 'parklet', 
 			description: 'A parklet is a sidewalk extension that provides more space and amenities for people using the street. Usually parklets are installed on parking lanes and use several parking spaces. Parklets typically extend out from the sidewalk at the level of the sidewalk to the width of the adjacent parking space.',
 			groups: 'walking',
-			icon: 'fa-tree'
+			icon: 'fa-tshirt',
+			colour: '#27824C'
 		},
 		{
 			type: 'cycleLane', 
 			description: 'A lane for bicycles.',
 			groups: 'cycling',
-			icon: 'fa-road'
+			icon: 'fa-road',
+			colour: '#433C96'
 		},
 		{
 			type: 'pointClosure', 
 			description: 'Stop through-traffic to open up the space for cycling and walking',
 			groups: ['driving', 'cycling'],
-			icon: 'fa-hand-paper'
+			icon: 'fa-hand-paper',
+			colour: '#D52506'
 		},
 		{
 			type: 'carParking', 
 			description: 'Parking space or spaces for cars.',
 			groups: 'driving',
-			icon: 'fa-parking'
+			icon: 'fa-parking',
+			colour: '#3D6B94'
 		},
 		{
 			type: 'deliveryBay', 
 			description: 'A delivery bay is a space where delivery vehicles can temporarily park while engaging in deliveries, without blocking the pavement.',
 			groups: ['driving', 'walking'],
-			icon: 'fa-parking',
-			colour: '#0D6FBE'
+			icon: 'fa-truck',
+			colour: '#42268C'
 		},
 		{
 			type: 'chargingPoint', 
 			description: 'A charging station for vehicles.',
 			groups: ['cycling', 'driving'],
-			icon: 'fa-truck-loading',
-			colour: '#4D3BAB'
+			icon: 'fa-plug',
+			colour: '#A745A5'
 		},
 		{
 			type: 'trafficCalming', 
 			description: 'A device like a road hump, that causes traffic to slow.',
 			groups: 'driving',
-			icon: 'fa-traffic-light'
+			icon: 'fa-traffic-light',
+			colour: '#B13110'
 		},
 		{
 			type: 'plantingArea', 
 			description: 'Small area for greenery',
 			groups: ['walking', 'nature'],
-			icon: 'fa-seedling'
+			icon: 'fa-seedling',
+			colour: '#83AD1F'
 		},
 		{
 			type: 'tree',
 			description: '',
 			groups: ['walking', 'nature'],
 			icon: 'fa-tree',
-			colour: '#2B8732'
+			colour: '#82CA13'
 		},
 		{
 			type: 'pavementImprovement', 
 			description: '',
 			groups: 'pedestrians',
-			icon: 'fa-walking'
+			icon: 'fa-walking',
+			colour: '#1AA8D0'
 		},
 		{
 			type: 'crossing', 
 			description: 'Pedestrian crossing',
 			groups: 'pedestrians',
-			icon: 'fa-traffic-light'
+			icon: 'fa-traffic-light',
+			colour: '#1650A7'
 		},
 		{
 			type: 'playArea', 
 			description: '',
 			groups: 'pedestrians',
-			icon: 'fa-snowman'
+			icon: 'fa-snowman',
+			colour: '#1CBF22'
 		},
 		{
 			type:'cafeSpace', 
 			description: 'External seating and tables for nearby café/restaurant.',
 			groups: 'walking',
-			icon: 'fa-coffee'
+			icon: 'fa-coffee',
+			colour: '#0B986B'
 		},
 		{
 			type: 'parkingRestriction', 
 			description: '',
 			groups: 'driving',
-			icon: 'fa-parking'
+			icon: 'fa-parking',
+			colour: '#DB9020'
 		},
 		{
 			type: 'bollard', 
 			description: '',
 			groups: ['driving', 'cycling'],
 			icon: 'fa-car-crash',
-			colour: '#862EB2'
+			colour: '#B13110'
 		},
 		{
 			type: 'disabledParking', 
 			description: 'A specially reserved parking space.',
 			groups: 'driving',
-			icon: 'fa-parking'
+			icon: 'fa-parking',
+			colour: '#2563C5'
 		}
 	];
 
@@ -325,7 +338,7 @@ var streetvisions = (function ($) {
 					
 					// Add this tool to the existing header
 					var toolboxGroupUl = $('.toolbox .' + group + ' ul');
-					var style = getColourCSS (i, _toolboxObjects.length);
+					var style = (tool.hasOwnProperty('colour') ? tool.colour : getColourCSS (i, _toolboxObjects.length))
 					$(toolboxGroupUl).append (
 						`<li data-tool="${tool.type}" style="background-color: ${style}; color: white;"><i class="fa ${tool.icon}"></i><p>${tool.prettyName}</p></li>`
 					);
