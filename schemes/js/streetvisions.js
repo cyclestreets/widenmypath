@@ -10,11 +10,11 @@ var streetvisions = (function ($) {
 	var _settings = {
 		
 		// CycleStreets API; obtain a key at https://www.cyclestreets.net/api/apply/
-		apiBaseUrl: 'https://api.cyclestreets.net',
-		apiKey: 'YOUR_API_KEY',
+		cyclestreetsApiBaseUrl: 'https://api.cyclestreets.net',
+		cyclestreetsApiKey: 'YOUR_API_KEY',
 
-		// Geocoder API URL; re-use of settings values represented as placeholders {%apiBaseUrl}, {%apiKey}, {%autocompleteBbox}, are supported
-		geocoderApiUrl: '{%apiBaseUrl}/v2/geocoder?key={%apiKey}&bounded=1&bbox={%autocompleteBbox}',
+		// Geocoder API URL; re-use of settings values represented as placeholders {%cyclestreetsApiBaseUrl}, {%cyclestreetsApiKey}, {%autocompleteBbox}, are supported
+		geocoderApiUrl: '{%cyclestreetsApiBaseUrl}/v2/geocoder?key={%cyclestreetsApiKey}&bounded=1&bbox={%autocompleteBbox}',
 		
 		// BBOX for autocomplete results biasing
 		autocompleteBbox: '-6.6577,49.9370,1.7797,57.6924',
@@ -35,10 +35,10 @@ var streetvisions = (function ($) {
 	var _initialToolPosition = null; // Store the initial dragged position of a tool
 	var _draggedTool = null; // Div of the tool being dragged
 	var _draggedToolObject = null; // Object containing information about the tool being dragged
-	var _leafletMap; // Class property leaflet map
+	var _map; // Class property Leaflet map
 	var _leafletMarkers = []; // User-added map markers
 	
-	// Definitions	
+	// Definitions
 	var _toolboxObjects = [
 		{
 			type: 'cycleParking', 
@@ -197,9 +197,14 @@ var streetvisions = (function ($) {
 		{
 			// Segmented controls
 			streetvisions.segmentedControl ();
-
+			
 			// Search
 			streetvisions.initSearch ();
+			
+			// Initialise map for each scheme
+			$.each (_settings.geojsonData, function (mapId, boundary) {
+				streetvisions.leafletMap (mapId, boundary);
+			});
 		},
 		
 		
@@ -212,7 +217,7 @@ var streetvisions = (function ($) {
 			streetvisions.initDiscussion ();
 
 			// Map
-			streetvisions.initLeaflet ('leaflet');
+			streetvisions.leafletMap ('leaflet', _settings.geojsonData);
 		},
 
 
@@ -221,8 +226,13 @@ var streetvisions = (function ($) {
 			// Segmented controls
 			streetvisions.segmentedControl ();
 			
-			// Add a map with the specified data
-			streetvisions.leafletMap (_settings.geojsonData);
+			// Add a map into the specified ID with the specified data
+			streetvisions.leafletMap ('map', _settings.geojsonData.scheme);
+			
+			// Initialise map for each scheme
+			$.each (_settings.geojsonData.visions, function (mapId, boundary) {
+				streetvisions.leafletMap (mapId, boundary);
+			});
 		},
 		
 		
@@ -241,30 +251,33 @@ var streetvisions = (function ($) {
 			
 			// Toolbox drawers
 			streetvisions.toolbox ();
-
+			
+			// Start Leaflet
+			streetvisions.leafletMap ('leaflet', _settings.geojsonData);
+			
 			// Builder options
 			streetvisions.initBuilder ();
 		},
 		
 		
 		// Leaflet map
-		leafletMap: function (geojsonData)
+		leafletMap: function (divId, geojsonData)
 		{
 			// Create a map
-			var map = L.map ('leaflet').setView ([_settings.defaultLatitude, _settings.defaultLongitude], _settings.defaultZoom);
+			_map = L.map (divId).setView ([_settings.defaultLatitude, _settings.defaultLongitude], _settings.defaultZoom);
 			
 			// Add tile background
 			L.tileLayer (_settings.tileUrl, {
 				attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-			}).addTo (map);
-
+			}).addTo (_map);
+			
 			// Add a layer group to manage dropped tools
-			L.layerGroup().addTo(map);
+			L.layerGroup().addTo (_map);
 			
 			// Add the GeoJSON to the map
 			if (geojsonData) {
-				var feature = L.geoJSON (geojsonData).addTo (map);
-				map.fitBounds(feature.getBounds());
+				var feature = L.geoJSON (geojsonData).addTo (_map);
+				_map.fitBounds (feature.getBounds());
 			}
 		},
 		
@@ -480,19 +493,6 @@ var streetvisions = (function ($) {
 		},
 
 
-		// Initiate a Leaflet map
-		initLeaflet: function (element)
-		{
-			_leafletMap = L.map(element).setView([51.505, -0.09], 16);
-			L.tileLayer (_settings.tileUrl, {
-				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-				maxZoom: 18,
-				id: 'mapbox/streets-v11',
-				tileSize: 512,
-				zoomOffset: -1
-			}).addTo(_leafletMap);
-		},
-
 		// Helper function to implement settings placeholder substitution in a string
 		settingsPlaceholderSubstitution: function (string, supportedPlaceholders)
 		{
@@ -511,21 +511,18 @@ var streetvisions = (function ($) {
 		// Builder options
 		initBuilder: function ()
 		{
-			// Start Leaflet
-			streetvisions.initLeaflet('leaflet');
-
 			// Add geocoder
 			var geocoder = function ()
 			{
-				// Geocoder URL; re-use of settings values is supported, represented as placeholders {%apiBaseUrl}, {%apiKey}, {%autocompleteBbox}
-				var geocoderApiUrl = streetvisions.settingsPlaceholderSubstitution (_settings.geocoderApiUrl, ['apiBaseUrl', 'apiKey', 'autocompleteBbox']);
+				// Geocoder URL; re-use of settings values is supported, represented as placeholders {%cyclestreetsApiBaseUrl}, {%cyclestreetsApiKey}, {%autocompleteBbox}
+				var geocoderApiUrl = streetvisions.settingsPlaceholderSubstitution (_settings.geocoderApiUrl, ['cyclestreetsApiBaseUrl', 'cyclestreetsApiKey', 'autocompleteBbox']);
 				
 				// Attach the autocomplete library behaviour to the location control
 				autocomplete.addTo ('.geocoder input', {
 					sourceUrl: geocoderApiUrl,
 					select: function (event, ui) {
 						var bbox = ui.item.feature.properties.bbox.split(',');	// W,S,E,N
-						_leafletMap.flyToBounds([
+						_map.flyToBounds([
 							[bbox[1], bbox[0]],
 							[bbox[3], bbox[2]]
 						],{
@@ -574,6 +571,11 @@ var streetvisions = (function ($) {
 				openSearchBox();
 			}, 1000);
 			
+			// Set grabbing cursor as soon as the object has been clicked on
+			$('.toolbox .group-contents ul li').mousedown (function (e) {
+				$(this).css ('cursor', 'grabbing');
+			});
+			
 			// Allow objects to be draggable onto the map
 			$('.toolbox .group-contents ul li').draggable ({
 				revert: 'invalid',
@@ -591,6 +593,9 @@ var streetvisions = (function ($) {
 					_draggedToolObject = _toolboxObjects.find ((o) => (o.type === tool));
 					_draggedToolObject.colour = $(this).css('background-color');
 					
+					// Set the cursor
+					$(this).css ('cursor', 'grabbing');
+					
 					// Add dragging style
 					$(this).animate ({'opacity': 0.5});
 					
@@ -600,6 +605,9 @@ var streetvisions = (function ($) {
 				stop: function () {
 					// Add dragging style
 					$(this).animate ({'opacity': 1});
+					
+					// Reset the cursor
+					$(this).css ('cursor', 'pointer');
 				}
 			});
 
@@ -654,7 +662,7 @@ var streetvisions = (function ($) {
 				e.preventDefault ();
 				
 				// Create a new Leaflet Marker
-				var coordinates = _leafletMap.mouseEventToLatLng (e);
+				var coordinates = _map.mouseEventToLatLng (e);
 				var id = Date.now().toString();
 				var marker = L.marker (coordinates, {
 					icon: fontAwesomeIcon (),
@@ -664,7 +672,7 @@ var streetvisions = (function ($) {
 				
 				// Handler for Marker deletion
 				marker.deleteMarker = function () {
-					_leafletMap.removeLayer (marker);
+					_map.removeLayer (marker);
 				}
 				
 				// Handler for Marker move
@@ -678,7 +686,7 @@ var streetvisions = (function ($) {
 
 					// If we are dragging the icon to near the border of the map, delete it
 					// Get the map bounds
-					var bounds = _leafletMap.getBounds();
+					var bounds = _map.getBounds();
 					var northEast = [bounds._northEast.lat-0.001, bounds._northEast.lng-0.001];
 					var southWest = [bounds._southWest.lat+0.001, bounds._southWest.lng+0.001];
 					
@@ -718,8 +726,8 @@ var streetvisions = (function ($) {
 				htmlContent += '<input class="description" autofocus="autofocus" />';
 				htmlContent += `<a data-id="${id}" class="button delete-button"><i class="fa fa-trash-alt"></i></a><a class="button button-general close-popup" data-new="true" data-id="${id}" href="#">Save</a>`;
 				
-				// Add the Marker to Leaflet
-				marker.addTo (_leafletMap);
+				// Add the marker to the map
+				marker.addTo (_map);
 				
 				// Add custom class to this marker
 				$(marker._icon).addClass(id);
@@ -745,7 +753,7 @@ var streetvisions = (function ($) {
 			// Handler for marker deletion
 			$(document).on('click', '.button.delete-button', function (event) {
 				var id = $(this).data('id');
-				_leafletMap.eachLayer((layer) => {
+				_map.eachLayer((layer) => {
 					if (layer.hasOwnProperty('streetVisionsId') && layer.streetVisionsId == id) {
 						Tipped.hide('.' + id);
 						var offset = getOffset(layer._icon);
@@ -764,10 +772,9 @@ var streetvisions = (function ($) {
 
 			// Hide deletion target on load
 			$('.deleteTarget').hide();
-
 			
 			// On map move, hide popups
-			_leafletMap.on('movestart', function(e) {
+			_map.on('movestart', function(e) {
 				Tipped.hideAll();
 			});
 			
