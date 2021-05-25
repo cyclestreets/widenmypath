@@ -293,14 +293,15 @@ var streetvisions = (function ($) {
 			
 			// Add tile background
 			L.tileLayer (_settings.tileUrl, {
-				attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+				attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
+				id: 'mapbox/streets-v11'
 			}).addTo (_map);
 			
 			// Add a layer group to manage dropped tools
 			L.layerGroup().addTo (_map);
 			
 			// Add the GeoJSON to the map
-			if (geojsonData) {
+			if (geojsonData && Object.entries(geojsonData).length) {
 				var feature = L.geoJSON (geojsonData).addTo (_map);
 				_map.fitBounds (feature.getBounds());
 			}
