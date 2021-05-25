@@ -900,7 +900,7 @@ var streetvisions = (function ($) {
 				var html = '';
 				html += _builderInputs.title.map(inputInfo => 
 					`<${inputInfo.element} class="untitled required ${inputInfo.className}">${inputInfo.placeholder}</${inputInfo.element}>`
-				)
+				).join('');
 				$('.title').html(html);
 
 				var html = '';
@@ -909,7 +909,7 @@ var streetvisions = (function ($) {
 						<${_builderInputs.questionnaire.titleElement}>${question}</${_builderInputs.questionnaire.titleElement}>
 						<${_builderInputs.questionnaire.answerElement} class="description untitled required">${_builderInputs.questionnaire.questionPlaceholder}</${_builderInputs.questionnaire.answerElement}>
 					</div>`
-				)
+				).join('');
 
 				$('.questionnaire').html(html);
 			};
