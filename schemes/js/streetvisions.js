@@ -38,6 +38,31 @@ var streetvisions = (function ($) {
 	var _map; // Class property Leaflet map
 	var _leafletMarkers = []; // User-added map markers
 	
+	var _builderInputs = {
+		title: [
+			{
+				element: 'h2',
+				className: 'vision-title',
+				placeholder: ' Click to add a short vision title'
+			},
+			{
+				element: 'h4',
+				placeholder: ' Click to add a description of your vision',
+				className: 'vision-description'
+			}
+		],
+		questionnaire: {
+			questions: [
+				'How does your design ensure that people with disabilities are not disadvantaged?',
+				'What effects, if any, would your design have on any local businesses, e.g. on deliveries and customer access?',
+				'How does your design ensure that access to properties remains possible (even if through-traffic is not permitted)?'
+			],
+			questionPlaceholder: 'Click to add your answer',
+			titleElement: 'h4',
+			answerElement: 'p'
+		}
+	};
+	
 	// Definitions
 	var _toolboxObjects = [
 		{
@@ -583,6 +608,10 @@ var streetvisions = (function ($) {
 				start: function (e, ui) {
 					// Once we start moving a marker, hide all popups
 					Tipped.hideAll();
+
+					// Collapse any map info elements
+					$('#accordion').accordion('option', 'collapsible', true);
+					$('#accordion').accordion('option', 'active', false);
 					
 					// Disable the help indicator as user has now dragged onto map
 					$('.leafletInstructions').addClass ('hidden');
@@ -864,11 +893,122 @@ var streetvisions = (function ($) {
 			$(document).on('click', '.exit-popup', function () {
 				Tipped.hideAll();
 			});
+
+			// Populate accordion with questions
+			var populateQuestions = function () {
+				var html = '';
+				html += _builderInputs.title.map(inputInfo => 
+					`<${inputInfo.element} class="untitled required ${inputInfo.className}">${inputInfo.placeholder}</${inputInfo.element}>`
+				)
+				$('.title').html(html);
+
+				var html = '';
+				html += _builderInputs.questionnaire.questions.map(question => 
+					`<div class="question">
+						<${_builderInputs.questionnaire.titleElement}>${question}</${_builderInputs.questionnaire.titleElement}>
+						<${_builderInputs.questionnaire.answerElement} class="description untitled required">${_builderInputs.questionnaire.questionPlaceholder}</${_builderInputs.questionnaire.answerElement}>
+					</div>`
+				)
+
+				$('.questionnaire').html(html);
+			};
+			populateQuestions();
+
+			// Enable vision info accordion
+			var icons = {
+				header: "fa fa-chevron-right",
+				activeHeader: "fa fa-chevron-down"
+			  };
+			$('#accordion').accordion({
+				active: false,
+				heightStyle: 'content',
+				icons: icons,
+				collapsible: true
+			});
+
+			// After initialising accordion, animate activating the first tab
+			setTimeout(() => {
+				$('#accordion').accordion('option', 'active', 0);	
+				$('#accordion').accordion('option', 'collapsible', false);	
+			}, 500);
 			
 			// When clicking on the title bar, make it editable
 			$('.builder .title h2, .builder .title h4, .builder p.description').on ('click', function (event){
 				makeContentEditable (event.target);
 				removeUntitledClass (event.target);
+			});
+
+			// When clicking the description field, expand it to indicate we weant more content
+			$('.vision-description').on('focus', function () {
+				// Only do this if we are in statu virginem
+				if ($('.vision-description').first().hasClass('untitled')) {
+					$('.vision-description').animate({'min-height': '60px'}, function () {
+						$('.vision-description').focus();
+					})
+				}
+			});
+
+			// After we have filled out a description, show the next accordion
+			$('.vision-description').on('blur', function () {
+				if (!$('.vision-description').first().hasClass('untitled')) {
+					$('#accordion').accordion('option', 'active', 1 );
+				}
+			});
+
+			// Functiont to check if all fields have been filled out
+			var allFieldsFilledOutBool = function () {
+				// Check if all fields have been filled out
+				var canPublish = true;
+				$.each($('.required'), function (indexInArray, textElement) {
+					if ($(textElement).hasClass('untitled')) {
+						canPublish = false;
+					}
+					if (!canPublish) {return;}
+				});
+
+				return canPublish
+			};
+
+			var checkIfSectionIsComplete = function () {
+				var titleComplete = true;
+				// For each of the title questions
+				_builderInputs.title.map(element => {
+					// For any elements matching this descriptor
+					if ($(`.${element.className}`).first().text() == element.placeholder) {
+						// Has not been completed
+						titleComplete = false;
+					}
+				})
+
+				if (titleComplete) {
+					$('.title-header i').removeClass();
+					$('.title-header i').addClass('fa fa-check complete animate__animated animate__heartBeat')
+				}
+
+				var questionnaireComplete = true;
+				$.each($(`.questionnaire ${_builderInputs.questionnaire.answerElement}`), function (indexInArray, input) { 
+					if ($(input).text() == _builderInputs.questionnaire.questionPlaceholder) {
+						questionnaireComplete = false;
+					}
+				});
+
+				if (questionnaireComplete) {
+					$('.questionnaire-header i').removeClass();
+					$('.questionnaire-header i').addClass('fa fa-check complete animate__animated animate__heartBeat')
+				}
+			}
+
+			// Check to see if each section has been filled out
+			$('.untitled.required').on('keyup', function () {
+				checkIfSectionIsComplete();
+			});
+	
+			// If we have filled out all the fields, collapse all parts of the accordion
+			$('.description').on('blur', function () {
+				if (allFieldsFilledOutBool()) {
+					$('#accordion').accordion('option', 'collapsible', true);
+					$('#accordion').accordion('option', 'active', false);
+				}
 			});
 			
 			// Select and edit content
@@ -876,6 +1016,16 @@ var streetvisions = (function ($) {
 				$(target).attr ('contenteditable','true');
 				document.execCommand ('selectAll',false, null);
 			};
+			
+			// Tab our way through the fields
+			$(document).keydown(function(e) {
+				var code = e.keyCode || e.which;
+			
+				if (code === 9) {  // Tab key
+					e.preventDefault();
+
+				}
+			});
 
 			// Remove untitled status
 			var removeUntitledClass = function (target) {
@@ -885,17 +1035,8 @@ var streetvisions = (function ($) {
 
 			// When clicking publish button, check if all fields have been filled in
 			$('.publish').on('click', function (event) {
-				// Check if all fields have been filled out
-				var canPublish = true;
-				$.each($('.required'), function (indexInArray, textElement) {
-					if ($(textElement).text().includes('Click to add')) {
-						canPublish = false;
-					}
-					if (!canPublish) {return;}
-				});
-
 				// If all fields aren't filled out, don't publish
-				if (!canPublish) {
+				if (!allFieldsFilledOutBool()) {
 					streetvisions.showModal ({
 						text: '<i class="fa fa-exclamation"></i> Oops...',
 						description: "It seems you haven't filled out all the information we need for this vision yet. Please check you have filled out the title, description, and FAQ questions."

@@ -27,6 +27,8 @@
 	
 	<script src="/js/lib/jquery/jquery.min.js"></script>
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 </head>
 
 <body>
@@ -77,7 +79,7 @@
 
 	<section class="builder">
 		<div id="puff"></div>
-		<form id="visionForm" name="form" method="post"
+		<form id="visionForm" name="form" method="post">
 			<input type="text" id="name" name="form[name]" value="">
 			<input type="text" id="description" name="form[description]" value="">
 			<input type="text" id="components" name="form[components]" value="">
@@ -88,13 +90,15 @@
 				<a href="/schemes/schemeshow.html"> <i class="back-arrow fa fa-chevron-circle-left"></i></a>
 				<h1>Changes on Mill Road</h1>
 				<button type="submit" class="button button-general publish" form="visionForm">Publish <i class="fa fa-upload"></i></button>
-				
 				<hr />
-				<div class="title">
-					<h2 class="untitled required"> Click to add vision title</h2>
-					<h3>Jordan Smith</h3>
-					<h4 class="untitled required"> Click to add vision description</h4>
-				</div>
+				<div id="accordion">
+					<h3 class="title-header"> Fill out some details <i class="fa fa-exclamation-triangle"></i> </h3>
+					<div class="title">
+					</div>
+					<h3 class="questionnaire-header"> Answer some questions about your vision <i class="fa fa-exclamation-triangle"></i></h3>
+					<div class="questionnaire">
+					</div>
+				  </div>
 			</div>
 			<div id="leaflet">
 				<div class="geocoder">
@@ -112,24 +116,6 @@
 					<div class="content">
 						<i class="fa fa-trash-alt fa-2x"></i>
 					</div>
-				</div>
-			</div>
-			<div class="questions">
-				
-				<h2><i class="fa fa-question-circle"></i> Q&A</h2>
-				<div class="question">
-					<h4>How does your design ensure that people with disabilities are not disadvantaged?</h4>
-					<p class="description untitled required">Click to add your answer</p>
-				</div>
-				
-				<div class="question">
-					<h4>What effects, if any would your design have on any local businesses, e.g. on deliveries and customer access?</h4>
-					<p class="description untitled required">Click to add your answer</p>
-				</div>
-			
-				<div class="question">
-					<h4>How does your design ensure that access to properties remains possible (even if through-traffic is not permitted)?</h4>
-					<p class="description untitled required">Click to add your answer</p>
 				</div>
 			</div>
 		</section>
