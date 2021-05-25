@@ -899,7 +899,7 @@ var streetvisions = (function ($) {
 			var populateQuestions = function () {
 				var html = '';
 				html += _builderInputs.title.map(inputInfo => 
-					`<${inputInfo.element} class="untitled required ${inputInfo.className}">${inputInfo.placeholder}</${inputInfo.element}>`
+					`<${inputInfo.element} class="untitled required ${inputInfo.className}" tabindex="0">${inputInfo.placeholder}</${inputInfo.element}>`
 				).join('');
 				$('.title').html(html);
 
@@ -907,7 +907,7 @@ var streetvisions = (function ($) {
 				html += _builderInputs.questionnaire.questions.map(question => 
 					`<div class="question">
 						<${_builderInputs.questionnaire.titleElement}>${question}</${_builderInputs.questionnaire.titleElement}>
-						<${_builderInputs.questionnaire.answerElement} class="description untitled required">${_builderInputs.questionnaire.questionPlaceholder}</${_builderInputs.questionnaire.answerElement}>
+						<${_builderInputs.questionnaire.answerElement} class="description untitled required" tabindex="0">${_builderInputs.questionnaire.questionPlaceholder}</${_builderInputs.questionnaire.answerElement}>
 					</div>`
 				).join('');
 
@@ -1019,12 +1019,12 @@ var streetvisions = (function ($) {
 			};
 			
 			// Tab our way through the fields
-			$(document).keydown(function(e) {
+			$(document).on('keyup', function(e) {
 				var code = e.keyCode || e.which;
 			
 				if (code === 9) {  // Tab key
 					e.preventDefault();
-
+					$('.required.untitled').first().focus();
 				}
 			});
 
