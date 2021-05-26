@@ -181,6 +181,7 @@ section.builder section.toolbox .toolbox-header>i.rotated {transform: rotate(-90
 section.builder section.toolbox .toolbox-header h5 {display: inline-block; margin: 10px 7.5px; padding: 5px; border-radius: 10px;}
 section.builder section.toolbox .toolbox-header h5:hover {background-color: #eee;}
 section.builder section.toolbox .toolbox-header .group-contents {margin: 0 15px; padding: 0; font-size: 17px;}
+section.builder section.toolbox .toolbox-header .group-contents ul i.info-icon {position: absolute; top: 0; right: 0; margin: 5px; font-size: 17px;}
 section.builder section.toolbox .toolbox-header .group-contents ul {list-style: none; padding: 0; display: flex; align-items: center; flex-wrap: wrap;}
 section.builder section.toolbox .toolbox-header .group-contents ul li {border-radius: .7em; display: inline-block; padding: 10px; margin: 5px; cursor: pointer; width: 100px; height: 90px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); transition: box-shadow .25s;}
 section.builder section.toolbox .toolbox-header .group-contents ul li:hover {box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); color: #4d0026;}
@@ -220,6 +221,18 @@ section.builder section.toolbox .toolbox-card h2 {font-size: 13px;}
 .tpd-size-huge .tpd-spinner {width: 66px; height: 50px;}
 .tpd-size-huge .tpd-spinner-spin {margin: 14px 0 0 22px;}
 .tpd-size-huge .tpd-spinner-spin, .tpd-size-huge .tpd-spinner-spin:after {width: 22px; height: 22px;}
+
+.tpd-size-small .tpd-content {padding: 15px; font-size: 15px; line-height: 20px; max-width: 300px; background-color: #4d0026; color: white;}
+.tpd-size-small .tpd-content h1 {display: inline-block; color: #f2bd54; margin: 0 10px; font-size: 18px;}
+.tpd-size-small .tpd-content p {font-size: 15px;}
+.tpd-size-small .tpd-background {border-radius: 10px;}
+.tpd-size-small.tpd-no-radius .tpd-stem {margin-left: 10px;}
+.tpd-size-small .tpd-close {margin: 11px 5px 11px 5px;}
+.tpd-size-small .tpd-close-icon {font-size: 32px;}
+.tpd-size-small .tpd-spinner {width: 66px; height: 50px;}
+.tpd-size-small .tpd-spinner-spin {margin: 14px 0 0 22px;}
+.tpd-size-small .tpd-spinner-spin, .tpd-size-small .tpd-spinner-spin:after {width: 22px; height: 22px;}
+
 
 /* Modal */
 .modalBackground {display: none;}

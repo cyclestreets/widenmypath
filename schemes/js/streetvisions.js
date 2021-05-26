@@ -365,11 +365,12 @@ var streetvisions = (function ($) {
 						toolboxOpen = ($('.toolbox-header').length == 0 ? 'toolbox-open' : '');
 						
 						// Build the HTML for the toolbox drawer
-						html = '';
-						html += `<div class="toolbox-header ${group} ${toolboxOpen}">`;
-						html += '<i class="fa fa-chevron-down"></i>';
-						html +=	`<h5>${toolboxPrettyName}</h5>`;
-						html += '<div class="group-contents"><ul></ul></div></div>';
+						html = `
+							<div class="toolbox-header ${group} ${toolboxOpen}">
+							<i class="fa fa-chevron-down"></i>
+							<h5>${toolboxPrettyName}</h5>
+							<div class="group-contents"><ul></ul></div></div>
+						`;
 						
 						// Add this to the toolbox 
 						$('div.toolbox').append(html);
@@ -379,9 +380,23 @@ var streetvisions = (function ($) {
 					var toolboxGroupUl = $('.toolbox .' + group + ' ul');
 					var style = (tool.hasOwnProperty('colour') ? tool.colour : getColourCSS (i, _toolboxObjects.length))
 					$(toolboxGroupUl).append (
-						`<li data-tool="${tool.type}" style="background-color: ${style}; color: white;"><i class="fa ${tool.icon}"></i><p>${tool.prettyName}</p></li>`
+						`<li data-tool="${tool.type}" class="tool tool-${tool.type}" style="background-color: ${style}; color: white;">
+							<i class="fa ${tool.icon}"></i>
+							<p>${tool.prettyName}</p>
+							<i class="info-icon info-${tool.type} fa fa-info-circle"></i>
+						</li>`
 					);
 				});
+			});
+
+			// Generate tooltips for these tools
+			var htmlContent = '';
+			_toolboxObjects.map (function (tool, i) {
+				htmlContent = `
+					<h1><i class="fa ${tool.icon}"></i> ${streetvisions.convertCamelCaseToSentence(tool.type)}</h1>
+					<p>${tool.description}</p>
+				`
+				Tipped.create (`.info-icon.info-${tool.type}`, htmlContent, {skin: 'light', hideOthers: true, padding: '20px', size: 'small',});
 			});
 
 			// Generate random colour for tools
@@ -508,13 +523,9 @@ var streetvisions = (function ($) {
 
 			// When clicking a tool, populate the help box
 			$('.toolbox .group-contents ul li').on ('click', function () {
+				
 				var toolType = $(this).data('tool');
-				if (!toolType) {
-					hideHelpCard();
-					return;
-				}
-				populateHelpCard (toolType);
-				openHelpCard ();
+				Tipped.show(`.info-icon.info-${toolType}`);
 			});
 		},
 
@@ -897,21 +908,18 @@ var streetvisions = (function ($) {
 
 			// Populate accordion with questions
 			var populateQuestions = function () {
-				var html = '';
-				html += _builderInputs.title.map(inputInfo => 
-					`<${inputInfo.element} class="untitled required ${inputInfo.className}" tabindex="0">${inputInfo.placeholder}</${inputInfo.element}>`
-				).join('');
-				$('.title').html(html);
+				$('.title').html(_builderInputs.title.map(
+					inputInfo => 
+						`<${inputInfo.element} class="untitled required ${inputInfo.className}" tabindex="0">${inputInfo.placeholder}</${inputInfo.element}>`
+					).join(''));
 
-				var html = '';
-				html += _builderInputs.questionnaire.questions.map(question => 
-					`<div class="question">
-						<${_builderInputs.questionnaire.titleElement}>${question}</${_builderInputs.questionnaire.titleElement}>
-						<${_builderInputs.questionnaire.answerElement} class="description untitled required" tabindex="0">${_builderInputs.questionnaire.questionPlaceholder}</${_builderInputs.questionnaire.answerElement}>
-					</div>`
-				).join('');
-
-				$('.questionnaire').html(html);
+				$('.questionnaire').html(_builderInputs.questionnaire.questions.map(
+					question => 
+						`<div class="question">
+							<${_builderInputs.questionnaire.titleElement}>${question}</${_builderInputs.questionnaire.titleElement}>
+							<${_builderInputs.questionnaire.answerElement} class="description untitled required" tabindex="0">${_builderInputs.questionnaire.questionPlaceholder}</${_builderInputs.questionnaire.answerElement}>
+						</div>`
+					).join(''));
 			};
 			populateQuestions();
 
