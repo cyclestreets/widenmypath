@@ -243,6 +243,13 @@ var streetvisions = (function ($) {
 
 			// Map
 			streetvisions.leafletMap ('leaflet', _settings.geojsonData);
+
+			// Enable drag to hide panel on mobile
+			$('.pull-handle, .expand-handle').on('click', function () {
+				$('.header-content').slideToggle();
+				$('.expand-handle').toggle();
+				$('.map-header h1').toggle();
+			});
 		},
 
 

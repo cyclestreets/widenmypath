@@ -74,6 +74,8 @@ section.vision section.map .map-header h2 {color: #f2bd54; padding-left: 50px; m
 section.vision section.map .map-header h3 {color: white; padding-left: 50px; margin: 0 0 12.5px 0;}
 section.vision section.map .map-header h4 {color: white; padding-left: 50px; max-width: 50%; font-size: 15px; margin: 0 0 15px; padding-bottom: 15px;}
 section.vision section.map p.description {margin: 10px 0 10px 50px;}
+section.vision section.map .expand-handle {display: none; position: absolute; width: 100%; top: 40px; text-align: center; color: white;}
+section.vision section.map .pull-handle {color: white; display: none; margin: 15px auto 0; padding-top: 7.5px; text-align: center; border-top: 0.5px solid grey}
 
 section.vision section.map .questions i {margin-left: 15px;}
 section.vision section.map .questions {margin: 10px 20px; border-radius: 10px; background-color: #4d0026; box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 3px 3px 0 rgba(0, 0, 0, 0.7);}
@@ -106,6 +108,44 @@ section.vision .newDiscussion i {margin-right: 10px;}
 section.vision .newDiscussion input {width: calc(100% - 25px); height: 30px; padding: 5px 10px; border-radius: .3em;}
 section.vision .newDiscussion .createNewDiscussion {float: right; padding: 5px 10px; margin-top: 25px; border: 1px solid #4d0026; color: #4d0026; border-radius: .3em; text-decoration: none}
 section.vision .newDiscussion .createNewDiscussion:hover {background-color: #4d0026; color: white;}
+
+/* Small screen vision show */
+@media (max-width: 1100px) {
+    section.vision {display: flex; flex-direction: column; padding-top: 20px; height: 100vh;}
+    section.vision section.map {flex: 1; flex-basis: 40%;} 
+    section.vision section.discussion {flex: 1; flex-basis: 58%;}
+
+    section.vision section.map i.back-arrow.fa {display: none;}
+    section.vision section.map .map-header {min-height: 47.5px; margin: 0; padding-bottom: 0; margin-top: 5px; border-radius: 0; padding-top: 0; box-shadow: none;}
+    section.vision section.map .map-header i.back-arrow {font-size: 17.5px; margin-left: 15px; margin-top: 15px;}
+    section.vision section.map .map-header h1 {margin: 10px 0 0 10px; font-size: 18px; max-width: calc(100% - 170px); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+    section.vision section.map .likes {display: none;}
+    section.vision section.map .map-header hr {margin: 15px 0; margin-bottom: 15px; border: none; height: 0.5px; background-color: #eee; display: none;}
+    section.vision section.map .pull-handle {display: block; padding-bottom: 10px;}
+    section.vision section.map .map-header h3 {padding-left: 10px; color: #f2bd54; margin: 10px 12.5px 0 0; font-size: 15px;}
+    section.vision section.map .map-header h2 {font-size: 15px; padding-left: 10px;}
+    section.vision section.map .map-header h4 {font-size: 15px; padding: 10px; margin: 0; max-width: 100%;}
+    section.vision section.map .map-header .title h2 {margin-top: 10px; font-size: 15px;}
+    
+    section.vision section.map #leaflet {height: 250px; z-index: 1; width: 100%; margin: 0; border-radius: 0; box-shadow: none;}
+
+    section.vision section.map .questions {margin: 5px 7.5px; padding: 5px;}
+    section.vision section.map .questions h2 {margin-top: 5px; padding-top: 5px; font-size: 17px;}
+    section.vision section.map .questions h4 {margin: 5px 0 0 10px;}
+    section.vision section.map .questions p {margin-left: 15px; font-size: 13px;}
+
+    section.vision section.discussion {background-color: white; margin: 0;}
+    section.vision section.discussion h1 {margin: 10px; font-size: 25px;}
+    section.vision section.discussion h2 {margin: 10px 0 0; font-size: 18px;}
+    section.vision section.discussion .comment-count {display: none;}
+    section.vision section.discussion a.share {position: absolute; top: 35px; right: 10px; margin: 0; font-size: 12px; }
+    section.vision section.discussion h5 {font-size: 13px; margin: 10px;}
+    section.vision section.discussion hr {display: none;}
+    section.vision section.discussion .discussion-content {padding: 10px;}
+    section.vision section.discussion .discussion-header {margin: 15px 0;}
+    section.vision section.discussion .discussion-header i {vertical-align: middle;}
+    section.vision section.discussion .discussion-header h5 {width: 80%; margin: 0; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; padding: 0 10px;}
+}
 
 /* Builder interface */
 section.builder {display: flex; min-height: 100%; padding-top: 30px}
@@ -248,7 +288,7 @@ section.builder section.toolbox .toolbox-header .group-contents ul li p {display
     
     section.builder section.map #leaflet {height: 250px; z-index: 1; width: 100%; margin: 0; border-radius: 0; box-shadow: none;}
 
-    section.builder section.toolbox {bottom: 0; background-color: white; overflow-y: scroll;}
+    section.builder section.toolbox {bottom: 0 ; background-color: white; overflow-y: scroll;}
     section.builder section.toolbox h2 {margin: 10px 0 0; font-size: 18px;}
     section.builder section.toolbox h5 {font-size: 13px;}
     section.builder section.toolbox hr {display: none;}
