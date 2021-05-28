@@ -246,9 +246,9 @@ section.builder section.toolbox .toolbox-header .group-contents ul li p {display
     section.builder section.map .map-header h4 {font-size: 15px;}
     section.builder section.map .map-header .title h2 {margin-top: 10px; font-size: 15px;}
     
-    section.builder section.map #leaflet {height: 250px; width: 100%; margin: 0; border-radius: 0; box-shadow: none;}
+    section.builder section.map #leaflet {height: 250px; z-index: 1; width: 100%; margin: 0; border-radius: 0; box-shadow: none;}
 
-    section.builder section.toolbox {bottom: 0; z-index: 999; background-color: white; overflow-y: scroll;}
+    section.builder section.toolbox {bottom: 0; background-color: white; overflow-y: scroll;}
     section.builder section.toolbox h2 {margin: 10px 0 0; font-size: 18px;}
     section.builder section.toolbox h5 {font-size: 13px;}
     section.builder section.toolbox hr {display: none;}

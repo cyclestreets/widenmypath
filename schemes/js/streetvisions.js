@@ -624,7 +624,11 @@ var streetvisions = (function ($) {
 			$('.toolbox .group-contents ul li').draggable ({
 				revert: 'invalid',
 				stack: '#leaflet',
+				helper: 'clone',
 				start: function (e, ui) {
+					// Make sure cloned helper floats above other stuff
+					$('.ui-draggable').not(ui.helper.css('z-index', '9999')).css( 'z-index', '0');
+					
 					// Once we start moving a marker, hide all popups
 					Tipped.hideAll();
 
