@@ -575,6 +575,13 @@ var streetvisions = (function ($) {
 			};
 			geocoder ();
 
+			// Enable drag to hide panel on mobile
+			$('.pull-handle, .expand-handle').on('click', function () {
+				$('.header-content').slideToggle();
+				$('.expand-handle').toggle();
+				$('.map-header h1').toggle();
+			});
+
 			// Enable search box
 			$('#browse-search-box').on('click', function () {
 				$(this).focus();
@@ -601,7 +608,7 @@ var streetvisions = (function ($) {
 			};
 			
 			var openSearchBox = function () {
-				$('.geocoder input').animate({'width': '300px'});
+				$('.geocoder input').animate({'width': '275px'});
 				$('#browse-search-box').focus();
 			};
 			setTimeout(function () {
@@ -649,6 +656,9 @@ var streetvisions = (function ($) {
 					
 					// Reset the cursor
 					$(this).css ('cursor', 'pointer');
+
+					// Once we stop moving a marker, hide all popups
+					Tipped.hideAll();
 				}
 			});
 
