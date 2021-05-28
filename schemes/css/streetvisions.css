@@ -391,6 +391,31 @@ section.schemes-list section.schemes {padding: 20px 30px;}
 section.schemes-list section.schemes ul {display: flex; flex-wrap: wrap; justify-content: center;}
 section.schemes-list section.schemes ul li {text-decoration: none; list-style-type: none; display: inline-block;}
 
+/* Small screen scheme list */
+@media (max-width: 1100px) {
+    section.schemes-list {display: flex; flex-direction: column; padding-top: 20px;}
+    section.schemes-list section.header {flex: 1; flex-basis: 40%; margin: 0; padding: 0;} 
+    section.schemes-list section.schemes {flex: 1; flex-basis: 58%;}
+    section.schemes-list section.schemes ul {padding: 0;}
+
+    section.schemes-list section.header .flex {display: block; padding: 10px; padding-bottom: 0;}
+    section.schemes-list section.header .flex h1 {font-size: 30px;}
+    section.schemes-list section.header hr {display: none;}
+    section.schemes-list section.header .description-block {font-size: 16px; margin: 0; padding-bottom: 0;}
+
+    section.schemes-list section.header .header-controls {display: block; margin: 0; padding-top: 0;}
+    section.schemes-list .header .header-controls .new-scheme .new-scheme-button {display: block; width: auto; margin: 10px; margin-top: 0;}
+    section.schemes-list .header .header-controls .search-bar {display: block; padding: 0; margin: 10px;}
+    section.schemes-list .header .header-controls .search-bar input {width: 80%;}
+
+    section.schemes-list .header .header-controls .segmented-control {position: fixed; bottom: 0; z-index: 9; width: 90%; background-color: #4d0026; padding: 10px 5%; box-shadow: 0px -4px 13px 2px rgba(0,0,0,0.44); border-top-left-radius: .5em; border-top-right-radius: .5em;}
+
+    section.schemes-list .card {width: 300px; margin: 15px 0;}
+    section.schemes-list .card .card-image {width: 300px;}
+    section.schemes-list .card .card-image img {width: 300px;}
+    section.schemes-list .card .content h4 {font-size: 18px;}
+    section.schemes-list .card .content p {font-weight: 400;}
+}
 
 /* Scheme add */
 section.scheme-add {padding-top: 20px;}
