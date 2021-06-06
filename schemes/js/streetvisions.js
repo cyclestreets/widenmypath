@@ -408,9 +408,9 @@ var streetvisions = (function ($) {
 					var style = (tool.hasOwnProperty('colour') ? tool.colour : getColourCSS (i, _toolboxObjects.length))
 					$(toolboxGroupUl).append (
 						`<li data-tool="${tool.type}" class="tool tool-${tool.type}" style="background-color: ${style}; color: white;">
+							<i class="info-icon info-${tool.type} fa fa-info-circle"></i>
 							<i class="fa ${tool.icon}"></i>
 							<p>${tool.prettyName}</p>
-							<i class="info-icon info-${tool.type} fa fa-info-circle"></i>
 						</li>`
 					);
 				});

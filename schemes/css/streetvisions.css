@@ -258,7 +258,7 @@ section.builder section.toolbox .toolbox-header>i.rotated {transform: rotate(-90
 section.builder section.toolbox .toolbox-header h5 {display: inline-block; margin: 10px 7.5px; padding: 5px; border-radius: 10px;}
 section.builder section.toolbox .toolbox-header h5:hover {background-color: #eee;}
 section.builder section.toolbox .toolbox-header .group-contents {margin: 0 15px; padding: 0; font-size: 17px;}
-section.builder section.toolbox .toolbox-header .group-contents ul i.info-icon {position: absolute; top: 0; right: 0; margin: 5px; font-size: 17px;}
+section.builder section.toolbox .toolbox-header .group-contents ul i.info-icon {float: right; position: relative; top: 0; right: 0; font-size: 17px;}
 section.builder section.toolbox .toolbox-header .group-contents ul {list-style: none; padding: 0; display: flex; align-items: center; flex-wrap: wrap;}
 section.builder section.toolbox .toolbox-header .group-contents ul li {border-radius: .7em; display: inline-block; padding: 10px; margin: 5px; cursor: pointer; width: 100px; height: 90px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); transition: box-shadow .25s;}
 section.builder section.toolbox .toolbox-header .group-contents ul li:hover {box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); color: #4d0026;}
@@ -307,7 +307,7 @@ section.builder section.toolbox .toolbox-header .group-contents ul li p {display
 /* Small screen fixes */
 @media (max-width: 1100px) {
     section.builder {display: flex; flex-direction: column; padding-top: 20px; height: 100vh;}
-    section.builder section.map {flex: 1; flex-basis: 40%;} 
+    section.builder section.map {flex: 1; flex-basis: 40%;}         
     section.builder section.toolbox {flex: 1; flex-basis: 58%;}
 
     section.builder section.map .map-header {min-height: 47.5px;margin: 0; padding-bottom: 0; border-radius: 0; padding-top: 0; box-shadow: none;}
