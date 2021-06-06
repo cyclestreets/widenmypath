@@ -747,9 +747,6 @@ var streetvisions = (function ($) {
 					
 					// Reset the cursor
 					$(this).css ('cursor', 'pointer');
-
-					// Once we stop moving a marker, hide all popups
-					Tipped.hideAll();
 				}
 			});
 
