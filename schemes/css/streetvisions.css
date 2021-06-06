@@ -9,12 +9,12 @@ section.scheme-show section.sidebar {flex: 1; margin: 20px; border-radius: 10px;
 section.scheme-show section.content {flex: 1.8; padding: 25px 25px 25px 40px;}
 
 section.scheme-show section.sidebar {width: 500px; min-height: 100%; background-color: #4d0026;}
-section.scheme-show section.sidebar .back-arrow {position: absolute; margin-left: 20px; margin-top: 50px; font-size: 30px; transition: 0.5s; color: white;}
-section.scheme-show section.sidebar .back-arrow:hover {transform:scale(1.15); color: #f2bd54;}
-section.scheme-show section.sidebar h1 {padding-left: 70px; margin-top: 35px; margin-bottom: 5px; font-size: 30px; color: white;}
-section.scheme-show section.sidebar h2 {margin-top: 0px; padding-top: 0; margin-bottom: 15px; padding-left: 70px; font-size: 26px; color: #f2bd54;}
+section.scheme-show section.sidebar .back-arrow {position: absolute; margin-left: 20px; margin-top: 50px; font-size: 30px; transition: 0.5s; color: white; opacity: 0.6;}
+section.scheme-show section.sidebar .back-arrow:hover {transform:scale(1.15); color: #f2bd54; opacity: 1;}
+section.scheme-show section.sidebar h1 {padding-left: 70px; margin-top: 15px; margin-bottom: 5px; font-size: 26px; color: white;}
+section.scheme-show section.sidebar h2 {margin-top: 0px; padding-top: 0; margin-bottom: 15px; padding-left: 70px; font-size: 23px; color: #f2bd54;}
 section.scheme-show section.sidebar hr {margin-bottom: 15px; border: none; height: 0.5px; background-color: #eee}
-section.scheme-show section.sidebar h3 {padding: 0 20px 20px 20px; font-size: 17px; color: white;}
+section.scheme-show section.sidebar h3 {padding: 0 20px 20px 20px; font-size: 15px; color: white; font-weight: 400;}
 section.scheme-show section.sidebar h4 {color: #f2bd54; font-size: 15px; margin: 15px 0 0 0; padding-left: 20px;}
 section.scheme-show section.sidebar hr.section {margin: 10px 0 20px 20px;}
 section.scheme-show section.sidebar img.map {margin: 0 0 0 40px; width: calc(100% - 40px);}
@@ -59,6 +59,7 @@ section.scheme-show section.content .library_card .read-more .details a:hover {b
     section.scheme-show section.sidebar {flex: 1; flex-basis: 40%;} 
     section.scheme-show section.content {flex: 1; flex-basis: 58%;}
 
+    section.scheme-show section.sidebar .back-arrow {margin-top: 20px; font-size: 25px;}
     section.scheme-show section.sidebar {width: auto; margin: 0; border-radius: 0; padding-right: 10px;}
     section.scheme-show section.sidebar h1 {font-size: 18px;}
     section.scheme-show section.sidebar h2 {font-size: 16px;}
@@ -66,14 +67,19 @@ section.scheme-show section.content .library_card .read-more .details a:hover {b
 
     section.scheme-show section.content {width: auto; padding: 20px 10px 10px;}
     section.scheme-show section.content h1 {font-size: 18px;}
-    section.scheme-show section.content .segmented-control-container {width: 250px; margin-left: 0; font-size: 18px;}
+    section.scheme-show section.content .segmented-control-container {display: none; position: fixed; bottom: 0; left: 0; width: 100vw; margin-left: 0; padding-top: 5px; padding-bottom: 15px; font-size: 16px; background-color: rgba(238, 238, 238, 0.8); box-shadow: 0px -4px 13px 2px rgba(0,0,0,0.44); z-index: 99;}
+    section.scheme-show section.content .segmented-control-container .ios-segmented-control {width: 100vw; margin: 0;}
     section.scheme-show section.content .add-vision {display: block; float: unset;}
     section.scheme-show section.content hr {display: none;}
 
-    section.scheme-show section.content ul {padding: 0;}
+    section.scheme-show section.content ul {padding: 0 0 50px 0;}
     section.scheme-show section.content .library_card {width: 300px;}
-    section.scheme-show section.content .library_card .card-image {width: 300px;}
-    section.scheme-show section.content .library_card .card-image img {width: 300px;}
+    section.scheme-show section.content .library_card .card-image {width: 300px; height: 150px;}
+    section.scheme-show section.content .library_card .card-image img {width: 300px; height: 150px;}
+    section.scheme-show section.content .library_card .content h4 {font-size: 16px; margin-bottom: 4px;}
+    section.scheme-show section.content .library_card .content h5 {font-size: 15px; margin-bottom: 4px; color: #f2bd54;}
+    section.scheme-show section.content .library_card .content p {font-size: 12px; margin-bottom: 3px;}
+    section.scheme-show section.content .library_card .read-more {font-size: 12px;}
 
 }
 
@@ -92,7 +98,7 @@ section.vision section.map #leaflet {height: 500px; width: calc(100% - 40px); ma
 section.vision section.map .leaflet-marker-icon.leafletFontAwesomeIcon .fa-stack-1x {top: -9px; transform: scale(0.9);}
 
 section.vision section.map .map-header i.back-arrow {display: inline-block; font-size: 25px; margin: 15px 0 0 15px; transition: 0.5s; color: white; opacity: 0.6;}
-section.vision section.map .map-header i.back-arrow:hover {transform: scale(1.1); color: #f2bd54;}
+section.vision section.map .map-header i.back-arrow:hover {transform: scale(1.1); color: #f2bd54; opacity: 1;}
 section.vision section.map .map-header h1 {margin: 17.5px 0 0 10px; font-size: 35px; display: inline-block; color: white;}
 section.vision section.map .likes {float: right; margin-top: 5px; margin-right: 35px; font-size: 25px;}
 section.vision section.map .likes i {color: #fe2645; padding-right: 10px;}
@@ -408,7 +414,7 @@ section.schemes-list section.schemes ul li {text-decoration: none; list-style-ty
     section.schemes-list .header .header-controls .search-bar {display: block; padding: 0; margin: 10px;}
     section.schemes-list .header .header-controls .search-bar input {width: 80%;}
 
-    section.schemes-list .header .header-controls .segmented-control {position: fixed; bottom: 0; z-index: 9; width: 90%; background-color: #4d0026; padding: 10px 5%; box-shadow: 0px -4px 13px 2px rgba(0,0,0,0.44); border-top-left-radius: .5em; border-top-right-radius: .5em;}
+    section.schemes-list .header .header-controls .segmented-control {display: none; position: fixed; bottom: 0; z-index: 9; width: 90%; background-color: #4d0026; padding: 10px 5%; box-shadow: 0px -4px 13px 2px rgba(0,0,0,0.44); font-size: 16px; background-color: rgba(238, 238, 238, 0.8); box-shadow: 0px -4px 13px 2px rgba(0,0,0,0.44);}
 
     section.schemes-list .card {width: 300px; margin: 15px 10px;}
     section.schemes-list .card .card-image {width: 300px;}

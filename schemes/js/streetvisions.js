@@ -222,6 +222,16 @@ var streetvisions = (function ($) {
 		{
 			// Segmented controls
 			streetvisions.segmentedControl ();
+
+			// Enable filtering options on scroll
+			$(document).scroll(function() {
+				var y = $(this).scrollTop();
+				if (y > 200) {
+					$('.segmented-control').fadeIn();
+				} else {
+					$('.segmented-control').fadeOut();
+				}
+			});
 			
 			// Search
 			streetvisions.initSearch ();
@@ -257,6 +267,16 @@ var streetvisions = (function ($) {
 		{
 			// Segmented controls
 			streetvisions.segmentedControl ();
+
+			// Enable filtering options on scroll
+			$(document).scroll(function() {
+				var y = $(this).scrollTop();
+				if (y > 200) {
+					$('.segmented-control-container').fadeIn();
+				} else {
+					$('.segmented-control-container').fadeOut();
+				}
+			});
 			
 			// Add a map into the specified ID with the specified data
 			streetvisions.leafletMap ('map', _settings.geojsonData.scheme);
