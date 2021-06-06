@@ -313,13 +313,13 @@ section.builder section.toolbox .toolbox-header .group-contents ul li p {display
 
     section.builder section.map .map-header {min-height: 47.5px;margin: 0; padding-bottom: 0; border-radius: 0; padding-top: 0; box-shadow: none;}
     section.builder section.map .map-header i.back-arrow {font-size: 17.5px; margin-left: 15px; margin-top: 15px;}
-    section.builder section.map .map-header h1 {margin: 0 0 0 10px; font-size: 18px; max-width: calc(100% - 170px); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
-    section.builder section.map .map-header button.publish {margin: 15px 5px 10px; font-size: 13px; line-height: 10px; height: 25px;}
+    section.builder section.map .map-header h1 {margin: 0 0 0 10px; font-size: 18px; max-width: calc(100% - 137px); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+    section.builder section.map .map-header button.publish {margin: 15px 5px 10px; font-size: 12px; line-height: 10px; height: 25px;}
     section.builder section.map .map-header hr {margin: 15px 0; margin-bottom: 15px; border: none; height: 0.5px; background-color: #eee; display: none;}
     section.builder section.map .pull-handle {display: block; padding-bottom: 10px;}
     section.builder section.map .map-header h3 {padding-left: 10px; margin: 10px 12.5px 0 10px; font-size: 15px;}
-    section.builder section.map .map-header h2 {font-size: 15px;}
-    section.builder section.map .map-header h4 {font-size: 15px;}
+    section.builder section.map .map-header h2 {font-size: 15px; margin-left: 27.5px; padding: 2.5px 0;}
+    section.builder section.map .map-header h4 {font-size: 15px; margin-left: 27.5px;}
     section.builder section.map .map-header .title h2 {margin-top: 10px; font-size: 15px;}
     
     section.builder section.map #leaflet {height: 250px; z-index: 1; width: 100%; margin: 0; border-radius: 0; box-shadow: none;}
