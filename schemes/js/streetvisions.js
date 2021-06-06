@@ -67,7 +67,11 @@ var streetvisions = (function ($) {
 	var _toolboxObjects = [
 		{
 			type: 'cycleParking', 
-			description: 'A parking area for bicycles.',
+			description: 'A parking area for bicycles. When bicycle parking facilities are scarce or inadequate, nearby trees or parking meters are often used instead.',
+			images: [
+				'https://cyclesafe.com/wp-content/uploads/2018/07/urban-bike-parking-cities.jpg',
+				'http://njbikeped.org/wp-content/uploads/2017/02/loop.jpg'
+			],
 			groups: 'cycling',
 			icon: 'fa-parking',
 			colour: '#069BED'
@@ -75,6 +79,10 @@ var streetvisions = (function ($) {
 		{
 			type: 'seating', 
 			description: 'Public outdoor seating, like a bench or seat.',
+			images: [
+				'https://www.urbaneffects.co.nz/wp-content/uploads/2016/03/kingsgrove-196x196.png',
+
+			],
 			groups: 'walking',
 			icon: 'fa-chair',
 			colour: '#1A8D8A'
@@ -82,13 +90,21 @@ var streetvisions = (function ($) {
 		{
 			type: 'parklet', 
 			description: 'A parklet is a sidewalk extension that provides more space and amenities for people using the street. Usually parklets are installed on parking lanes and use several parking spaces. Parklets typically extend out from the sidewalk at the level of the sidewalk to the width of the adjacent parking space.',
+			images: [
+				'http://www.tysmagazine.com/wp-content/uploads/Parklet_chernivtsi-150x150.jpg',
+				'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/SFParklet.jpg/220px-SFParklet.jpg'
+			],
 			groups: 'walking',
 			icon: 'fa-tshirt',
 			colour: '#27824C'
 		},
 		{
 			type: 'cycleLane', 
-			description: 'A lane for bicycles.',
+			description: 'Separated cycle lanes are good for business, reduce congestion, are fantastic value for money, get more people cycling and are what the public wants.',
+			images: [
+				'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/image_data/file/49647/S113_Salford_Liverpool_Street_trial_site_stop_line_approach_960x640.jpg',
+				'https://cdn2.cyclist.co.uk/sites/cyclist/files/2017/04/cycle_lane.jpg'
+			],
 			groups: 'cycling',
 			icon: 'fa-road',
 			colour: '#433C96'
@@ -96,6 +112,9 @@ var streetvisions = (function ($) {
 		{
 			type: 'pointClosure', 
 			description: 'Stop through-traffic to open up the space for cycling and walking',
+			images: [
+				'https://assets.change.org/photos/8/pw/nx/QCPWnXjnlwmWCUa-800x450-noPad.jpg?1589791887'
+			],
 			groups: ['driving', 'cycling'],
 			icon: 'fa-hand-paper',
 			colour: '#D52506'
@@ -103,6 +122,10 @@ var streetvisions = (function ($) {
 		{
 			type: 'carParking', 
 			description: 'Parking space or spaces for cars.',
+			images: [
+				'https://i.ytimg.com/vi/A8cG_mLC9_Y/hqdefault.jpg',
+				'https://i.dailymail.co.uk/i/pix/2012/08/05/article-2184174-005AF28B00000258-584_468x269.jpg'
+			],
 			groups: 'driving',
 			icon: 'fa-parking',
 			colour: '#3D6B94'
@@ -110,6 +133,10 @@ var streetvisions = (function ($) {
 		{
 			type: 'deliveryBay', 
 			description: 'A delivery bay is a space where delivery vehicles can temporarily park while engaging in deliveries, without blocking the pavement.',
+			images: [
+				'https://motortransport.co.uk/wp-content/uploads/2014/01/Morrisons.com_.jpg',
+				'https://i.dailymail.co.uk/i/pix/2012/08/05/article-2184174-005AF28B00000258-584_468x269.jpg'
+			],
 			groups: ['driving', 'walking'],
 			icon: 'fa-truck',
 			colour: '#42268C'
@@ -117,6 +144,10 @@ var streetvisions = (function ($) {
 		{
 			type: 'chargingPoint', 
 			description: 'A charging station for vehicles.',
+			images: [
+				'https://medwaylibdems.org.uk/en/image/64ZcNv/320/180/electric-charging-point.png',
+				'https://images-e.jpimedia.uk/imagefetch/f_auto,ar_3:2,q_auto:low,c_fill/if_h_lte_200,c_mfit,h_201/https://www.scotsman.com/webimage/1.4283675.1478762062!/image/image.jpg'
+			],
 			groups: ['cycling', 'driving'],
 			icon: 'fa-plug',
 			colour: '#A745A5'
@@ -124,6 +155,10 @@ var streetvisions = (function ($) {
 		{
 			type: 'trafficCalming', 
 			description: 'A device like a road hump, that causes traffic to slow.',
+			images: [
+				'https://www.weeklygripe.co.uk/AImg/measures.jpg',
+				'https://live.staticflickr.com/153/433692163_626384f64c_n.jpg',
+			],
 			groups: 'driving',
 			icon: 'fa-traffic-light',
 			colour: '#B13110'
@@ -131,6 +166,10 @@ var streetvisions = (function ($) {
 		{
 			type: 'plantingArea', 
 			description: 'Small area for greenery',
+			images: [
+				'https://www.cis-streetfurniture.co.uk/masterpages/planters/pix/700SS.jpg',
+				'https://grassrootsfund.org/sites/default/files/styles/flexslider_full/public/images/groups/blue_hill_raised_garden_beds_summer_2019.jpg?itok=smITpTXj'
+			],
 			groups: ['walking', 'nature'],
 			icon: 'fa-seedling',
 			colour: '#83AD1F'
@@ -138,6 +177,10 @@ var streetvisions = (function ($) {
 		{
 			type: 'tree',
 			description: '',
+			images: [
+				'https://caseytrees.org/wp-content/uploads/2017/07/WhiteHousePrincetonElms-300x165.jpg',
+				'https://envirotecmagazine.com/wp-content/uploads/2015/09/trees-image.jpg'
+			],
 			groups: ['walking', 'nature'],
 			icon: 'fa-tree',
 			colour: '#82CA13'
@@ -145,6 +188,10 @@ var streetvisions = (function ($) {
 		{
 			type: 'pavementImprovement', 
 			description: '',
+			images: [
+				'http://www.basii.org.uk/wp-content/uploads/2014/04/coombe-street-narrow-pavement-300x225.jpeg',
+				'https://static.wixstatic.com/media/2cb403_b919ec3607a54f718f5fd0f1c16430e3~mv2.jpg/v1/fill/w_480,h_360,al_c,q_80,usm_0.66_1.00_0.01/2cb403_b919ec3607a54f718f5fd0f1c16430e3~mv2.jpg'
+			],
 			groups: 'pedestrians',
 			icon: 'fa-walking',
 			colour: '#1AA8D0'
@@ -152,6 +199,9 @@ var streetvisions = (function ($) {
 		{
 			type: 'crossing', 
 			description: 'Pedestrian crossing',
+			images: [
+				'http://www.bridgepointroadmarkings.com/wp-content/uploads/2012/07/pedestrian-crossing.jpg'
+			],
 			groups: 'pedestrians',
 			icon: 'fa-traffic-light',
 			colour: '#1650A7'
@@ -159,6 +209,7 @@ var streetvisions = (function ($) {
 		{
 			type: 'playArea', 
 			description: '',
+			images: ['https://www.poole.gov.uk/_resources/assets/inline/full/0/45828.jpg'],
 			groups: 'pedestrians',
 			icon: 'fa-snowman',
 			colour: '#1CBF22'
@@ -166,6 +217,7 @@ var streetvisions = (function ($) {
 		{
 			type:'cafeSpace', 
 			description: 'External seating and tables for nearby café/restaurant.',
+			images: ['https://i.pinimg.com/originals/f4/64/25/f46425e17f75b496002807d482b6c4b1.jpg'],
 			groups: 'walking',
 			icon: 'fa-coffee',
 			colour: '#0B986B'
@@ -173,6 +225,7 @@ var streetvisions = (function ($) {
 		{
 			type: 'parkingRestriction', 
 			description: '',
+			images: ['http://thumbs.dreamstime.com/t/parking-restriction-sign-rectangular-yellow-no-waiting-monday-to-saturday-41370190.jpg'],
 			groups: 'driving',
 			icon: 'fa-parking',
 			colour: '#DB9020'
@@ -180,6 +233,7 @@ var streetvisions = (function ($) {
 		{
 			type: 'bollard', 
 			description: '',
+			images: ['http://www.bollardsolutions.com/wp-content/uploads/2016/08/Automatic-Bollard-BMW-Entrance.png'],
 			groups: ['driving', 'cycling'],
 			icon: 'fa-car-crash',
 			colour: '#B13110'
@@ -187,6 +241,7 @@ var streetvisions = (function ($) {
 		{
 			type: 'disabledParking', 
 			description: 'A specially reserved parking space.',
+			images: ['http://www.airport-parking-shop.co.uk/blog/wp-content/uploads/2014/06/DisabledCarParking.jpg'],
 			groups: 'driving',
 			icon: 'fa-parking',
 			colour: '#2563C5'
@@ -423,6 +478,11 @@ var streetvisions = (function ($) {
 					<h1><i class="fa ${tool.icon}"></i> ${streetvisions.convertCamelCaseToSentence(tool.type)}</h1>
 					<p>${tool.description}</p>
 				`
+				if (tool.hasOwnProperty('images')) {
+					tool.images.map (function (image) {
+						htmlContent += `<img src=${image} />`
+					});
+				}
 				Tipped.create (`.info-icon.info-${tool.type}`, htmlContent, {skin: 'light', hideOthers: true, padding: '20px', size: 'small',});
 			});
 
