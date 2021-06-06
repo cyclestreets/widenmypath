@@ -355,6 +355,12 @@ section.builder section.toolbox .toolbox-header .group-contents ul li p {display
 .modalBackground .modal input {width: 100%; margin: 10px 0;}
 
 
+/* Small screen vision show */
+@media (max-width: 1100px) {
+    .modalBackground .modal {width: unset; margin: 10px;}
+    .modalBackground .modal h1 {font-size: 20px;}
+}
+
 /* Schemes list */
 section.schemes-list {padding-top: 20px; }
 section.schemes-list .header {background-color: #4d0026; color: white; padding: 20px 70px 0; margin: 20px 60px 0; border-radius: 10px; box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4),0 3px 3px 0 rgba(0,0,0,0.7);}
@@ -405,22 +411,32 @@ section.schemes-list section.schemes ul li {text-decoration: none; list-style-ty
     section.schemes-list section.schemes ul {padding: 0;}
 
     section.schemes-list section.header .flex {display: block; padding: 10px; padding-bottom: 0;}
-    section.schemes-list section.header .flex h1 {font-size: 30px;}
+    section.schemes-list section.header .flex h1 {font-size: 28px; margin-top: 10px;}
+    section.schemes-list section.header .flex p {font-size: 16px; margin-bottom: 0;}
     section.schemes-list section.header hr {display: none;}
     section.schemes-list section.header .description-block {font-size: 16px; margin: 0; padding-bottom: 0;}
 
-    section.schemes-list section.header .header-controls {display: block; margin: 0; padding-top: 0;}
-    section.schemes-list .header .header-controls .new-scheme .new-scheme-button {display: block; width: auto; margin: 10px; margin-top: 0;}
+    section.schemes-list section.header .header-controls {display: block; margin: 0; padding-top: 0; padding-bottom: 5px;}
+    section.schemes-list .header .header-controls .new-scheme .new-scheme-button {display:block; position: fixed; bottom: 65px; right: 0; width: 50px; height: 50px; border-radius: 50px; margin: 10px; font-size: 47px; padding: 0;}
+    section.schemes-list .header .header-controls .new-scheme .new-scheme-button span {display: none;}
     section.schemes-list .header .header-controls .search-bar {display: block; padding: 0; margin: 10px;}
     section.schemes-list .header .header-controls .search-bar input {width: 80%;}
 
     section.schemes-list .header .header-controls .segmented-control {display: none; position: fixed; bottom: 0; z-index: 9; width: 90%; background-color: #4d0026; padding: 10px 5%; box-shadow: 0px -4px 13px 2px rgba(0,0,0,0.44); font-size: 16px; background-color: rgba(238, 238, 238, 0.8); box-shadow: 0px -4px 13px 2px rgba(0,0,0,0.44);}
 
+    section.schemes-list section.schemes ul {margin-top: 0;}
+
     section.schemes-list .card {width: 300px; margin: 15px 10px;}
-    section.schemes-list .card .card-image {width: 300px;}
-    section.schemes-list .card .card-image img {width: 300px;}
+    section.schemes-list .card .card-image {width: 300px; height: 125px;}
+    section.schemes-list .card .card-image img {width: 300px; height: 125px;}
     section.schemes-list .card .content h4 {font-size: 18px;}
-    section.schemes-list .card .content p {font-weight: 400;}
+    section.schemes-list .card .content p {font-weight: 400; margin-top: 5px; margin-bottom: 5px;}
+    section.schemes-list .card .post-code {width: 75px; height: 75px;}
+    section.schemes-list .card .post-code h1 {font-size: 13px;}
+    section.schemes-list .card .content h4 {margin-top: 30px;}
+    section.schemes-list .card .content h5 {font-size: 14px;}
+    section.schemes-list .card .content p {font-size: 13px;}
+    section.schemes-list .card .read-more a {padding: 7px;}
 }
 
 /* Scheme add */
