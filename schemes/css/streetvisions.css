@@ -189,7 +189,7 @@ section.vision .newDiscussion .createNewDiscussion:hover {background-color: #4d0
 section.builder {display: flex; min-height: 100%; padding-top: 30px}
 section.builder form {display: none;}
 section.builder section.map {flex: 2.1;}
-section.builder section.toolbox {flex: 1; color: black; margin-left: 15px;}
+section.builder section.toolbox {flex: 1; color: black; margin-left: 5px;}
 section.builder section.map .untitled {opacity: 0.5;}
 
 section.builder section.map .map-header {margin: 20px 20px 10px; padding-bottom: 20px; border-radius: 10px; background-color: #4d0026; box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4),0 3px 3px 0 rgba(0,0,0,0.7);}
@@ -203,6 +203,7 @@ section.builder section.map #accordion i.complete {color: green;}
 section.builder section.map .map-header h3 {color: #eee; padding-left: 20px; margin: 10px 12.5px 0 30px;}
 section.builder section.map .map-header h2 {color: #eee; padding-left: 5px; margin: 0 10px 2.5px 55px; max-width: 90%;}
 section.builder section.map .map-header h4 {color: #eee; margin: 5px 10px 5px 60px;}
+section.builder section.map .map-header input, section.builder section.map .map-header textarea {margin: 10px 12px 0 70px; display: block; width: calc(100% - 120px); color: white; background-color: transparent; border: none;}
 section.builder section.map .map-header .title h2 {margin-top: 15px; font-size: 17px;}
 section.builder section.map .title-header, section.builder section.map .questionnaire-header {user-select: none; -webkit-user-select: none; outline: none;}
 section.builder section.map .title-header:hover, section.builder section.map .questionnaire-header:hover {text-decoration: underline;}
@@ -316,14 +317,14 @@ section.builder section.toolbox .toolbox-header .group-contents ul li p {display
 
     section.builder section.map .map-header {min-height: 47.5px;margin: 0; padding-bottom: 0; border-radius: 0; padding-top: 0; box-shadow: none;}
     section.builder section.map .map-header i.back-arrow {font-size: 17.5px; margin-left: 15px; margin-top: 15px;}
-    section.builder section.map .map-header h1 {margin: 0 0 0 10px; font-size: 18px; max-width: calc(100% - 137px); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
-    section.builder section.map .map-header button.publish {margin: 15px 5px 10px; font-size: 12px; line-height: 10px; height: 25px;}
+    section.builder section.map .map-header h1 {margin: 0 0 0 10px; padding-top: 20px; font-size: 18px; max-width: calc(100% - 137px); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+    section.builder section.map .map-header button.publish {margin: 20px 5px 10px; font-size: 12px; line-height: 10px; height: 27.5px;}
     section.builder section.map .map-header hr {margin: 15px 0; margin-bottom: 15px; border: none; height: 0.5px; background-color: #eee; display: none;}
-    section.builder section.map .pull-handle {display: block; padding-bottom: 10px;}
     section.builder section.map .map-header h3 {padding-left: 10px; margin: 10px 12.5px 0 10px; font-size: 15px;}
     section.builder section.map .map-header h2 {font-size: 15px; margin-left: 27.5px; padding: 2.5px 0;}
     section.builder section.map .map-header h4 {font-size: 15px; margin-left: 27.5px;}
     section.builder section.map .map-header .title h2 {margin-top: 10px; font-size: 15px;}
+    section.builder section.map .pull-handle {display: block; padding-bottom: 10px;}
     
     section.builder section.map #leaflet {height: 250px; z-index: 1; width: 100%; margin: 0; border-radius: 0; box-shadow: none;}
 

@@ -41,15 +41,15 @@ var streetvisions = (function ($) {
 	var _builderInputs = {
 		title: [
 			{
-				element: 'h2',
+				element: 'input',
 				className: 'vision-title',
-				placeholder: ' Click to add a short vision title'
+				placeholder: 'Name and describe your vision'
 			},
 			{
-				element: 'h4',
-				placeholder: ' Click to add a description of your vision',
-				className: 'vision-description'
-			}
+				element: 'textarea',
+				className: 'vision-description',
+				placeholder: 'Click to add a description of your vision'
+			},
 		],
 		questionnaire: {
 			questions: [
@@ -59,7 +59,7 @@ var streetvisions = (function ($) {
 			],
 			questionPlaceholder: 'Click to add your answer',
 			titleElement: 'h4',
-			answerElement: 'p'
+			answerElement: 'input'
 		}
 	};
 	
@@ -340,6 +340,7 @@ var streetvisions = (function ($) {
 			$.each (_settings.geojsonData.visions, function (mapId, boundary) {
 				streetvisions.leafletMap (mapId, boundary);
 			});
+
 		},
 		
 		
@@ -1008,14 +1009,14 @@ var streetvisions = (function ($) {
 			var populateQuestions = function () {
 				$('.title').html(_builderInputs.title.map(
 					inputInfo => 
-						`<${inputInfo.element} class="untitled required ${inputInfo.className}" tabindex="0">${inputInfo.placeholder}</${inputInfo.element}>`
+						`<${inputInfo.element} class="untitled required ${inputInfo.className}" placeholder="${inputInfo.placeholder}">`
 					).join(''));
 
 				$('.questionnaire').html(_builderInputs.questionnaire.questions.map(
 					question => 
 						`<div class="question">
 							<${_builderInputs.questionnaire.titleElement}>${question}</${_builderInputs.questionnaire.titleElement}>
-							<${_builderInputs.questionnaire.answerElement} class="description untitled required" tabindex="0">${_builderInputs.questionnaire.questionPlaceholder}</${_builderInputs.questionnaire.answerElement}>
+							<${_builderInputs.questionnaire.answerElement} class="description untitled required" placeholder="${_builderInputs.questionnaire.questionPlaceholder}">
 						</div>`
 					).join(''));
 			};
@@ -1040,8 +1041,7 @@ var streetvisions = (function ($) {
 			}, 500);
 			
 			// When clicking on the title bar, make it editable
-			$('.builder .title h2, .builder .title h4, .builder p.description').on ('click', function (event){
-				makeContentEditable (event.target);
+			$('.builder .title input, .builder .title textarea, .builder input.description').on ('click', function (event){
 				removeUntitledClass (event.target);
 			});
 
@@ -1062,26 +1062,13 @@ var streetvisions = (function ($) {
 				}
 			});
 
-			// Functiont to check if all fields have been filled out
-			var allFieldsFilledOutBool = function () {
-				// Check if all fields have been filled out
-				var canPublish = true;
-				$.each($('.required'), function (indexInArray, textElement) {
-					if ($(textElement).hasClass('untitled')) {
-						canPublish = false;
-					}
-					if (!canPublish) {return;}
-				});
-
-				return canPublish
-			};
-
+			// Loop through inputs to check completion status
 			var checkIfSectionIsComplete = function () {
 				var titleComplete = true;
 				// For each of the title questions
 				_builderInputs.title.map(element => {
 					// For any elements matching this descriptor
-					if ($(`.${element.className}`).first().text() == element.placeholder) {
+					if (!$(`.${element.className}`).first().val()) {
 						// Has not been completed
 						titleComplete = false;
 					}
@@ -1094,7 +1081,7 @@ var streetvisions = (function ($) {
 
 				var questionnaireComplete = true;
 				$.each($(`.questionnaire ${_builderInputs.questionnaire.answerElement}`), function (indexInArray, input) { 
-					if ($(input).text() == _builderInputs.questionnaire.questionPlaceholder) {
+					if (!$(input).val()) {
 						questionnaireComplete = false;
 					}
 				});
@@ -1103,6 +1090,8 @@ var streetvisions = (function ($) {
 					$('.questionnaire-header i').removeClass();
 					$('.questionnaire-header i').addClass('fa fa-check complete animate__animated animate__heartBeat')
 				}
+
+				return (titleComplete && questionnaireComplete);
 			}
 
 			// Check to see if each section has been filled out
@@ -1112,25 +1101,9 @@ var streetvisions = (function ($) {
 	
 			// If we have filled out all the fields, collapse all parts of the accordion
 			$('.description').on('blur', function () {
-				if (allFieldsFilledOutBool()) {
+				if (checkIfSectionIsComplete()) {
 					$('#accordion').accordion('option', 'collapsible', true);
 					$('#accordion').accordion('option', 'active', false);
-				}
-			});
-			
-			// Select and edit content
-			var makeContentEditable = function (target) {
-				$(target).attr ('contenteditable','true');
-				document.execCommand ('selectAll',false, null);
-			};
-			
-			// Tab our way through the fields
-			$(document).on('keyup', function(e) {
-				var code = e.keyCode || e.which;
-			
-				if (code === 9) {  // Tab key
-					e.preventDefault();
-					$('.required.untitled').first().focus();
 				}
 			});
 
@@ -1143,7 +1116,7 @@ var streetvisions = (function ($) {
 			// When clicking publish button, check if all fields have been filled in
 			$('.publish').on('click', function (event) {
 				// If all fields aren't filled out, don't publish
-				if (!allFieldsFilledOutBool()) {
+				if (!checkIfSectionIsComplete()) {
 					streetvisions.showModal ({
 						text: '<i class="fa fa-exclamation"></i> Oops...',
 						description: "It seems you haven't filled out all the information we need for this vision yet. Please check you have filled out the title, description, and FAQ questions."
@@ -1157,7 +1130,7 @@ var streetvisions = (function ($) {
 				$.each ($('.question'), function (indexInArray, object) {
 					questionnaire.push ({
 						question: $(object).find('h4').first().text(),
-						answer: $(object).find('p').first().text()
+						answer: $(object).find('input').first().val()
 					});
 				});
 
@@ -1179,8 +1152,8 @@ var streetvisions = (function ($) {
 				};
 				
 				// Populate hidden form with stringified object
-				$('#name').attr('value', $('.title h2').text());
-				$('#description').attr('value', $('.title h4').text());
+				$('#name').attr('value', $('.vision-title').first().val());
+				$('#description').attr('value', $('.vision-description').first().val());
 				$('#components').attr('value', JSON.stringify(geojsonFeatures));
 				$('#questionnaire').attr('value', JSON.stringify(questionnaire));
 			});
