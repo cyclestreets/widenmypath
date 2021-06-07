@@ -91,7 +91,6 @@ var streetvisions = (function ($) {
 			type: 'parklet', 
 			description: 'A parklet is a sidewalk extension that provides more space and amenities for people using the street. Usually parklets are installed on parking lanes and use several parking spaces. Parklets typically extend out from the sidewalk at the level of the sidewalk to the width of the adjacent parking space.',
 			images: [
-				'http://www.tysmagazine.com/wp-content/uploads/Parklet_chernivtsi-150x150.jpg',
 				'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/SFParklet.jpg/220px-SFParklet.jpg'
 			],
 			groups: 'walking',
@@ -103,7 +102,6 @@ var streetvisions = (function ($) {
 			description: 'Separated cycle lanes are good for business, reduce congestion, are fantastic value for money, get more people cycling and are what the public wants.',
 			images: [
 				'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/image_data/file/49647/S113_Salford_Liverpool_Street_trial_site_stop_line_approach_960x640.jpg',
-				'https://cdn2.cyclist.co.uk/sites/cyclist/files/2017/04/cycle_lane.jpg'
 			],
 			groups: 'cycling',
 			icon: 'fa-road',
@@ -123,7 +121,6 @@ var streetvisions = (function ($) {
 			type: 'carParking', 
 			description: 'Parking space or spaces for cars.',
 			images: [
-				'https://i.ytimg.com/vi/A8cG_mLC9_Y/hqdefault.jpg',
 				'https://i.dailymail.co.uk/i/pix/2012/08/05/article-2184174-005AF28B00000258-584_468x269.jpg'
 			],
 			groups: 'driving',
@@ -134,7 +131,6 @@ var streetvisions = (function ($) {
 			type: 'deliveryBay', 
 			description: 'A delivery bay is a space where delivery vehicles can temporarily park while engaging in deliveries, without blocking the pavement.',
 			images: [
-				'https://motortransport.co.uk/wp-content/uploads/2014/01/Morrisons.com_.jpg',
 				'https://i.dailymail.co.uk/i/pix/2012/08/05/article-2184174-005AF28B00000258-584_468x269.jpg'
 			],
 			groups: ['driving', 'walking'],
@@ -145,7 +141,6 @@ var streetvisions = (function ($) {
 			type: 'chargingPoint', 
 			description: 'A charging station for vehicles.',
 			images: [
-				'https://medwaylibdems.org.uk/en/image/64ZcNv/320/180/electric-charging-point.png',
 				'https://images-e.jpimedia.uk/imagefetch/f_auto,ar_3:2,q_auto:low,c_fill/if_h_lte_200,c_mfit,h_201/https://www.scotsman.com/webimage/1.4283675.1478762062!/image/image.jpg'
 			],
 			groups: ['cycling', 'driving'],
@@ -178,7 +173,6 @@ var streetvisions = (function ($) {
 			type: 'tree',
 			description: '',
 			images: [
-				'https://caseytrees.org/wp-content/uploads/2017/07/WhiteHousePrincetonElms-300x165.jpg',
 				'https://envirotecmagazine.com/wp-content/uploads/2015/09/trees-image.jpg'
 			],
 			groups: ['walking', 'nature'],
