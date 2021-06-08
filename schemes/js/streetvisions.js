@@ -266,7 +266,7 @@ var streetvisions = (function ($) {
 		},
 		
 		
-		// Function to initialise the UI
+		// List schemes
 		schemeslist: function ()
 		{
 			// Segmented controls
@@ -289,6 +289,31 @@ var streetvisions = (function ($) {
 			$.each (_settings.geojsonData, function (mapId, boundary) {
 				streetvisions.leafletMap (mapId, boundary);
 			});
+		},
+		
+		
+		// Add scheme
+		schemeadd: function ()
+		{
+			// Initialise map
+			streetvisions.leafletMap ('map');
+			
+			// FeatureGroup is to store editable layers
+			var drawnItems = new L.FeatureGroup();
+			_map.addLayer(drawnItems);
+			var drawControl = new L.Control.Draw({
+				position: 'topright',
+				edit: {
+					featureGroup: drawnItems
+				},
+				draw: {
+					polyline: false,
+					circle: false,
+					rectangle: false,
+					marker: false
+				}
+			});
+			_map.addControl(drawControl);
 		},
 		
 		
