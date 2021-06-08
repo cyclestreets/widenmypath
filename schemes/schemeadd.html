@@ -65,8 +65,16 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
-
-
+	
+	<script src="./js/.config.js"></script>
+	<script src="/schemes/js/streetvisions.js"></script>
+	<script>
+		$(function () {
+			streetvisions.initialise (config, 'schemeadd');
+		});
+	</script>
+	
+	
     <section class="scheme-add">
         <section class="header">
             <div class="flex">
