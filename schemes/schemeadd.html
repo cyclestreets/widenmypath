@@ -63,6 +63,9 @@
     <!-- Fontawesome icons -->
     <script src="/schemes/js/lib/fontawesome/fontawesome-kit-7bd5544b77.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+
 
     <section class="scheme-add">
         <section class="header">
@@ -70,10 +73,12 @@
                 <div class="title-block">
                     <h1><i class="fa fa-plus-circle"></i> New scheme</h1>
                     <h2>Widen My Path</h2>
+					
+                    <a class="button button-general" href="/schemes/"><i class="fa fa-arrow-circle-left"></i> Back to schemes</a>
                 </div>
                 <div class="description-block">
-                    <p>On this page you can add a new scheme. This will be publically visible, and contributors will be
-                        able to add visions to the scheme.</p>
+					<p>On this page you can add a new scheme, outlining an area that needs to be improved for walking and cycling. This will be publically visible.</p>
+					<p>Contributors will be able to add their visions of how to implement the scheme.</p>
                 </div>
 
             </div>
@@ -83,6 +88,7 @@
 
             <div class="content">
                 <h1>To add a new scheme, please fill out the form.</h1>
+				<p style="color: red; background-color: white; padding: 7px 5px; font-weight: bold; border: 1px solid gray;">Temporary form during development.</p>
 
 
                 <div class="ultimateform">
@@ -109,17 +115,15 @@
                         enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
 
                         <table summary="Online submission form">
-                            <tr class="moniker input required">
-                                <td class="title">Moniker:&nbsp;*<br />
-                                    <span class="restriction">(A specific pattern is required)</span>
-                                </td>
-                                <td class="data"><input name="form[moniker]" id="form_moniker" type="text" size="40"
-                                        maxlength="50" required="required" value="" /></td>
-                            </tr>
                             <tr class="name input required">
                                 <td class="title">Scheme name:&nbsp;*</td>
                                 <td class="data"><input name="form[name]" id="form_name" type="text" size="40"
-                                        maxlength="255" required="required" value="" /></td>
+                                        maxlength="255" required="required" value="" autofocus="autofocus" /></td>
+                            </tr>
+                            <tr class="moniker input required">
+                                <td class="title">URL moniker:&nbsp;*</td>
+                                <td class="data">https://www.widenmypath.com/schemes/ <input name="form[moniker]" id="form_moniker" type="text" size="20"
+                                        maxlength="20" required="required" value="" style="width: auto;" /> /</td>
                             </tr>
                             <tr class="description textarea required">
                                 <td class="title">Description:&nbsp;*</td>
@@ -128,14 +132,18 @@
                             </tr>
                             <tr class="link textarea">
                                 <td class="title">Link giving more info:</td>
-                                <td class="data"><textarea name="form[link]" id="form_link" cols="30"
+                                <td class="data"><input type="url" name="form[link]" id="form_link" cols="30"
                                         rows="5"></textarea>
                                 </td>
                             </tr>
                             <tr class="boundary textarea required">
-                                <td class="title">Scheme boundary (GeoJSON):&nbsp;*</td>
-                                <td class="data"><textarea name="form[boundary]" id="form_boundary" cols="30" rows="5"
-                                        required="required"></textarea></td>
+                                <td class="title">Scheme boundary (GeoJSON map data):&nbsp;*<br /><br />For now, use <a href="https://geojson.io/#map=14/52.1988/0.1375" target="_blank">geojson.io</a><br />to create the boundary data.</p></td>
+                                <td class="data"><textarea name="form[boundary]" id="form_boundary" cols="30" rows="9"
+                                        required="required"></textarea>
+								<div id="map" style="height: 200px;"></div>
+<br />
+<br />
+</td>
                             </tr>
                             <tr class="username input required">
                                 <td class="title">CycleStreets username/e-mail:&nbsp;*</td>
