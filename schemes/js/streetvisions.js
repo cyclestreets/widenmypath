@@ -43,7 +43,7 @@ var streetvisions = (function ($) {
 			{
 				element: 'input',
 				className: 'vision-title',
-				placeholder: 'Name and describe your vision'
+				placeholder: 'Name your vision'
 			},
 			{
 				element: 'textarea',
@@ -126,6 +126,15 @@ var streetvisions = (function ($) {
 			groups: 'driving',
 			icon: 'fa-parking',
 			colour: '#3D6B94'
+		},
+		{
+			type: 'slowerSpeeds',
+			description: 'Lowered speed limit.',
+			images: [
+			],
+			groups: 'driving',
+			icon: 'fa-car',
+			colour: 'gray'
 		},
 		{
 			type: 'deliveryBay', 
@@ -298,22 +307,104 @@ var streetvisions = (function ($) {
 			// Initialise map
 			streetvisions.leafletMap ('map');
 			
+			// Enable drawing
+			streetvisions.enableDrawing ();
+		},
+		
+		
+		// Drawing
+		enableDrawing: function ()
+		{
 			// FeatureGroup is to store editable layers
-			var drawnItems = new L.FeatureGroup();
-			_map.addLayer(drawnItems);
-			var drawControl = new L.Control.Draw({
+			var editableLayers = new L.FeatureGroup ();
+			_map.addLayer (editableLayers);
+			
+			// Define a drawing control
+			var drawControl = new L.Control.Draw ({
 				position: 'topright',
 				edit: {
-					featureGroup: drawnItems
+					featureGroup: editableLayers
 				},
 				draw: {
 					polyline: false,
 					circle: false,
+					circlemarker: false,
 					rectangle: false,
 					marker: false
 				}
 			});
-			_map.addControl(drawControl);
+			
+			// Helper sub-function to clear existing data
+			var clearExisting = function () {
+				editableLayers.eachLayer (function (layer) {
+					editableLayers.removeLayer (layer);
+				});
+			}
+			
+			// Helper sub-function to update the value
+			var updateDrawInputValue = function () {
+				var data = editableLayers.toGeoJSON ();
+				data = JSON.stringify (data);
+				$('#form_boundary').val (data);
+			};
+			
+			// Clear on deletion, immediately on using the button; see: https://stackoverflow.com/questions/21125543/
+			L.EditToolbar.Delete.include ({
+				enable: function () {
+					this.options.featureGroup.clearLayers ();
+					clearExisting ();
+					updateDrawInputValue ();
+				}
+			});
+			
+			// Add the control
+			_map.addControl (drawControl);
+			
+			// Set initial value (empty GeoJSON)
+			updateDrawInputValue ();
+			
+			// Function to enable the polygon drawing control; see: https://stackoverflow.com/questions/15775103/
+			var enableDrawingControl = function () {
+				new L.Draw.Polygon (_map, drawControl.options.polygon).enable ();
+			};
+			
+			// Ensure minimum zoom level
+			$(map).click (function () {
+				var requireZoom = 16;
+				var currentZoom = _map.getZoom ();
+				if (currentZoom < requireZoom) {
+					var newZoom = Math.min (requireZoom, (currentZoom + 2));
+					_map.setZoom (newZoom);
+					if (newZoom >= requireZoom) {
+						enableDrawingControl ();
+						$(map).off ('click');
+					}
+				} else {
+					enableDrawingControl ();
+					$(map).off ('click');
+				}
+			});
+			
+			// Process the result; see: https://leaflet.github.io/Leaflet.draw/docs/leaflet-draw-latest.html#l-draw
+			_map.on ('draw:created', function (e) {
+				editableLayers.addLayer (e.layer);
+				updateDrawInputValue ();
+			});
+			
+			// Process the result
+			_map.on ('draw:edited', function (e) {
+				clearExisting ();
+				e.layers.eachLayer (function (layer) {
+					editableLayers.addLayer (layer);
+				});
+				updateDrawInputValue ();
+			});
+			
+			// Clear existing on draw start
+			_map.on ('draw:drawstart', function (e) {
+				clearExisting ();
+				updateDrawInputValue ();
+			});
 		},
 		
 		
@@ -363,6 +454,7 @@ var streetvisions = (function ($) {
 		},
 		
 		
+		// Add vision
 		visionadd: function ()
 		{
 			// Init modal
@@ -384,6 +476,9 @@ var streetvisions = (function ($) {
 			
 			// Builder options
 			streetvisions.initBuilder ();
+			
+			// Contextual data
+			streetvisions.contextualData ();
 		},
 		
 		
@@ -716,7 +811,7 @@ var streetvisions = (function ($) {
 			
 			var openSearchBox = function () {
 				$('.geocoder input').animate({'width': '275px'});
-				$('#browse-search-box').focus();
+				//$('#browse-search-box').focus();
 			};
 			setTimeout(function () {
 				openSearchBox();
@@ -725,6 +820,11 @@ var streetvisions = (function ($) {
 			// Set grabbing cursor as soon as the object has been clicked on
 			$('.toolbox .group-contents ul li').mousedown (function (e) {
 				$(this).css ('cursor', 'grabbing');
+			});
+			
+			// Disable the help indicator if the user explicitly clicks on the map
+			$('.leafletInstructions').click (function () {
+				$('.leafletInstructions').addClass ('hidden');
 			});
 			
 			// Allow objects to be draggable onto the map
@@ -1059,6 +1159,11 @@ var streetvisions = (function ($) {
 				$('#accordion').accordion('option', 'collapsible', false);	
 			}, 500);
 			
+			// Put focus in first box when an accordion panel is opened
+			$('#accordion').on ('accordionactivate', function (event, ui) {
+				$(ui.newPanel).find ('input')[0].focus ();
+			});
+			
 			// When clicking on the title bar, make it editable
 			$('.builder .title input, .builder .title textarea, .builder input.description').on ('click', function (event){
 				removeUntitledClass (event.target);
@@ -1076,8 +1181,10 @@ var streetvisions = (function ($) {
 
 			// After we have filled out a description, show the next accordion
 			$('.vision-description').on('blur', function () {
-				if (!$('.vision-description').first().hasClass('untitled')) {
-					$('#accordion').accordion('option', 'active', 1 );
+				if ($('.vision-description').val ()) {		// Only if it now has a value
+					if (!$('.vision-description').first().hasClass('untitled')) {
+						$('#accordion').accordion('option', 'active', 1 );
+					}
 				}
 			});
 
@@ -1285,6 +1392,101 @@ var streetvisions = (function ($) {
 					$(this).toggle ($(this).text ().toLowerCase ().indexOf (value) > -1);
 				});
 			});
+		},
+		
+		
+		// Contextual data (e.g. cycle parking, speed limits)
+		contextualData: function ()
+		{
+			// Define the layers and their API calls
+			var layers = {
+				cycleparking: _settings.cyclestreetsApiBaseUrl + '/v2/pois.locations?type=cycleparking&fields=id,name,osmTags[capacity,access,bicycle_parking,covered],nodeId',
+				speedlimits: '/libraries/streetvisions/images/speedlimits.geojson',
+			};
+			
+			// End if not present
+			$('#contextualdata input').change (function (e) {
+				
+				var geojsonLayer;
+				if (this.checked) {
+					
+					// Determine the data URL
+					var layer = this.name;
+					var url = layers[layer];
+					
+					// Get the data
+					$.ajax ({
+						type: 'GET',
+						url: url,
+						dataType: 'json',
+						data: {
+							key: _settings.cyclestreetsApiKey,
+							bbox: _map.getBounds ().toBBoxString ()
+						},
+						success: function (data) {
+							geojsonLayer = L.geoJson (data, {
+								
+								// Set icon
+								pointToLayer: function (feature, latlng) {
+									var markerProperties = {
+										icon: L.icon ({
+											iconUrl: feature.properties.iconUrl,
+											iconSize: 20
+										})
+									};
+									var icon = L.marker (latlng, markerProperties);
+									return icon;
+								},
+								
+								// Set popup
+								onEachFeature: function (feature, layer) {
+									var popupContent = streetvisions.htmlTable (feature.properties)
+									layer.bindPopup (popupContent);
+								},
+								
+								// Lines
+								style: function (feature) {
+									return {
+										color:   (feature.properties.maxspeed < 50 ? 'green' : 'red'),
+										weight:  (feature.properties.maxspeed < 50 ? 2 : 4),
+										opacity: (feature.properties.maxspeed < 50 ? 0.5 : 1),
+									}
+								}
+								
+							}).addTo (_map);
+						}
+					});
+					
+				} else {
+					_map.removeLayer (geojsonLayer);
+				}
+			});
+		},
+		
+		
+		// Function to create a table from key,value pairs
+		htmlTable: function (data)
+		{
+			// Construct the table
+			var html = '<table>';
+			$.each (data, function (key, value) {
+				if (key == 'iconUrl') {return /* i.e. continue */;}
+				key   = streetvisions.htmlentities (key);
+				value = streetvisions.htmlentities (value);
+				html += '<tr><td>' + key + ':</td><td><strong>' + value + '</strong></td></tr>';
+			});
+			html += '</table>';
+			
+			// Return the HTML
+			return html;
+		},
+		
+		
+		// Function to escape entities in a string
+		htmlentities: function (value)
+		{
+			if (typeof value != 'string') {return value;}
+			return value.replace (/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 		}
 	};
 	

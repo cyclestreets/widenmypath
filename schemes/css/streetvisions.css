@@ -492,3 +492,10 @@ section.scheme-add .form input.button {width: 100px;}
 .ios-segmented-control .option label span {display: block; position: relative; z-index: 2; -webkit-transition: all .2s ease; transition: all .2s ease; will-change: transform;}
 .ios-segmented-control .option input:checked+label::before, .ios-segmented-control .option input:checked+label::after {background: var(--background);z-index: 1;}
 .ios-segmented-control .option input:checked+label {cursor: default;}
+
+/* Contextual data */
+#leaflet {position: relative;}
+#leaflet #contextualdata {position: absolute; z-index: 450; height: 14px; bottom: 18px; left: 10px;}
+#leaflet #contextualdata ul {padding: 0; margin: 0; list-style: none;}
+#leaflet #contextualdata ul li {display: inline; margin-right: 10px; background-color: white; border: 1px solid gray; padding: 2px 4px;}
+
