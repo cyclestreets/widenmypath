@@ -255,6 +255,9 @@ section.builder section.map .leaflet-marker-icon.leafletFontAwesomeIcon .fa-stac
 section.builder section.toolbox h2 {display: inline-block; margin: 35px 0 10px; color: #4d0026; font-size: 35px;}
 section.builder section.toolbox h5 {cursor: pointer;}
 section.builder section.toolbox>p {padding-right: 25px;}
+section.builder section.toolbox div.budget-div {border-radius: 10px; border: 1px solid #4d0026; width: 200px; padding: 15px;}
+section.builder section.toolbox div.budget-div h4 {padding: 0; margin: 0;}
+section.builder section.toolbox div.budget-div h3 {font-size: 25px; padding: 0; margin: 5px 0 0 0;}
 section.builder section.toolbox .padded-content {padding: 0 25px 25px 20px;}
 section.builder section.toolbox .padded-content h5 {margin: 0;}
 section.builder section.toolbox .toolbox-header>i {transition: .5s;}
@@ -264,10 +267,11 @@ section.builder section.toolbox .toolbox-header h5:hover {background-color: #eee
 section.builder section.toolbox .toolbox-header .group-contents {margin: 0 15px; padding: 0; font-size: 17px;}
 section.builder section.toolbox .toolbox-header .group-contents ul i.info-icon {float: right; position: relative; top: 0; right: 0; font-size: 17px;}
 section.builder section.toolbox .toolbox-header .group-contents ul {list-style: none; padding: 0; display: flex; align-items: center; flex-wrap: wrap;}
-section.builder section.toolbox .toolbox-header .group-contents ul li {border-radius: .7em; display: inline-block; padding: 10px; margin: 5px; cursor: pointer; width: 100px; height: 90px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); transition: box-shadow .25s;}
+section.builder section.toolbox .toolbox-header .group-contents ul li {border-radius: .7em; display: inline-block; padding: 10px; margin: 5px; cursor: pointer; width: 100px; height: 105px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); transition: box-shadow .25s;}
 section.builder section.toolbox .toolbox-header .group-contents ul li:hover {box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); color: #4d0026;}
 section.builder section.toolbox .toolbox-header .group-contents ul li i {font-size: 50px; display: block; margin: 0 auto; text-align: center;}
-section.builder section.toolbox .toolbox-header .group-contents ul li p {display: block; font-size: 12px; text-align: center; min-height: 28px;}
+section.builder section.toolbox .toolbox-header .group-contents ul li p {display: block; font-size: 12px; text-align: center; min-height: 28px; margin-bottom: 0;}
+section.builder section.toolbox .toolbox-header .group-contents ul li p.price {padding: 0; margin: 0; font-size: 0.8rem; font-weight: 600;}
 
 /* Popover content */
 .tpd-skin-dark, .tpd-content {border-radius: 10px;}
@@ -337,10 +341,11 @@ section.builder section.toolbox .toolbox-header .group-contents ul li p {display
     section.builder section.toolbox .padded-content {padding: 0 10px 10px 5px;}
     section.builder section.toolbox .toolbox-header .group-contents {margin: 0 10px; padding: 0; font-size: 10px;}
     section.builder section.toolbox .toolbox-header .group-contents ul i.info-icon {font-size: 14px;}
-    section.builder section.toolbox .toolbox-header .group-contents ul li {padding: 10px 5px 5px; margin: 2.5px; width: 70px; height: 70px;}
+    section.builder section.toolbox .toolbox-header .group-contents ul li {padding: 10px 5px 5px; margin: 2.5px; width: 70px; height: 80px;}
     section.builder section.toolbox .toolbox-header .group-contents ul li i {font-size: 20px;}
+    section.builder section.toolbox .toolbox-header .group-contents ul li p.price {margin: 5px 0 0 0;}
 
-    section.builder section.map #leaflet .leafletInstructions {padding: 10px; }
+    section.builder section.map #leaflet .leafletInstructions {padding: 10px;}
     section.builder section.map #leaflet .leafletInstructions h1 {font-size: 15px;}
     section.builder section.map #leaflet .leafletInstructions p {font-size: 13px;}
 }
